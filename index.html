@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Phân Tích Hiệu Suất Chuyên Sâu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 45vh;
+            width: 100%;
+        }
+        .error-row {
+            background-color: #fee2e2; /* red-100 */
+        }
+        .error-row:hover {
+            background-color: #fecaca; /* red-200 */
+        }
+        .summary-card {
+            transition: all 0.3s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Dashboard Phân Tích Hiệu Suất Chuyên Sâu</h1>
+            <p class="text-md text-gray-600 mt-2">Tải lên file kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.</p>
+        </header>
+
+        <!-- File Upload Section -->
+        <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
+            <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Tải Lên File Kết Quả</label>
+            <div class="flex items-center justify-center w-full">
+                <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Nhấn để tải lên</span> hoặc kéo thả</p>
+                        <p class="text-xs text-gray-500">Hỗ trợ file .jmx, .csv, .json</p>
+                    </div>
+                    <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
+                </label>
+            </div>
+            <p id="file-name" class="mt-4 text-center text-sm text-gray-500"></p>
+        </div>
+
+        <!-- Filters Section -->
+        <div id="filters-section" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8 hidden">
+            <h2 class="text-xl font-semibold mb-4">Bộ lọc dữ liệu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label for="label-filter" class="block text-sm font-medium text-gray-700">Lọc theo Nhãn (Label)</label>
+                    <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                </div>
+                <div>
+                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Lọc theo Trạng thái</label>
+                    <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="all">Tất cả</option>
+                        <option value="true">Thành công</option>
+                        <option value="false">Thất bại</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Áp dụng</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Display Section -->
+        <div id="dashboard-content" class="mt-10 hidden">
+            <!-- Performance Summary Cards -->
+            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8"></div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                    <h2 class="text-xl font-semibold text-center mb-4">Thời gian phản hồi theo thời gian (Từng Label)</h2>
+                    <div class="chart-container"><canvas id="response-time-over-time-chart"></canvas></div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                    <h2 class="text-xl font-semibold text-center mb-4">Throughput (Requests/giây)</h2>
+                    <div class="chart-container"><canvas id="throughput-chart"></canvas></div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                    <h2 class="text-xl font-semibold text-center mb-4">Phân vị 90/95 theo Label</h2>
+                    <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 flex flex-col items-center justify-center">
+                    <h2 class="text-xl font-semibold text-center mb-4">Phân bổ lỗi theo Label</h2>
+                    <div class="chart-container" style="height: 40vh; width: 40vh;"><canvas id="error-rate-chart"></canvas></div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                    <h2 class="text-xl font-semibold text-center mb-4">Xu hướng Thành công vs. Thất bại</h2>
+                    <div class="chart-container"><canvas id="success-fail-trend-chart"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Detailed Table Section -->
+            <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                 <div class="flex justify-between items-center p-6">
+                     <h2 class="text-2xl font-semibold">Dữ liệu chi tiết</h2>
+                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">Tải xuống CSV</button>
+                 </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nhãn (Label)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian (ms)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian bắt đầu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+                <div id="pagination-controls" class="px-6 py-3 flex items-center justify-between border-t border-gray-200"></div>
+            </div>
+        </div>
+        <div id="no-data-message" class="text-center mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200 hidden">
+            <p class="text-gray-600">Không tìm thấy dữ liệu hợp lệ trong file đã tải lên.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- GLOBAL STATE & CONFIG ---
+        const fileUpload = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name');
+        const dashboardContent = document.getElementById('dashboard-content');
+        const noDataMessage = document.getElementById('no-data-message');
+        const filtersSection = document.getElementById('filters-section');
+        const applyFiltersBtn = document.getElementById('apply-filters-btn');
+        const downloadCsvBtn = document.getElementById('download-csv-btn');
+
+        let allData = [];
+        let filteredData = [];
+        let charts = {};
+        let currentPage = 1;
+        const rowsPerPage = 20;
+
+        // --- FILE HANDLING & PARSING ---
+        fileUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            fileNameDisplay.textContent = `Đang xử lý: ${file.name}...`;
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                const worker = new Worker(URL.createObjectURL(new Blob([`
+                    (${workerFunction.toString()})()
+                `], { type: 'application/javascript' })));
+
+                worker.onmessage = (event) => {
+                    if (event.data.error) {
+                        handleError(new Error(event.data.error));
+                    } else {
+                        allData = event.data.sort((a, b) => a.timestamp - b.timestamp);
+                        fileNameDisplay.textContent = `File: ${file.name}`;
+                        initializeDashboard();
+                    }
+                    worker.terminate();
+                };
+                
+                worker.postMessage({
+                    content: e.target.result,
+                    fileType: file.name.split('.').pop().toLowerCase()
+                });
+            };
+            reader.readAsText(file);
+        });
+        
+        function workerFunction() {
+            self.onmessage = function(event) {
+                const { content, fileType } = event.data;
+                try {
+                    let data;
+                    if (fileType === 'jmx') data = parseJMX(content);
+                    else if (fileType === 'csv') data = parseCSV(content);
+                    else if (fileType === 'json') data = parseJSON(content);
+                    else throw new Error('Định dạng file không được hỗ trợ.');
+                    
+                    if (data.length === 0) throw new Error('Không có dữ liệu mẫu nào được tìm thấy.');
+                    
+                    self.postMessage(data);
+                } catch (e) {
+                    self.postMessage({ error: e.message });
+                }
+            };
+
+            // CORRECTED JMX PARSER
+            function parseJMX(xmlContent) {
+                // This regex is more robust, capturing the tag name and the full string of attributes.
+                const sampleTags = [...xmlContent.matchAll(/<(httpSample|sample)\s+([^>]+)>/g)];
+                
+                return sampleTags.map(tagMatch => {
+                    const attributesString = tagMatch[2]; // The full attribute string, e.g., t="266" s="true" ...
+                    const attributes = {};
+                    
+                    // This regex iterates over all key="value" pairs in the attribute string.
+                    const attrRegex = /(\w+)="([^"]*)"/g;
+                    let attrMatch;
+                    while ((attrMatch = attrRegex.exec(attributesString)) !== null) {
+                        // Build an object of all attributes, e.g., {t: "266", s: "true", lb: "Label"}
+                        attributes[attrMatch[1]] = attrMatch[2];
+                    }
+                    
+                    // Now, safely access the properties from the created attributes object.
+                    return {
+                        label: attributes['lb'],
+                        sampleTime: parseInt(attributes['t'], 10),
+                        success: attributes['s'] === 'true', // This comparison is now reliable.
+                        timestamp: parseInt(attributes['ts'], 10),
+                    };
+                });
+            }
+
+            function parseCSV(csvContent) {
+                const lines = csvContent.trim().split('\n');
+                const header = lines[0].toLowerCase().split(',').map(h => h.trim().replace(/"/g, ''));
+                const data = [];
+                
+                const labelIdx = header.indexOf('label');
+                const timeIdx = header.indexOf('elapsed');
+                const successIdx = header.indexOf('success');
+                const timeStampIdx = header.indexOf('timestamp');
+
+                if (labelIdx === -1 || timeIdx === -1 || successIdx === -1 || timeStampIdx === -1) {
+                    throw new Error('CSV header không hợp lệ. Cần có các cột: timeStamp, elapsed, label, success.');
+                }
+
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',');
+                    if (values.length < header.length) continue;
+                    data.push({
+                        timestamp: parseInt(values[timeStampIdx].trim(), 10),
+                        sampleTime: parseInt(values[timeIdx].trim(), 10),
+                        label: values[labelIdx].trim().replace(/"/g, ''),
+                        success: values[successIdx].trim().toLowerCase() === 'true',
+                    });
+                }
+                return data;
+            }
+            function parseJSON(jsonContent) {
+                const parsed = JSON.parse(jsonContent);
+                if (!Array.isArray(parsed) || !parsed[0] || !('label' in parsed[0])) {
+                    throw new Error('JSON không hợp lệ. Cần một mảng các đối tượng với các key: label, sampleTime, success, timestamp.');
+                }
+                return parsed;
+            }
+        }
+
+        function handleError(error) {
+            console.error("Lỗi xử lý file:", error);
+            fileNameDisplay.textContent = `Lỗi: ${error.message}`;
+            dashboardContent.classList.add('hidden');
+            filtersSection.classList.add('hidden');
+            noDataMessage.classList.remove('hidden');
+        }
+
+        // --- DASHBOARD INITIALIZATION & UPDATES ---
+        function initializeDashboard() {
+            dashboardContent.classList.remove('hidden');
+            filtersSection.classList.remove('hidden');
+            noDataMessage.classList.add('hidden');
+            populateFilters(allData);
+            applyFilters();
+        }
+        
+        applyFiltersBtn.addEventListener('click', applyFilters);
+
+        function applyFilters() {
+            const labelFilterValue = document.getElementById('label-filter').value;
+            const statusFilterValue = document.getElementById('status-filter').value;
+            filteredData = allData.filter(item => 
+                (labelFilterValue === 'all' || item.label === labelFilterValue) &&
+                (statusFilterValue === 'all' || String(item.success) === statusFilterValue)
+            );
+            currentPage = 1;
+            updateDashboard();
+        }
+
+        function updateDashboard() {
+            if (filteredData.length === 0) {
+                noDataMessage.classList.remove('hidden');
+                dashboardContent.classList.add('hidden');
+                return;
+            }
+            noDataMessage.classList.add('hidden');
+            dashboardContent.classList.remove('hidden');
+            
+            const processed = processDataForCharts(filteredData);
+            
+            renderSummary(processed.summary);
+            renderChart('response-time-over-time-chart', processed.responseTimeSeries);
+            renderChart('throughput-chart', processed.throughput);
+            renderChart('percentile-chart', processed.percentiles);
+            renderChart('error-rate-chart', processed.errorRates);
+            renderChart('success-fail-trend-chart', processed.successFailTrend);
+            renderTable();
+        }
+
+        // --- DATA PROCESSING ---
+        function processDataForCharts(data) {
+            const summary = calculateSummaryMetrics(data);
+            const responseTimeSeries = getResponseTimeSeries(data);
+            const throughput = getThroughput(data);
+            const percentiles = getPercentiles(data);
+            const errorRates = getErrorRates(data);
+            const successFailTrend = getSuccessFailTrend(data);
+            return { summary, responseTimeSeries, throughput, percentiles, errorRates, successFailTrend };
+        }
+
+        // --- METRIC CALCULATIONS ---
+        function calculateSummaryMetrics(data) {
+            if (data.length === 0) return {};
+            const times = data.map(d => d.sampleTime).filter(t => !isNaN(t));
+            if (times.length === 0) return { totalRequests: data.length, totalErrors: data.filter(d => !d.success).length };
+
+            const totalDuration = (data[data.length - 1].timestamp - data[0].timestamp) / 1000;
+            const throughputPerSecond = {};
+            data.forEach(d => {
+                const second = Math.floor(d.timestamp / 1000);
+                throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
+            });
+
+            return {
+                totalRequests: data.length,
+                totalErrors: data.filter(d => !d.success).length,
+                avgTime: times.reduce((a, b) => a + b, 0) / times.length,
+                maxTime: Math.max(...times),
+                peakThroughput: Math.max(0, ...Object.values(throughputPerSecond)),
+            };
+        }
+
+        const CHART_CONFIGS = {
+            getResponseTimeSeries: (data) => {
+                const datasets = {};
+                data.forEach(d => {
+                    if (!datasets[d.label]) {
+                        datasets[d.label] = {
+                            label: d.label,
+                            data: [],
+                            borderColor: getRandomColor(),
+                            tension: 0.1,
+                            pointRadius: 1,
+                        };
+                    }
+                    datasets[d.label].data.push({ x: d.timestamp, y: d.sampleTime });
+                });
+                return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Thời gian phản hồi (ms)') };
+            },
+            getThroughput: (data) => {
+                const throughputPerSecond = {};
+                data.forEach(d => {
+                    const second = Math.floor(d.timestamp / 1000) * 1000;
+                    throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
+                });
+                const chartData = Object.entries(throughputPerSecond).map(([ts, count]) => ({ x: parseInt(ts), y: count }));
+                return {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Requests/giây',
+                            data: chartData,
+                            borderColor: '#34d399',
+                            fill: true,
+                            backgroundColor: 'rgba(52, 211, 153, 0.2)'
+                        }]
+                    },
+                    options: getCommonTimeOptions('Số lượng Requests')
+                };
+            },
+            getPercentiles: (data) => {
+                const byLabel = groupBy(data, 'label');
+                const labels = Object.keys(byLabel);
+                const p90 = [];
+                const p95 = [];
+                labels.forEach(label => {
+                    const times = byLabel[label].map(d => d.sampleTime).sort((a,b) => a-b);
+                    p90.push(times[Math.floor(times.length * 0.9)]);
+                    p95.push(times[Math.floor(times.length * 0.95)]);
+                });
+                return {
+                    type: 'bar',
+                    data: {
+                        labels,
+                        datasets: [
+                            { label: '90th Percentile', data: p90, backgroundColor: 'rgba(96, 165, 250, 0.7)' },
+                            { label: '95th Percentile', data: p95, backgroundColor: 'rgba(59, 130, 246, 0.7)' }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true }}}
+                };
+            },
+            getErrorRates: (data) => {
+                const byLabel = groupBy(data, 'label');
+                const labels = [];
+                const errorCounts = [];
+                Object.entries(byLabel).forEach(([label, items]) => {
+                    const errors = items.filter(d => !d.success).length;
+                    if(errors > 0) {
+                        labels.push(label);
+                        errorCounts.push(errors);
+                    }
+                });
+                return {
+                    type: 'doughnut',
+                    data: {
+                        labels,
+                        datasets: [{
+                            label: 'Số lỗi',
+                            data: errorCounts,
+                            backgroundColor: labels.map(() => getRandomColor(0.7)),
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                };
+            },
+            getSuccessFailTrend: (data) => {
+                const trend = {};
+                 data.forEach(d => {
+                    const second = Math.floor(d.timestamp / 1000) * 1000;
+                    if (!trend[second]) trend[second] = { success: 0, fail: 0 };
+                    d.success ? trend[second].success++ : trend[second].fail++;
+                });
+                const successData = [], failData = [];
+                Object.entries(trend).sort((a,b) => a[0] - b[0]).forEach(([ts, counts]) => {
+                    successData.push({ x: parseInt(ts), y: counts.success });
+                    failData.push({ x: parseInt(ts), y: counts.fail });
+                });
+                return {
+                    type: 'line',
+                    data: {
+                        datasets: [
+                            { label: 'Thành công', data: successData, borderColor: 'rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true, tension: 0.1 },
+                            { label: 'Thất bại', data: failData, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: true, tension: 0.1 }
+                        ]
+                    },
+                    options: getCommonTimeOptions('Số lượng Requests')
+                }
+            }
+        };
+
+        // --- CHART RENDERING ---
+        function renderChart(canvasId, config) {
+            if (charts[canvasId]) charts[canvasId].destroy();
+            if (config && config.data && config.data.datasets.some(ds => ds.data && ds.data.length > 0)) {
+                 document.getElementById(canvasId).parentElement.parentElement.style.display = 'block';
+                 charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
+            } else {
+                 document.getElementById(canvasId).parentElement.parentElement.style.display = 'none';
+            }
+        }
+
+        function renderSummary(summary) {
+            document.getElementById('summary-stats').innerHTML = `
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Tổng Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Tổng Lỗi</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">TB / Max Phản hồi (ms)</p><p class="text-3xl font-bold">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
+            `;
+        }
+
+        // --- TABLE & PAGINATION ---
+        function renderTable() {
+            const tableBody = document.getElementById('resultsTableBody');
+            tableBody.innerHTML = '';
+            const paginatedData = filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+            paginatedData.forEach((item, index) => {
+                const row = document.createElement('tr');
+                if (!item.success) row.classList.add('error-row');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${(currentPage - 1) * rowsPerPage + index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.label}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.sampleTime}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm ${item.success ? 'text-green-600' : 'text-red-600'}">${item.success ? 'Thành công' : 'Thất bại'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleString('vi-VN')}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+            renderPaginationControls();
+        }
+
+        function renderPaginationControls() {
+            const container = document.getElementById('pagination-controls');
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            container.innerHTML = '';
+            if (totalPages <= 1) return;
+            const prevButton = document.createElement('button');
+            prevButton.textContent = 'Trước';
+            prevButton.disabled = currentPage === 1;
+            prevButton.className = 'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
+            prevButton.onclick = () => { currentPage--; renderTable(); };
+            const nextButton = document.createElement('button');
+            nextButton.textContent = 'Sau';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.className = 'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
+            nextButton.onclick = () => { currentPage++; renderTable(); };
+            const pageInfo = document.createElement('span');
+            pageInfo.className = 'text-sm text-gray-700';
+            pageInfo.textContent = `Trang ${currentPage} trên ${totalPages}`;
+            const buttonWrapper = document.createElement('div');
+            buttonWrapper.appendChild(prevButton);
+            buttonWrapper.appendChild(nextButton);
+            container.appendChild(pageInfo);
+            container.appendChild(buttonWrapper);
+        }
+
+        // --- UTILITIES ---
+        function populateFilters(data) {
+            const labelFilter = document.getElementById('label-filter');
+            labelFilter.innerHTML = '<option value="all">Tất cả các nhãn</option>';
+            [...new Set(data.map(item => item.label))].forEach(label => {
+                const option = document.createElement('option');
+                option.value = label;
+                option.textContent = label;
+                labelFilter.appendChild(option);
+            });
+        }
+        
+        const { getResponseTimeSeries, getThroughput, getPercentiles, getErrorRates, getSuccessFailTrend } = CHART_CONFIGS;
+
+        function getCommonTimeOptions(yAxisTitle) {
+            return {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    x: { type: 'time', time: { unit: 'second', displayFormats: { second: 'HH:mm:ss' } }, title: { display: true, text: 'Thời gian' } },
+                    y: { beginAtZero: true, title: { display: true, text: yAxisTitle } }
+                },
+                plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 20 } } }
+            };
+        }
+
+        function groupBy(arr, key) {
+            return arr.reduce((acc, item) => {
+                (acc[item[key]] = acc[item[key]] || []).push(item);
+                return acc;
+            }, {});
+        }
+
+        function getRandomColor(alpha = 1) {
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+        
+        downloadCsvBtn.addEventListener('click', () => {
+             if (filteredData.length === 0) { alert('Không có dữ liệu để tải xuống.'); return; }
+            const headers = "Timestamp,Label,SampleTime,Success\n";
+            const csvContent = filteredData.map(d => `${new Date(d.timestamp).toISOString()},"${d.label}",${d.sampleTime},${d.success}`).join('\n');
+            const blob = new Blob([headers + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.setAttribute("href", URL.createObjectURL(blob));
+            link.setAttribute("download", "filtered_performance_data.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+    </script>
+
+</body>
+</html>
