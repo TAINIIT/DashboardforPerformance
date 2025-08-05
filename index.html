@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard For Load and Stress Testing Analysis</title>
+    <title>In-Depth Performance Analysis Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -43,19 +43,19 @@
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <header class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Dashboard For Load and Stress Testing Analysis</h1>
-            <p class="text-md text-gray-600 mt-2">Tải lên file kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">In-Depth Performance Analysis Dashboard</h1>
+            <p class="text-md text-gray-600 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
         <!-- File Upload Section -->
         <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
-            <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Tải Lên File Kết Quả</label>
+            <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Upload Results File</label>
             <div class="flex items-center justify-center w-full">
                 <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Nhấn để tải lên</span> hoặc kéo thả</p>
-                        <p class="text-xs text-gray-500">Hỗ trợ file .jmx, .csv, .json</p>
+                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-gray-500">Supports .jmx, .csv, .json files</p>
                     </div>
                     <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
                 </label>
@@ -65,22 +65,22 @@
 
         <!-- Filters Section -->
         <div id="filters-section" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8 hidden">
-            <h2 class="text-xl font-semibold mb-4">Bộ lọc dữ liệu</h2>
+            <h2 class="text-xl font-semibold mb-4">Data Filters</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <label for="label-filter" class="block text-sm font-medium text-gray-700">Lọc theo Nhãn (Label)</label>
+                    <label for="label-filter" class="block text-sm font-medium text-gray-700">Filter by Label</label>
                     <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
                 </div>
                 <div>
-                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Lọc theo Trạng thái</label>
+                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Filter by Status</label>
                     <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <option value="all">Tất cả</option>
-                        <option value="true">Thành công</option>
-                        <option value="false">Thất bại</option>
+                        <option value="all">All</option>
+                        <option value="true">Success</option>
+                        <option value="false">Failure</option>
                     </select>
                 </div>
                 <div class="flex items-end">
-                    <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Áp dụng</button>
+                    <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
                 </div>
             </div>
         </div>
@@ -93,23 +93,38 @@
             <!-- Charts Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                    <h2 class="text-xl font-semibold text-center mb-4">Thời gian phản hồi theo thời gian (Từng Label)</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-center">Response Time Over Time (by Label)</h2>
+                        <button onclick="downloadChart('response-time-over-time-chart', 'response-time-over-time.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                    </div>
                     <div class="chart-container"><canvas id="response-time-over-time-chart"></canvas></div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                    <h2 class="text-xl font-semibold text-center mb-4">Throughput (Requests/giây)</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-center">Throughput (Requests/sec)</h2>
+                        <button onclick="downloadChart('throughput-chart', 'throughput.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                    </div>
                     <div class="chart-container"><canvas id="throughput-chart"></canvas></div>
                 </div>
                  <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                    <h2 class="text-xl font-semibold text-center mb-4">Phân vị 90/95 theo Label</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-center">90th/95th Percentiles by Label</h2>
+                        <button onclick="downloadChart('percentile-chart', 'percentiles.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                    </div>
                     <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
                 </div>
                  <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 flex flex-col items-center justify-center">
-                    <h2 class="text-xl font-semibold text-center mb-4">Phân bổ lỗi theo Label</h2>
+                    <div class="flex justify-between items-center mb-4 w-full">
+                        <h2 class="text-xl font-semibold text-center">Error Distribution by Label</h2>
+                        <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                    </div>
                     <div class="chart-container" style="height: 40vh; width: 40vh;"><canvas id="error-rate-chart"></canvas></div>
                 </div>
                  <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                    <h2 class="text-xl font-semibold text-center mb-4">Xu hướng Thành công vs. Thất bại</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-center">Success vs. Failure Trend</h2>
+                        <button onclick="downloadChart('success-fail-trend-chart', 'success-fail-trend.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                    </div>
                     <div class="chart-container"><canvas id="success-fail-trend-chart"></canvas></div>
                 </div>
             </div>
@@ -117,18 +132,18 @@
             <!-- Detailed Table Section -->
             <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                  <div class="flex justify-between items-center p-6">
-                     <h2 class="text-2xl font-semibold">Dữ liệu chi tiết</h2>
-                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">Tải xuống CSV</button>
+                     <h2 class="text-2xl font-semibold">Detailed Data</h2>
+                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">Download CSV</button>
                  </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nhãn (Label)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian (ms)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian bắt đầu</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time (ms)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
                             </tr>
                         </thead>
                         <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
@@ -138,7 +153,7 @@
             </div>
         </div>
         <div id="no-data-message" class="text-center mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200 hidden">
-            <p class="text-gray-600">Không tìm thấy dữ liệu hợp lệ trong file đã tải lên.</p>
+            <p class="text-gray-600">No valid data found in the uploaded file.</p>
         </div>
     </div>
 
@@ -163,7 +178,7 @@
             const file = event.target.files[0];
             if (!file) return;
 
-            fileNameDisplay.textContent = `Đang xử lý: ${file.name}...`;
+            fileNameDisplay.textContent = `Processing: ${file.name}...`;
             const reader = new FileReader();
             
             reader.onload = (e) => {
@@ -198,9 +213,9 @@
                     if (fileType === 'jmx') data = parseJMX(content);
                     else if (fileType === 'csv') data = parseCSV(content);
                     else if (fileType === 'json') data = parseJSON(content);
-                    else throw new Error('Định dạng file không được hỗ trợ.');
+                    else throw new Error('Unsupported file format.');
                     
-                    if (data.length === 0) throw new Error('Không có dữ liệu mẫu nào được tìm thấy.');
+                    if (data.length === 0) throw new Error('No sample data found.');
                     
                     self.postMessage(data);
                 } catch (e) {
@@ -210,26 +225,22 @@
 
             // CORRECTED JMX PARSER
             function parseJMX(xmlContent) {
-                // This regex is more robust, capturing the tag name and the full string of attributes.
                 const sampleTags = [...xmlContent.matchAll(/<(httpSample|sample)\s+([^>]+)>/g)];
                 
                 return sampleTags.map(tagMatch => {
-                    const attributesString = tagMatch[2]; // The full attribute string, e.g., t="266" s="true" ...
+                    const attributesString = tagMatch[2];
                     const attributes = {};
                     
-                    // This regex iterates over all key="value" pairs in the attribute string.
                     const attrRegex = /(\w+)="([^"]*)"/g;
                     let attrMatch;
                     while ((attrMatch = attrRegex.exec(attributesString)) !== null) {
-                        // Build an object of all attributes, e.g., {t: "266", s: "true", lb: "Label"}
                         attributes[attrMatch[1]] = attrMatch[2];
                     }
                     
-                    // Now, safely access the properties from the created attributes object.
                     return {
                         label: attributes['lb'],
                         sampleTime: parseInt(attributes['t'], 10),
-                        success: attributes['s'] === 'true', // This comparison is now reliable.
+                        success: attributes['s'] === 'true',
                         timestamp: parseInt(attributes['ts'], 10),
                     };
                 });
@@ -246,7 +257,7 @@
                 const timeStampIdx = header.indexOf('timestamp');
 
                 if (labelIdx === -1 || timeIdx === -1 || successIdx === -1 || timeStampIdx === -1) {
-                    throw new Error('CSV header không hợp lệ. Cần có các cột: timeStamp, elapsed, label, success.');
+                    throw new Error('Invalid CSV header. Required columns: timeStamp, elapsed, label, success.');
                 }
 
                 for (let i = 1; i < lines.length; i++) {
@@ -264,15 +275,15 @@
             function parseJSON(jsonContent) {
                 const parsed = JSON.parse(jsonContent);
                 if (!Array.isArray(parsed) || !parsed[0] || !('label' in parsed[0])) {
-                    throw new Error('JSON không hợp lệ. Cần một mảng các đối tượng với các key: label, sampleTime, success, timestamp.');
+                    throw new Error('Invalid JSON. Expected an array of objects with keys: label, sampleTime, success, timestamp.');
                 }
                 return parsed;
             }
         }
 
         function handleError(error) {
-            console.error("Lỗi xử lý file:", error);
-            fileNameDisplay.textContent = `Lỗi: ${error.message}`;
+            console.error("File processing error:", error);
+            fileNameDisplay.textContent = `Error: ${error.message}`;
             dashboardContent.classList.add('hidden');
             filtersSection.classList.add('hidden');
             noDataMessage.classList.remove('hidden');
@@ -368,7 +379,7 @@
                     }
                     datasets[d.label].data.push({ x: d.timestamp, y: d.sampleTime });
                 });
-                return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Thời gian phản hồi (ms)') };
+                return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Response Time (ms)') };
             },
             getThroughput: (data) => {
                 const throughputPerSecond = {};
@@ -381,14 +392,14 @@
                     type: 'line',
                     data: {
                         datasets: [{
-                            label: 'Requests/giây',
+                            label: 'Requests/sec',
                             data: chartData,
                             borderColor: '#34d399',
                             fill: true,
                             backgroundColor: 'rgba(52, 211, 153, 0.2)'
                         }]
                     },
-                    options: getCommonTimeOptions('Số lượng Requests')
+                    options: getCommonTimeOptions('Number of Requests')
                 };
             },
             getPercentiles: (data) => {
@@ -429,7 +440,7 @@
                     data: {
                         labels,
                         datasets: [{
-                            label: 'Số lỗi',
+                            label: 'Number of Errors',
                             data: errorCounts,
                             backgroundColor: labels.map(() => getRandomColor(0.7)),
                         }]
@@ -453,11 +464,11 @@
                     type: 'line',
                     data: {
                         datasets: [
-                            { label: 'Thành công', data: successData, borderColor: 'rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true, tension: 0.1 },
-                            { label: 'Thất bại', data: failData, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: true, tension: 0.1 }
+                            { label: 'Success', data: successData, borderColor: 'rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true, tension: 0.1 },
+                            { label: 'Failure', data: failData, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: true, tension: 0.1 }
                         ]
                     },
-                    options: getCommonTimeOptions('Số lượng Requests')
+                    options: getCommonTimeOptions('Number of Requests')
                 }
             }
         };
@@ -475,9 +486,9 @@
 
         function renderSummary(summary) {
             document.getElementById('summary-stats').innerHTML = `
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Tổng Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Tổng Lỗi</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">TB / Max Phản hồi (ms)</p><p class="text-3xl font-bold">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
+                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Avg / Max Response (ms)</p><p class="text-3xl font-bold">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
                 <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
             `;
         }
@@ -494,8 +505,8 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${(currentPage - 1) * rowsPerPage + index + 1}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.label}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.sampleTime}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm ${item.success ? 'text-green-600' : 'text-red-600'}">${item.success ? 'Thành công' : 'Thất bại'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleString('vi-VN')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm ${item.success ? 'text-green-600' : 'text-red-600'}">${item.success ? 'Success' : 'Failure'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleString('en-US')}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -508,18 +519,18 @@
             container.innerHTML = '';
             if (totalPages <= 1) return;
             const prevButton = document.createElement('button');
-            prevButton.textContent = 'Trước';
+            prevButton.textContent = 'Previous';
             prevButton.disabled = currentPage === 1;
             prevButton.className = 'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
             prevButton.onclick = () => { currentPage--; renderTable(); };
             const nextButton = document.createElement('button');
-            nextButton.textContent = 'Sau';
+            nextButton.textContent = 'Next';
             nextButton.disabled = currentPage === totalPages;
             nextButton.className = 'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
             nextButton.onclick = () => { currentPage++; renderTable(); };
             const pageInfo = document.createElement('span');
             pageInfo.className = 'text-sm text-gray-700';
-            pageInfo.textContent = `Trang ${currentPage} trên ${totalPages}`;
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
             const buttonWrapper = document.createElement('div');
             buttonWrapper.appendChild(prevButton);
             buttonWrapper.appendChild(nextButton);
@@ -530,7 +541,7 @@
         // --- UTILITIES ---
         function populateFilters(data) {
             const labelFilter = document.getElementById('label-filter');
-            labelFilter.innerHTML = '<option value="all">Tất cả các nhãn</option>';
+            labelFilter.innerHTML = '<option value="all">All Labels</option>';
             [...new Set(data.map(item => item.label))].forEach(label => {
                 const option = document.createElement('option');
                 option.value = label;
@@ -545,7 +556,7 @@
             return {
                 responsive: true, maintainAspectRatio: false,
                 scales: {
-                    x: { type: 'time', time: { unit: 'second', displayFormats: { second: 'HH:mm:ss' } }, title: { display: true, text: 'Thời gian' } },
+                    x: { type: 'time', time: { unit: 'second', displayFormats: { second: 'HH:mm:ss' } }, title: { display: true, text: 'Time' } },
                     y: { beginAtZero: true, title: { display: true, text: yAxisTitle } }
                 },
                 plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 20 } } }
@@ -567,7 +578,7 @@
         }
         
         downloadCsvBtn.addEventListener('click', () => {
-             if (filteredData.length === 0) { alert('Không có dữ liệu để tải xuống.'); return; }
+             if (filteredData.length === 0) { alert('No data to download.'); return; }
             const headers = "Timestamp,Label,SampleTime,Success\n";
             const csvContent = filteredData.map(d => `${new Date(d.timestamp).toISOString()},"${d.label}",${d.sampleTime},${d.success}`).join('\n');
             const blob = new Blob([headers + csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -578,6 +589,14 @@
             link.click();
             document.body.removeChild(link);
         });
+
+        function downloadChart(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
 
     </script>
 
