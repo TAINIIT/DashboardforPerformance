@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="1397" it="0" lt="979" ct="153" ts="1754449879194" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011252" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="943" it="0" lt="392" ct="0" ts="1754449880592" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1810" it="0" lt="1810" ct="0" ts="1754449881536" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1063" it="0" lt="1063" ct="0" ts="1754449883347" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3237" it="0" lt="3237" ct="0" ts="1754449884411" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="173" it="0" lt="169" ct="0" ts="1754449887649" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3851" it="0" lt="3633" ct="0" ts="1754449887823" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2394" it="0" lt="2394" ct="0" ts="1754449891675" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="20547" it="0" lt="18787" ct="160" ts="1754449878988" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011252" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="7328" it="0" lt="7158" ct="120" ts="1754449894069" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2662" it="0" lt="995" ct="0" ts="1754449899535" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="23077" it="0" lt="22684" ct="172" ts="1754449879586" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011252" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="23117" it="0" lt="22814" ct="139" ts="1754449879788" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011252" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="23689" it="0" lt="22446" ct="225" ts="1754449879386" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011252" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="738" it="0" lt="408" ct="0" ts="1754449902928" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2704" it="0" lt="2704" ct="0" ts="1754449902198" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3641" it="0" lt="3597" ct="0" ts="1754449901397" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="830" it="0" lt="420" ct="0" ts="1754449905039" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1876" it="0" lt="1876" ct="0" ts="1754449904903" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3938" it="0" lt="3938" ct="0" ts="1754449903666" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="80" it="0" lt="80" ct="0" ts="1754449907605" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5470" it="0" lt="5470" ct="0" ts="1754449906780" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="7708" it="0" lt="7708" ct="0" ts="1754449907686" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="12785" it="0" lt="12583" ct="0" ts="1754449902662" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="144" it="0" lt="141" ct="0" ts="1754449915395" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="12828" it="0" lt="12166" ct="0" ts="1754449903075" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2709" it="0" lt="2709" ct="0" ts="1754449915449" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="87" it="0" lt="87" ct="0" ts="1754449918158" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6130" it="0" lt="6118" ct="0" ts="1754449912251" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="13114" it="0" lt="12835" ct="0" ts="1754449905870" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4184" it="0" lt="4142" ct="0" ts="1754449915623" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3907" it="0" lt="3906" ct="0" ts="1754449915904" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="47" it="0" lt="46" ct="0" ts="1754449919807" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="1604" it="0" lt="1602" ct="0" ts="1754449919810" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2780" it="0" lt="2780" ct="0" ts="1754449918984" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="48" it="0" lt="48" ct="0" ts="1754449921764" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4479" it="0" lt="4479" ct="0" ts="1754449918245" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4476" it="0" lt="4389" ct="0" ts="1754449918381" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2776" it="0" lt="2776" ct="0" ts="1754449922858" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="548" it="0" lt="342" ct="215" ts="1754449925636" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5045" it="0" lt="5045" ct="0" ts="1754449921414" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4972" it="0" lt="4972" ct="0" ts="1754449921812" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4823" it="0" lt="4815" ct="0" ts="1754449922724" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="7748" it="0" lt="7586" ct="143" ts="1754449919855" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5013" it="0" lt="4376" ct="0" ts="1754449926185" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5123" it="0" lt="5120" ct="0" ts="1754449926461" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="302" it="0" lt="203" ct="0" ts="1754449931583" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4366" it="0" lt="4288" ct="0" ts="1754449927604" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5429" it="0" lt="5421" ct="0" ts="1754449926786" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4775" it="0" lt="4740" ct="0" ts="1754449927548" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="563" it="0" lt="562" ct="0" ts="1754449932323" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="1425" it="0" lt="1419" ct="0" ts="1754449931886" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="4283" it="0" lt="4261" ct="0" ts="1754449932253" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394279" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6089" it="0" lt="5953" ct="145" ts="1754449932887" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="259" it="0" lt="185" ct="0" ts="1754449938978" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6143" it="0" lt="5963" ct="244" ts="1754449933313" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3505" it="0" lt="3499" ct="0" ts="1754449936538" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="4330" it="0" lt="4235" ct="0" ts="1754449939457" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="353" it="0" lt="207" ct="0" ts="1754449943788" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6743" it="0" lt="6503" ct="247" ts="1754449940043" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5464" it="0" lt="5377" ct="0" ts="1754449946786" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="14278" it="0" lt="13736" ct="0" ts="1754449944142" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="224" it="0" lt="222" ct="0" ts="1754449958420" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="29109" it="0" lt="28900" ct="0" ts="1754449931197" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="28885" it="0" lt="28700" ct="0" ts="1754449931970" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3172" it="0" lt="3172" ct="0" ts="1754449958644" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="483" it="0" lt="480" ct="0" ts="1754449961817" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="29639" it="0" lt="29335" ct="0" ts="1754449939238" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6686" it="0" lt="6666" ct="0" ts="1754449962300" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="12840" it="0" lt="12605" ct="0" ts="1754449960307" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4708" it="0" lt="4468" ct="0" ts="1754449968986" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="13084" it="0" lt="12602" ct="0" ts="1754449960857" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1550" it="0" lt="1549" ct="0" ts="1754449973694" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3110" it="0" lt="3108" ct="0" ts="1754449973147" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3790" it="0" lt="3790" ct="0" ts="1754449973941" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="60" it="0" lt="60" ct="0" ts="1754449977732" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2108" it="0" lt="2108" ct="0" ts="1754449976257" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4847" it="0" lt="4463" ct="127" ts="1754449975244" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="11504" it="0" lt="10932" ct="0" ts="1754449968877" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="28107" it="0" lt="27718" ct="0" ts="1754449952251" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2562" it="0" lt="2562" ct="0" ts="1754449977792" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="216" it="0" lt="212" ct="0" ts="1754449980421" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3063" it="0" lt="3063" ct="0" ts="1754449978366" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="293" it="0" lt="293" ct="0" ts="1754449981429" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1852" it="0" lt="1631" ct="0" ts="1754449980092" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1517" it="0" lt="1517" ct="0" ts="1754449980638" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="106" it="0" lt="106" ct="0" ts="1754449982156" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2341" it="0" lt="2205" ct="143" ts="1754449980421" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82187" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2082" it="0" lt="2066" ct="0" ts="1754449981723" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2863" it="0" lt="2850" ct="0" ts="1754449982262" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="346" it="0" lt="237" ct="0" ts="1754449985125" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1752" it="0" lt="1751" ct="0" ts="1754449983805" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="2953" it="0" lt="2690" ct="0" ts="1754449982762" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="626" it="0" lt="625" ct="0" ts="1754449985499" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="5830" it="0" lt="5527" ct="0" ts="1754449980421" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="599" it="0" lt="599" ct="0" ts="1754449985716" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="2048" it="0" lt="2046" ct="0" ts="1754449986251" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="54" it="0" lt="54" ct="0" ts="1754449988299" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4886" it="0" lt="4720" ct="214" ts="1754449985557" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5691" it="0" lt="5526" ct="242" ts="1754449986125" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6817" it="0" lt="6414" ct="137" ts="1754449986316" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="407" it="0" lt="107" ct="0" ts="1754449993134" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5981" it="0" lt="5981" ct="0" ts="1754449988353" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5327" it="0" lt="5071" ct="0" ts="1754449990443" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4743" it="0" lt="4571" ct="0" ts="1754449991817" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1004" it="0" lt="283" ct="0" ts="1754449995770" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3900" it="0" lt="3892" ct="0" ts="1754449994333" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="18679" it="0" lt="18473" ct="0" ts="1754449981954" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="792" it="0" lt="435" ct="0" ts="1754450000632" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4844" it="0" lt="4784" ct="0" ts="1754449998234" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1772" it="0" lt="1771" ct="0" ts="1754450001425" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="7337" it="0" lt="6581" ct="0" ts="1754449996774" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="243" it="0" lt="243" ct="0" ts="1754450004112" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1193" it="0" lt="1193" ct="0" ts="1754450003234" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1348" it="0" lt="1347" ct="288" ts="1754450003079" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="691" it="0" lt="421" ct="341" ts="1754450004428" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1612" it="0" lt="1612" ct="0" ts="1754450004356" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3483" it="0" lt="3483" ct="0" ts="1754450004428" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3190" it="0" lt="3114" ct="0" ts="1754450005119" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="405" it="0" lt="204" ct="0" ts="1754450008308" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3299" it="0" lt="3299" ct="0" ts="1754450005969" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4141" it="0" lt="4140" ct="0" ts="1754450007911" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="19447" it="0" lt="19206" ct="0" ts="1754449993541" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="725" it="0" lt="564" ct="0" ts="1754450012988" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4564" it="0" lt="4557" ct="0" ts="1754450009301" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="19952" it="0" lt="19760" ct="0" ts="1754449996560" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2887" it="0" lt="2887" ct="0" ts="1754450013715" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="260" it="0" lt="260" ct="0" ts="1754450016603" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5057" it="0" lt="4969" ct="0" ts="1754450012051" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1337" it="0" lt="1337" ct="0" ts="1754450017110" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="5870" it="0" lt="5815" ct="0" ts="1754450013866" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="47" it="0" lt="47" ct="0" ts="1754450019736" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3624" it="0" lt="3622" ct="0" ts="1754450016910" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="11867" it="0" lt="11495" ct="0" ts="1754450008783" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1459" it="0" lt="1459" ct="0" ts="1754450020651" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="139" it="0" lt="139" ct="0" ts="1754450022111" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="102" it="0" lt="102" ct="0" ts="1754450022251" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4010" it="0" lt="3702" ct="228" ts="1754450018446" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1954" it="0" lt="1942" ct="0" ts="1754450020533" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="345" it="0" lt="344" ct="0" ts="1754450022353" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="340" it="0" lt="242" ct="0" ts="1754450022456" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="344" it="0" lt="314" ct="0" ts="1754450022488" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3098" it="0" lt="2798" ct="114" ts="1754450019784" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="49" it="0" lt="47" ct="0" ts="1754450022833" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="236" it="0" lt="196" ct="0" ts="1754450022698" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="116" it="0" lt="112" ct="0" ts="1754450022970" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="213" it="0" lt="80" ct="0" ts="1754450022882" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="546" it="0" lt="283" ct="0" ts="1754450022796" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6830" it="0" lt="6487" ct="0" ts="1754450016514" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="483" it="0" lt="284" ct="177" ts="1754450022883" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="531" it="0" lt="385" ct="0" ts="1754450023095" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="286" it="0" lt="211" ct="0" ts="1754450023368" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="468" it="0" lt="466" ct="0" ts="1754450023344" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="740" it="0" lt="534" ct="257" ts="1754450023086" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="52" it="0" lt="52" ct="0" ts="1754450023813" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="74" it="0" lt="74" ct="0" ts="1754450023865" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="310" it="0" lt="83" ct="0" ts="1754450023827" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="998" it="0" lt="601" ct="0" ts="1754450023344" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="351" it="0" lt="344" ct="0" ts="1754450024056" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="866" it="0" lt="512" ct="0" ts="1754450023654" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="277" it="0" lt="216" ct="0" ts="1754450024408" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1165" it="0" lt="620" ct="0" ts="1754450023627" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="107" it="0" lt="107" ct="0" ts="1754450024685" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="488" it="0" lt="488" ct="0" ts="1754450024342" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="71" it="0" lt="71" ct="0" ts="1754450024830" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="768" it="0" lt="484" ct="0" ts="1754450024137" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="258" it="0" lt="258" ct="0" ts="1754450024793" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="71" it="0" lt="71" ct="0" ts="1754450024901" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="54" it="0" lt="54" ct="0" ts="1754450025104" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="58" it="0" lt="58" ct="0" ts="1754450025158" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="130" it="0" lt="130" ct="0" ts="1754450025104" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="195" it="0" lt="179" ct="0" ts="1754450025216" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="318" it="0" lt="279" ct="0" ts="1754450025234" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="901" it="0" lt="442" ct="164" ts="1754450024793" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="123" it="0" lt="123" ct="0" ts="1754450025603" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="362" it="0" lt="283" ct="0" ts="1754450025412" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1149" it="0" lt="636" ct="0" ts="1754450024632" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="875" it="0" lt="411" ct="0" ts="1754450024906" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="210" it="0" lt="210" ct="0" ts="1754450025775" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="290" it="0" lt="115" ct="0" ts="1754450025695" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="370" it="0" lt="370" ct="0" ts="1754450025781" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="403" it="0" lt="403" ct="0" ts="1754450025782" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="49" it="0" lt="48" ct="0" ts="1754450026152" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="47" it="0" lt="47" ct="0" ts="1754450026185" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="61" it="0" lt="60" ct="0" ts="1754450026232" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="104" it="0" lt="98" ct="0" ts="1754450026293" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="458" it="0" lt="221" ct="135" ts="1754450026110" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="274" it="0" lt="274" ct="0" ts="1754450026201" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="804" it="0" lt="594" ct="317" ts="1754450025727" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="212" it="0" lt="173" ct="0" ts="1754450026398" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="129" it="0" lt="119" ct="0" ts="1754450026621" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="130" it="0" lt="129" ct="0" ts="1754450026621" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="196" it="0" lt="130" ct="0" ts="1754450026621" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="197" it="0" lt="129" ct="0" ts="1754450026621" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="208" it="0" lt="173" ct="0" ts="1754450026751" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="899" it="0" lt="669" ct="0" ts="1754450026110" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="359" it="0" lt="215" ct="0" ts="1754450026818" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="256" it="0" lt="256" ct="0" ts="1754450026959" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="485" it="0" lt="326" ct="255" ts="1754450026751" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="144" it="0" lt="89" ct="0" ts="1754450027237" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="604" it="0" lt="439" ct="0" ts="1754450026818" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="483" it="0" lt="195" ct="117" ts="1754450027216" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="751" it="0" lt="381" ct="0" ts="1754450027131" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="741" it="0" lt="477" ct="0" ts="1754450027177" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="725" it="0" lt="429" ct="0" ts="1754450027382" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="405" it="0" lt="224" ct="0" ts="1754450027700" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="273" it="0" lt="273" ct="0" ts="1754450027883" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="297" it="0" lt="297" ct="0" ts="1754450027919" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="73" it="0" lt="73" ct="0" ts="1754450028157" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="842" it="0" lt="528" ct="0" ts="1754450027422" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="51" it="0" lt="51" ct="0" ts="1754450028216" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="79" it="0" lt="79" ct="0" ts="1754450028230" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="61" it="0" lt="58" ct="0" ts="1754450028267" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="89" it="0" lt="80" ct="0" ts="1754450028310" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="83" it="0" lt="79" ct="0" ts="1754450028329" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="257" it="0" lt="252" ct="0" ts="1754450028265" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="246" it="0" lt="210" ct="0" ts="1754450028412" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="63" it="0" lt="62" ct="0" ts="1754450028664" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="74" it="0" lt="74" ct="0" ts="1754450028664" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="675" it="0" lt="406" ct="0" ts="1754450028116" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="466" it="0" lt="391" ct="0" ts="1754450028399" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="793" it="0" lt="353" ct="0" ts="1754450028116" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="210" it="0" lt="209" ct="0" ts="1754450028866" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="660" it="0" lt="402" ct="0" ts="1754450028791" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="693" it="0" lt="363" ct="240" ts="1754450029134" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1118" it="0" lt="1118" ct="0" ts="1754450028910" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1432" it="0" lt="1432" ct="0" ts="1754450028739" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="113" it="0" lt="96" ct="0" ts="1754450030171" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="995" it="0" lt="995" ct="0" ts="1754450029451" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="26985" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="545" it="0" lt="545" ct="0" ts="1754450030106" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2322" it="0" lt="2150" ct="203" ts="1754450028727" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="142" it="0" lt="101" ct="0" ts="1754450031103" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="849" it="0" lt="849" ct="0" ts="1754450030447" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2780" it="0" lt="2727" ct="0" ts="1754450030284" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4348" it="0" lt="4177" ct="0" ts="1754450029828" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1164" it="0" lt="1164" ct="0" ts="1754450033064" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3670" it="0" lt="3670" ct="0" ts="1754450030652" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="833" it="0" lt="194" ct="0" ts="1754450034176" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3986" it="0" lt="3986" ct="0" ts="1754450031297" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="246" it="0" lt="223" ct="0" ts="1754450035282" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3266" it="0" lt="3262" ct="0" ts="1754450034322" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3274" it="0" lt="3237" ct="0" ts="1754450035528" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4803" it="0" lt="4622" ct="182" ts="1754450034228" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="508" it="0" lt="434" ct="0" ts="1754450039033" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="823" it="0" lt="823" ct="0" ts="1754450038803" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3398" it="0" lt="3032" ct="0" ts="1754450037588" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="155" it="0" lt="155" ct="0" ts="1754450040988" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="9154" it="0" lt="8465" ct="0" ts="1754450035010" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4654" it="0" lt="4415" ct="200" ts="1754450039626" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4656" it="0" lt="4329" ct="172" ts="1754450041143" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="209" it="0" lt="111" ct="0" ts="1754450045799" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2007" it="0" lt="2007" ct="0" ts="1754450044164" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2671" it="0" lt="2535" ct="0" ts="1754450044334" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1218" it="0" lt="1218" ct="0" ts="1754450046172" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="64" it="0" lt="64" ct="0" ts="1754450047391" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3312" it="0" lt="3291" ct="0" ts="1754450047456" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="20333" it="0" lt="20169" ct="0" ts="1754450031246" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3142" it="0" lt="3072" ct="0" ts="1754450050769" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="995" it="0" lt="994" ct="0" ts="1754450053912" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="20015" it="0" lt="19712" ct="0" ts="1754450039542" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4820" it="0" lt="4444" ct="185" ts="1754450054907" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="388" it="0" lt="174" ct="0" ts="1754450059728" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="8833" it="0" lt="8459" ct="0" ts="1754450051579" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1995" it="0" lt="1994" ct="0" ts="1754450060413" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="53" it="0" lt="53" ct="0" ts="1754450062408" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3396" it="0" lt="3396" ct="0" ts="1754450062461" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="137" it="0" lt="136" ct="0" ts="1754450065857" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="416" it="0" lt="387" ct="0" ts="1754450065994" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="20774" it="0" lt="20358" ct="0" ts="1754450046008" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="20261" it="0" lt="20072" ct="0" ts="1754450047006" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="758" it="0" lt="405" ct="0" ts="1754450066784" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1194" it="0" lt="1193" ct="0" ts="1754450066410" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="9540" it="0" lt="8916" ct="0" ts="1754450059557" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="439" it="0" lt="439" ct="0" ts="1754450069098" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2430" it="0" lt="2430" ct="0" ts="1754450067542" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1957" it="0" lt="1957" ct="0" ts="1754450069537" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="94" it="0" lt="94" ct="0" ts="1754450071494" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1990" it="0" lt="1990" ct="0" ts="1754450069972" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6357" it="0" lt="6051" ct="140" ts="1754450067670" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4696" it="0" lt="4568" ct="0" ts="1754450071588" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5048" it="0" lt="5048" ct="0" ts="1754450071962" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="12223" it="0" lt="11963" ct="0" ts="1754450067269" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5915" it="0" lt="5817" ct="0" ts="1754450074027" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5962" it="0" lt="5846" ct="0" ts="1754450076285" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1234" it="0" lt="1234" ct="0" ts="1754450082247" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="6690" it="0" lt="6690" ct="0" ts="1754450077011" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4411" it="0" lt="4411" ct="0" ts="1754450079493" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="55" it="0" lt="54" ct="0" ts="1754450083904" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="25820" it="0" lt="25521" ct="0" ts="1754450060117" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4517" it="0" lt="4275" ct="0" ts="1754450083700" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="58" it="0" lt="58" ct="0" ts="1754450088218" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="6569" it="0" lt="6367" ct="240" ts="1754450083481" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="6140" it="0" lt="6139" ct="0" ts="1754450083959" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4068" it="0" lt="3975" ct="0" ts="1754450090052" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="434" it="0" lt="223" ct="0" ts="1754450094121" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4984" it="0" lt="4974" ct="0" ts="1754450090101" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="8131" it="0" lt="7825" ct="197" ts="1754450088276" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="159" it="0" lt="100" ct="0" ts="1754450096409" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4270" it="0" lt="4212" ct="0" ts="1754450095086" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="14175" it="0" lt="13832" ct="0" ts="1754450085936" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1893" it="0" lt="1878" ct="0" ts="1754450099357" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="634" it="0" lt="444" ct="152" ts="1754450101250" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3334" it="0" lt="3321" ct="0" ts="1754450100112" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1788" it="0" lt="1788" ct="0" ts="1754450103446" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4851" it="0" lt="4796" ct="0" ts="1754450101885" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="631" it="0" lt="409" ct="0" ts="1754450106736" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="13482" it="0" lt="12987" ct="0" ts="1754450094556" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="30247" it="0" lt="29779" ct="0" ts="1754450079943" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2715" it="0" lt="2715" ct="0" ts="1754450108038" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="58" it="0" lt="58" ct="0" ts="1754450110753" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="5925" it="0" lt="5925" ct="0" ts="1754450105234" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4945" it="0" lt="4945" ct="0" ts="1754450110811" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4806" it="0" lt="4799" ct="0" ts="1754450111159" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="641" it="0" lt="369" ct="196" ts="1754450115966" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394283" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2064" it="0" lt="2063" ct="0" ts="1754450116607" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="12687" it="0" lt="12123" ct="0" ts="1754450107367" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4892" it="0" lt="4878" ct="0" ts="1754450115757" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="3358" it="0" lt="3357" ct="0" ts="1754450120055" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="13421" it="0" lt="12602" ct="0" ts="1754450110189" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="232" it="0" lt="232" ct="0" ts="1754450123611" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2140" it="0" lt="2140" ct="0" ts="1754450123413" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="4983" it="0" lt="4655" ct="0" ts="1754450120650" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="124" it="0" lt="123" ct="0" ts="1754450125554" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="167" it="0" lt="167" ct="0" ts="1754450125634" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="29234" it="0" lt="29041" ct="0" ts="1754450096568" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="322" it="0" lt="309" ct="0" ts="1754450125678" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="7286" it="0" lt="6752" ct="183" ts="1754450118671" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="241" it="0" lt="177" ct="0" ts="1754450126017" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="109" it="0" lt="109" ct="0" ts="1754450126258" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="634" it="0" lt="390" ct="254" ts="1754450125802" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="504" it="0" lt="153" ct="0" ts="1754450126017" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2793" it="0" lt="2793" ct="0" ts="1754450123844" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="111" it="0" lt="111" ct="0" ts="1754450126637" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="359" it="0" lt="115" ct="0" ts="1754450126512" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1214" it="0" lt="891" ct="0" ts="1754450125802" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="1823208" sby="615" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="261" it="0" lt="260" ct="0" ts="1754450126748" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="218" it="0" lt="218" ct="0" ts="1754450127022" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="27003" sby="587" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="912" it="0" lt="646" ct="219" ts="1754450126368" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="274" it="0" lt="200" ct="0" ts="1754450127022" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="66" it="0" lt="66" ct="0" ts="1754450127241" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="4828" sby="572" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="56" it="0" lt="56" ct="0" ts="1754450127297" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="86" it="0" lt="85" ct="0" ts="1754450127308" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="23052" sby="514" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="194" it="0" lt="99" ct="0" ts="1754450127280" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="172" it="0" lt="169" ct="0" ts="1754450127395" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="82186" sby="665" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="208" it="0" lt="173" ct="0" ts="1754450127567" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="394282" sby="676" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="73" it="0" lt="72" ct="0" ts="1754450127776" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-2" dt="text" by="613" sby="475" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="664" it="0" lt="372" ct="244" ts="1754450127354" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1342" it="0" lt="1020" ct="0" ts="1754450126871" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1693" it="0" lt="276" ct="0" ts="1754450126521" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="223" it="0" lt="108" ct="0" ts="1754450128042" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="752" it="0" lt="407" ct="0" ts="1754450127535" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1011251" sby="679" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="641" it="0" lt="417" ct="260" ts="1754450127849" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="199699" sby="656" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="308" it="0" lt="150" ct="0" ts="1754450128547" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-2" dt="text" by="239101" sby="607" ng="5" na="5">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="835" it="0" lt="397" ct="0" ts="1754450128213" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="1823208" sby="615" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="802" it="0" lt="446" ct="0" ts="1754450128266" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1011251" sby="679" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="264" it="0" lt="263" ct="0" ts="1754450129060" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="27003" sby="587" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="53" it="0" lt="53" ct="0" ts="1754450129324" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="4828" sby="572" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="75" it="0" lt="75" ct="0" ts="1754450129377" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="23052" sby="514" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="88" it="0" lt="86" ct="0" ts="1754450129453" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="82186" sby="665" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1500" it="0" lt="424" ct="0" ts="1754450128287" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="1823208" sby="615" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="277" it="0" lt="204" ct="0" ts="1754450129561" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="394282" sby="676" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="50" it="0" lt="46" ct="0" ts="1754450129839" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-1" dt="text" by="613" sby="475" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="953" it="0" lt="656" ct="0" ts="1754450129069" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="1823208" sby="615" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="230" it="0" lt="230" ct="0" ts="1754450129787" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="27003" sby="587" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="83" it="0" lt="83" ct="0" ts="1754450130061" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="4828" sby="572" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1953" it="0" lt="401" ct="0" ts="1754450128214" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="110" it="0" lt="110" ct="0" ts="1754450130145" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="23052" sby="514" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="95" it="0" lt="79" ct="0" ts="1754450130256" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="82186" sby="665" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="290" it="0" lt="290" ct="0" ts="1754450130061" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="27003" sby="587" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="472" it="0" lt="275" ct="182" ts="1754450129890" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="199699" sby="656" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="245" it="0" lt="245" ct="0" ts="1754450130168" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="27003" sby="587" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="62" it="0" lt="62" ct="0" ts="1754450130351" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="4828" sby="572" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="69" it="0" lt="68" ct="0" ts="1754450130414" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="69" it="0" lt="69" ct="0" ts="1754450130414" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="23052" sby="514" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="140" it="0" lt="86" ct="0" ts="1754450130363" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-1" dt="text" by="239101" sby="607" ng="4" na="4">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="105" it="0" lt="89" ct="0" ts="1754450130483" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="82186" sby="665" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="270" it="0" lt="179" ct="0" ts="1754450130351" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="394282" sby="676" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="273" it="0" lt="273" ct="0" ts="1754450130483" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="79" it="0" lt="75" ct="0" ts="1754450130756" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="277" it="0" lt="217" ct="0" ts="1754450130588" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="394282" sby="676" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="282" it="0" lt="281" ct="0" ts="1754450130622" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-5" dt="text" by="613" sby="475" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="67" it="0" lt="66" ct="0" ts="1754450130866" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-3" dt="text" by="613" sby="475" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="535" it="0" lt="197" ct="0" ts="1754450130835" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="593" it="0" lt="354" ct="158" ts="1754450130933" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="199699" sby="656" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="999" it="0" lt="467" ct="190" ts="1754450130904" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="199699" sby="656" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="493" it="0" lt="98" ct="0" ts="1754450131903" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-5" dt="text" by="239101" sby="607" ng="3" na="3">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="1081" it="0" lt="1081" ct="0" ts="1754450131372" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="2" na="2">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3168" it="0" lt="2815" ct="0" ts="1754450131582" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-3" dt="text" by="239101" sby="607" ng="2" na="2">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2842" it="0" lt="2596" ct="190" ts="1754450132454" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="257" it="0" lt="149" ct="0" ts="1754450135297" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="23494" it="0" lt="23181" ct="0" ts="1754450135554" s="true" lb="Staff and Deployment: Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1011251" sby="679" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/staffandequipmentdetail?_dc=1754449851552&amp;colColor1=CC0000&amp;colColor2=0606CC&amp;staffType=ST&amp;scdLgv=EQ&amp;scdVal=PC&amp;searchType=searchdeploylist&amp;purpLgvCd=VP&amp;workYmd=08%2F07%2F2025&amp;shftId=SF0013&amp;vslCallId=25PGSI-82&amp;purpTpCd=NP0001&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="8273" it="0" lt="7961" ct="0" ts="1754450159048" s="true" lb="Staff and Deployment: All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="1823208" sby="615" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/mega/VOperationDeployList?_dc=1754449800658&amp;vslCallId=&amp;purpTpCd=&amp;shftId=&amp;searchType=deploylist&amp;subSearchType=deploylist&amp;etaFrom=01%2F07%2F2025&amp;etaTo=08%2F07%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="285" it="0" lt="285" ct="0" ts="1754450167320" s="true" lb="Berth Plan Application" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="27003" sby="587" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/berthplan/plans?_dc=1754449712705&amp;berthStatus=&amp;vslCallId=&amp;plan=Y&amp;viewType=WRF&amp;etaFrom2=1753549200000&amp;etaTo2=1757091600000&amp;viewMode=auto&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2010" it="0" lt="2010" ct="0" ts="1754450167614" s="true" lb="Shipping Note : Input Vessel" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="4828" sby="572" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754383865805&amp;searchType=master&amp;vslCallId=25SM6Q-2725SG&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2415" it="0" lt="2415" ct="0" ts="1754450169625" s="true" lb="Data Gathering : Detail" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="23052" sby="514" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/detaillist?_dc=1754449671703&amp;jpvc=25MFSE-V280725&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="116" it="0" lt="112" ct="0" ts="1754450172040" s="true" lb="Data Gathering : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="82186" sby="665" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/datagathering/list?_dc=1754449613385&amp;jpvc=&amp;cargoType=&amp;startRow=1&amp;endRow=1000&amp;isCancelVsl=false&amp;includeGatheredData=false&amp;status=&amp;exportTp=&amp;userId=TSBKENZ&amp;fromAtb=&amp;toAtb=&amp;fromAtu=30%2F07%2F2025&amp;toAtu=06%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="2465" it="0" lt="2446" ct="0" ts="1754450172177" s="true" lb="Vessel Schedule : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="394282" sby="676" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/vesselschedule/list?_dc=1754384211833&amp;planned=&amp;searchType=list&amp;locCd=BBT&amp;vslTp=&amp;vslStatus=&amp;schStatus=&amp;cgTpCd=&amp;dbYn=false&amp;atdYn=false&amp;jpvcNo=&amp;rptTp=&amp;userId=TSBKENZ&amp;alertYn=&amp;alertTp=&amp;etaFrom=05%2F08%2F2025&amp;etaTo=06%2F10%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="767" it="0" lt="767" ct="0" ts="1754450174642" s="false" lb="Invoice List : Preview Detail" rc="500" rm="Internal Server Error" tn="MPTS 1-4" dt="text" by="613" sby="475" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/previewpdfinvoice?_dc=1754447120182</java.net.URL>
+</httpSample>
+<httpSample t="3116" it="0" lt="2839" ct="178" ts="1754450175410" s="true" lb="Invoice List : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="199699" sby="656" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/invoiceList/list?_dc=1754444349714&amp;crcyCd=&amp;jpvc=&amp;status=&amp;invoiceType=&amp;ivPrfx=&amp;payer=&amp;invoiceNo=&amp;rptTp=&amp;exportTp=&amp;alertYn=N&amp;userId=TSBKENZ&amp;fromDate=23%2F07%2F2025&amp;toDate=06%2F08%2F2025&amp;isJPVC=true&amp;atb=true&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+<httpSample t="701" it="0" lt="520" ct="0" ts="1754450178526" s="true" lb="Shipping Note : All" rc="200" rm="OK" tn="MPTS 1-4" dt="text" by="239101" sby="607" ng="1" na="1">
+  <java.net.URL>https://jpbi.johorport.com.my/MOST-Web/rest/v1/shippingnote/shippingNotelist?_dc=1754382718107&amp;searchType=master&amp;vslCallId=&amp;shipgNoteNo=&amp;delvTpCd=&amp;statCd=&amp;arrvDtFm=29%2F07%2F2025&amp;arrvDtTo=12%2F08%2F2025&amp;page=1&amp;start=0&amp;limit=25</java.net.URL>
+</httpSample>
+
+</testResults>
