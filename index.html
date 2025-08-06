@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performance Analysis Dashboard Tool</title>
+    <title>In-Depth Performance Analysis Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -74,7 +74,7 @@
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 relative z-10">
         <header class="text-center mb-8 pt-16">
-            <h1 class="text-3xl sm:text-4xl font-bold text-white">Performance Analysis Dashboard Tool</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold text-white">In-Depth Performance Analysis Dashboard</h1>
             <p class="text-md text-gray-300 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
@@ -517,57 +517,34 @@
             getErrorRates: (data) => {
                 const byLabel = groupBy(data.filter(d => !d.success), 'label');
                 const labels = Object.keys(byLabel);
-                const datasets = labels.map((label, index) => {
-                    const errors = byLabel[label];
-                    const errorCount = errors.length;
-                    const avgTime = errors.reduce((sum, err) => sum + err.sampleTime, 0) / errorCount;
-                    return {
-                        label: label,
-                        data: [{
-                            x: index,
-                            y: avgTime,
-                            r: Math.max(5, errorCount * 2) // Bubble radius based on error count
-                        }],
-                        backgroundColor: getRandomColor(0.7)
-                    };
-                });
+                const errorCounts = labels.map(label => byLabel[label].length);
 
                 return {
-                    type: 'bubble',
-                    data: { datasets },
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Number of Errors',
+                            data: errorCounts,
+                            backgroundColor: getRandomColor(0.7),
+                        }]
+                    },
                     options: {
+                        indexAxis: 'y', // This makes the bar chart horizontal
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             x: {
-                                ticks: {
-                                    callback: function(value, index, values) {
-                                        return labels[index];
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Request Label'
-                                }
-                            },
-                            y: {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Average Response Time of Errors (ms)'
+                                    text: 'Number of Errors'
                                 }
                             }
                         },
                         plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.dataset.label || '';
-                                        const dataPoint = context.raw;
-                                        return `${label}: ${dataPoint.r / 2} errors, Avg Time: ${dataPoint.y.toFixed(2)}ms`;
-                                    }
-                                }
+                            legend: {
+                                display: false
                             }
                         }
                     }
@@ -726,4 +703,4 @@
     </script>
 
 </body>
-</ht
+</html>
