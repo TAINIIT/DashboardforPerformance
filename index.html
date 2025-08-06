@@ -201,6 +201,14 @@
         </div>
     </div>
 
+    <!-- Modal for Maximized Chart -->
+    <div id="chart-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-full h-full max-w-6xl max-h-[90vh] relative">
+            <button id="close-modal-btn" class="absolute top-2 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+            <canvas id="maximized-chart-canvas"></canvas>
+        </div>
+    </div>
+
     <script>
         // --- GLOBAL STATE & CONFIG ---
         const fileUpload = document.getElementById('file-upload');
@@ -212,10 +220,14 @@
         const applyFiltersBtn = document.getElementById('apply-filters-btn');
         const downloadCsvBtn = document.getElementById('download-csv-btn');
         const understandChartBtn = document.getElementById('understand-chart-btn');
+        const chartModal = document.getElementById('chart-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const maximizedChartCanvas = document.getElementById('maximized-chart-canvas');
 
         let allData = [];
         let filteredData = [];
         let charts = {};
+        let maximizedChart;
         let currentPage = 1;
         const rowsPerPage = 20;
 
@@ -253,6 +265,22 @@
         understandChartBtn.addEventListener('click', () => {
             const docUrl = 'https://docs.google.com/document/d/1qYJSSj4mu_j538lk0DOD3m_M28AFUUZQgnyX25FQwz0/edit?usp=sharing';
             window.open(docUrl, '_blank');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            chartModal.classList.add('hidden');
+            if (maximizedChart) {
+                maximizedChart.destroy();
+            }
+        });
+
+        chartModal.addEventListener('click', (event) => {
+            if (event.target === chartModal) {
+                 chartModal.classList.add('hidden');
+                 if (maximizedChart) {
+                    maximizedChart.destroy();
+                }
+            }
         });
 
         function handleFile(file) {
@@ -579,8 +607,18 @@
         function renderChart(canvasId, config) {
             if (charts[canvasId]) charts[canvasId].destroy();
             if (config && config.data && config.data.datasets.some(ds => ds.data && ds.data.length > 0)) {
-                 document.getElementById(canvasId).parentElement.parentElement.style.display = 'block';
+                 const chartWrapper = document.getElementById(canvasId).parentElement.parentElement;
+                 chartWrapper.style.display = 'block';
                  charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
+                 
+                 // Add double-click listener for maximizing
+                 chartWrapper.ondblclick = () => {
+                     if (maximizedChart) {
+                         maximizedChart.destroy();
+                     }
+                     chartModal.classList.remove('hidden');
+                     maximizedChart = new Chart(maximizedChartCanvas, config);
+                 };
             } else {
                  document.getElementById(canvasId).parentElement.parentElement.style.display = 'none';
             }
