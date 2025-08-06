@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -45,6 +45,12 @@
         .error-row:hover {
             background-color: #fecaca; /* red-200 */
         }
+        .threshold-exceeded-row {
+            background-color: #fef9c3; /* yellow-100 */
+        }
+        .threshold-exceeded-row:hover {
+            background-color: #fef08a; /* yellow-200 */
+        }
         .summary-card {
             transition: all 0.3s ease-in-out;
             animation: fadeIn 0.5s ease-in-out;
@@ -56,6 +62,19 @@
         }
         .content-card {
              background-color: rgba(255, 255, 255, 0.9);
+        }
+        .assistant-tip {
+            display: none; /* Hidden by default */
+            background-color: #e0f2fe; /* light-blue-100 */
+            border-left: 4px solid #0ea5e9; /* sky-500 */
+            padding: 0.75rem;
+            margin-top: 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            color: #0c4a6e; /* sky-800 */
+        }
+        .assistant-tip.visible {
+            display: block;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -82,7 +101,7 @@
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
             <!-- File Upload Section -->
             <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
-                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File</label>
+                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File(s)</label>
                 <div class="flex items-center justify-center w-full">
                     <label id="file-upload-label" for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -90,7 +109,7 @@
                             <p class="mb-2 text-sm text-gray-600"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                             <p class="text-xs text-gray-600">Supports .jmx, .csv, .json files</p>
                         </div>
-                        <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
+                        <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" multiple />
                     </label>
                 </div>
                 <p id="file-name" class="mt-4 text-center text-sm text-gray-700"></p>
@@ -109,8 +128,8 @@
 
         <!-- Filters Section -->
         <div id="filters-section" class="max-w-4xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters & Export</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="label-filter" class="block text-sm font-medium text-gray-900">Filter by Label</label>
                     <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
@@ -123,8 +142,19 @@
                         <option value="false">Failure</option>
                     </select>
                 </div>
+                <div>
+                    <label for="threshold-input" class="block text-sm font-medium text-gray-900">Response Time Threshold (ms)</label>
+                    <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
+                </div>
                 <div class="flex items-end">
                     <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
+                </div>
+            </div>
+             <div class="mt-4 flex justify-between items-center">
+                <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Export PDF</button>
+                <div class="flex items-center ml-4">
+                    <label for="toggle-tips" class="mr-2 text-sm font-medium text-gray-900">Show Assistant Tips</label>
+                    <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
                 </div>
             </div>
         </div>
@@ -132,7 +162,7 @@
         <!-- Data Display Section -->
         <div id="dashboard-content" class="mt-10 hidden">
             <!-- Performance Summary Cards -->
-            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8"></div>
+            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center mb-8"></div>
 
             <!-- Charts Section -->
             <div class="grid grid-cols-1 gap-8 mb-8 text-gray-800">
@@ -141,6 +171,7 @@
                         <h2 class="text-xl font-semibold text-center">Response Time Over Time (by Label)</h2>
                         <button onclick="downloadChart('response-time-over-time-chart', 'response-time-over-time.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
+                    <div id="response-time-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="response-time-over-time-chart"></canvas></div>
                 </div>
                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
@@ -148,6 +179,7 @@
                         <h2 class="text-xl font-semibold text-center">Throughput (Requests/sec)</h2>
                         <button onclick="downloadChart('throughput-chart', 'throughput.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
+                     <div id="throughput-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="throughput-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
@@ -155,6 +187,7 @@
                         <h2 class="text-xl font-semibold text-center">90th/95th Percentiles by Label</h2>
                         <button onclick="downloadChart('percentile-chart', 'percentiles.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
+                     <div id="percentile-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
@@ -162,6 +195,7 @@
                         <h2 class="text-xl font-semibold text-center">Error Distribution by Label</h2>
                         <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
+                    <div id="error-rate-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="error-rate-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
@@ -169,6 +203,7 @@
                         <h2 class="text-xl font-semibold text-center">Success vs. Failure Trend</h2>
                         <button onclick="downloadChart('success-fail-trend-chart', 'success-fail-trend.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
+                    <div id="success-fail-trend-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="success-fail-trend-chart"></canvas></div>
                 </div>
             </div>
@@ -223,6 +258,8 @@
         const chartModal = document.getElementById('chart-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
         const maximizedChartCanvas = document.getElementById('maximized-chart-canvas');
+        const exportPdfBtn = document.getElementById('export-pdf-btn');
+        const toggleTipsCheckbox = document.getElementById('toggle-tips');
 
         let allData = [];
         let filteredData = [];
@@ -233,13 +270,12 @@
 
         // --- EVENT LISTENERS ---
         fileUpload.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                handleFile(file);
+            const files = event.target.files;
+            if (files.length > 0) {
+                handleFile(files[0]); 
             }
         });
 
-        // Add drag and drop listeners
         fileUploadLabel.addEventListener('dragover', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -256,9 +292,9 @@
             event.preventDefault();
             event.stopPropagation();
             fileUploadLabel.classList.remove('bg-gray-300');
-            const file = event.dataTransfer.files[0];
-            if (file) {
-                handleFile(file);
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
             }
         });
 
@@ -283,8 +319,59 @@
             }
         });
 
+        exportPdfBtn.addEventListener('click', async () => {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({
+                orientation: 'p',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            pdf.setFontSize(18);
+            pdf.text('Performance Analysis Report', 10, 15);
+
+            pdf.setFontSize(12);
+            const summary = calculateSummaryMetrics(filteredData);
+            let summaryText = `
+                Total Requests: ${summary.totalRequests}
+                Total Errors: ${summary.totalErrors}
+                Avg Response Time: ${summary.avgTime.toFixed(2)} ms
+                Max Response Time: ${summary.maxTime} ms
+                Peak Throughput: ${summary.peakThroughput.toFixed(2)} req/s
+                Threshold Breaches: ${summary.thresholdBreaches}
+            `;
+            pdf.text(summaryText, 10, 25);
+
+            const chartElements = document.querySelectorAll('.chart-container canvas');
+            let y = 70;
+
+            for (const canvas of chartElements) {
+                if (canvas.parentElement.parentElement.style.display !== 'none') {
+                    const imgData = canvas.toDataURL('image/png', 1.0);
+                    const chartHeight = 100;
+                    const chartWidth = 180;
+                    if (y + chartHeight > 280) {
+                        pdf.addPage();
+                        y = 10;
+                    }
+                    pdf.addImage(imgData, 'PNG', 10, y, chartWidth, chartHeight);
+                    y += chartHeight + 10;
+                }
+            }
+            pdf.save('performance_report.pdf');
+        });
+
+        toggleTipsCheckbox.addEventListener('change', (event) => {
+            const tips = document.querySelectorAll('.assistant-tip');
+            if (event.target.checked) {
+                tips.forEach(tip => tip.classList.add('visible'));
+            } else {
+                tips.forEach(tip => tip.classList.remove('visible'));
+            }
+        });
+
         function handleFile(file) {
-            fileNameDisplay.textContent = `Processing: ${file.name}...`;
+            fileNameDisplay.textContent = `Processing: ${file.name}... (Note: Multi-file comparison coming soon!)`;
             const reader = new FileReader();
             
             reader.onload = (e) => {
@@ -329,7 +416,6 @@
                 }
             };
 
-            // CORRECTED JMX PARSER
             function parseJMX(xmlContent) {
                 const sampleTags = [...xmlContent.matchAll(/<(httpSample|sample)\s+([^>]+)>/g)];
                 
@@ -435,6 +521,7 @@
             renderChart('error-rate-chart', processed.errorRates);
             renderChart('success-fail-trend-chart', processed.successFailTrend);
             renderTable();
+            generateInsights(filteredData, processed);
         }
 
         // --- DATA PROCESSING ---
@@ -453,12 +540,18 @@
             if (data.length === 0) return {};
             const times = data.map(d => d.sampleTime).filter(t => !isNaN(t));
             if (times.length === 0) return { totalRequests: data.length, totalErrors: data.filter(d => !d.success).length };
-
+            
+            const threshold = parseInt(document.getElementById('threshold-input').value, 10) || 0;
             const totalDuration = (data[data.length - 1].timestamp - data[0].timestamp) / 1000;
             const throughputPerSecond = {};
+            let thresholdBreaches = 0;
+
             data.forEach(d => {
                 const second = Math.floor(d.timestamp / 1000);
                 throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
+                if (threshold > 0 && d.sampleTime > threshold) {
+                    thresholdBreaches++;
+                }
             });
 
             return {
@@ -467,6 +560,7 @@
                 avgTime: times.reduce((a, b) => a + b, 0) / times.length,
                 maxTime: Math.max(...times),
                 peakThroughput: Math.max(0, ...Object.values(throughputPerSecond)),
+                thresholdBreaches: thresholdBreaches
             };
         }
 
@@ -630,6 +724,7 @@
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Avg / Max Response (ms)</p><p class="text-3xl font-bold text-gray-800">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Threshold Breaches</p><p class="text-3xl font-bold text-yellow-600">${summary.thresholdBreaches || 0}</p></div>
             `;
         }
 
@@ -637,10 +732,16 @@
         function renderTable() {
             const tableBody = document.getElementById('resultsTableBody');
             tableBody.innerHTML = '';
+            const threshold = parseInt(document.getElementById('threshold-input').value, 10);
+
             const paginatedData = filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
             paginatedData.forEach((item, index) => {
                 const row = document.createElement('tr');
-                if (!item.success) row.classList.add('error-row');
+                if (!item.success) {
+                    row.classList.add('error-row');
+                } else if (threshold && item.sampleTime > threshold) {
+                    row.classList.add('threshold-exceeded-row');
+                }
                 row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${(currentPage - 1) * rowsPerPage + index + 1}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.label}</td>
@@ -736,6 +837,54 @@
             link.download = filename;
             link.href = canvas.toDataURL('image/png');
             link.click();
+        }
+
+        function generateInsights(data, processedData) {
+            const tips = {
+                'response-time-tip': '',
+                'throughput-tip': '',
+                'error-rate-tip': '',
+            };
+
+            // Response Time Spike
+            const avgTime = processedData.summary.avgTime;
+            const maxTime = processedData.summary.maxTime;
+            if (maxTime > avgTime * 3 && maxTime > 1000) {
+                const spike = data.find(d => d.sampleTime === maxTime);
+                tips['response-time-tip'] = `⚠️ Response time spiked to ${maxTime}ms for "${spike.label}" at ${new Date(spike.timestamp).toLocaleTimeString()}. This is significantly higher than the average of ${avgTime.toFixed(0)}ms.`;
+            }
+
+            // High Error Rate
+            const errorRate = (processedData.summary.totalErrors / processedData.summary.totalRequests) * 100;
+            if (errorRate > 10) {
+                const errorData = processedData.errorRates.data.datasets[0].data;
+                const labels = processedData.errorRates.data.labels;
+                const maxErrors = Math.max(...errorData);
+                const maxErrorLabel = labels[errorData.indexOf(maxErrors)];
+                tips['error-rate-tip'] = `🔴 The overall error rate is ${errorRate.toFixed(1)}%, which is high. The most errors occurred in the "${maxErrorLabel}" request.`;
+            }
+
+            // Flatline Throughput
+            const throughputData = processedData.throughput.data.datasets[0].data;
+            if (throughputData.length > 5) {
+                const lastFivePoints = throughputData.slice(-5).map(p => p.y);
+                const avgLastFive = lastFivePoints.reduce((a, b) => a + b, 0) / 5;
+                const deviation = Math.sqrt(lastFivePoints.map(y => Math.pow(y - avgLastFive, 2)).reduce((a, b) => a + b, 0) / 5);
+                if (deviation < avgLastFive * 0.1) { // If standard deviation is less than 10% of the average
+                    tips['throughput-tip'] = `⚠️ Throughput appears to have capped at around ${avgLastFive.toFixed(0)} req/sec, suggesting a potential system bottleneck.`;
+                }
+            }
+            
+            // Render tips
+            for (const [id, tip] of Object.entries(tips)) {
+                const el = document.getElementById(id);
+                if (tip) {
+                    el.textContent = tip;
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            }
         }
 
     </script>
