@@ -33,13 +33,6 @@
             background-color: rgba(0, 0, 0, 0.4);
             z-index: -1;
         }
-        #company-logo {
-            position: fixed;
-            top: 1.5rem;
-            left: 1.5rem;
-            width: 200px;
-            z-index: 50;
-        }
         .chart-container {
             position: relative;
             margin: auto;
@@ -79,8 +72,6 @@
     </video>
     <div id="bg-overlay"></div>
 
-    <img id="company-logo" src="http://googleusercontent.com/file_content/3" alt="Company Logo">
-
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 relative z-10">
         <header class="text-center mb-8 pt-16">
             <h1 class="text-3xl sm:text-4xl font-bold text-white">In-Depth Performance Analysis Dashboard</h1>
@@ -91,9 +82,9 @@
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
             <!-- File Upload Section -->
             <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
-                <label for="file-upload" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File</label>
+                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File</label>
                 <div class="flex items-center justify-center w-full">
-                    <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
+                    <label id="file-upload-label" for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                             <p class="mb-2 text-sm text-gray-600"><span class="font-semibold">Click to upload</span> or drag and drop</p>
@@ -213,6 +204,7 @@
     <script>
         // --- GLOBAL STATE & CONFIG ---
         const fileUpload = document.getElementById('file-upload');
+        const fileUploadLabel = document.getElementById('file-upload-label');
         const fileNameDisplay = document.getElementById('file-name');
         const dashboardContent = document.getElementById('dashboard-content');
         const noDataMessage = document.getElementById('no-data-message');
@@ -230,8 +222,40 @@
         // --- EVENT LISTENERS ---
         fileUpload.addEventListener('change', (event) => {
             const file = event.target.files[0];
-            if (!file) return;
+            if (file) {
+                handleFile(file);
+            }
+        });
 
+        // Add drag and drop listeners
+        fileUploadLabel.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            fileUploadLabel.classList.add('bg-gray-300');
+        });
+
+        fileUploadLabel.addEventListener('dragleave', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            fileUploadLabel.classList.remove('bg-gray-300');
+        });
+
+        fileUploadLabel.addEventListener('drop', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            fileUploadLabel.classList.remove('bg-gray-300');
+            const file = event.dataTransfer.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        });
+
+        understandChartBtn.addEventListener('click', () => {
+            const docUrl = 'https://docs.google.com/document/d/1qYJSSj4mu_j538lk0DOD3m_M28AFUUZQgnyX25FQwz0/edit?usp=sharing';
+            window.open(docUrl, '_blank');
+        });
+
+        function handleFile(file) {
             fileNameDisplay.textContent = `Processing: ${file.name}...`;
             const reader = new FileReader();
             
@@ -257,12 +281,7 @@
                 });
             };
             reader.readAsText(file);
-        });
-
-        understandChartBtn.addEventListener('click', () => {
-            const docUrl = 'https://docs.google.com/document/d/1qYJSSj4mu_j538lk0DOD3m_M28AFUUZQgnyX25FQwz0/edit?usp=sharing';
-            window.open(docUrl, '_blank');
-        });
+        }
         
         function workerFunction() {
             self.onmessage = function(event) {
@@ -707,4 +726,4 @@
     </script>
 
 </body>
-</html>
+</ht
