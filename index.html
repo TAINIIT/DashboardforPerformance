@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -125,7 +126,7 @@
         <!-- Filters Section -->
         <div id="filters-section" class="max-w-5xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
             <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters & Export</h2>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                 <div class="md:col-span-1">
                     <label for="label-filter" class="block text-sm font-medium text-gray-900">Filter by Label</label>
                     <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
@@ -142,10 +143,10 @@
                     <label for="threshold-input" class="block text-sm font-medium text-gray-900">Response Time Threshold (ms)</label>
                     <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
                 </div>
-                <div class="md:col-span-1 flex items-end">
+                <div class="md:col-span-1">
                     <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
                 </div>
-                <div class="md:col-span-1 flex items-end justify-center">
+                <div class="md:col-span-1 flex justify-center">
                      <div class="flex items-center">
                         <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
                         <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900">Show Assistant Tips</label>
@@ -246,6 +247,28 @@
         </div>
     </div>
 
+     <!-- Modal for Threshold Breaches -->
+    <div id="threshold-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] relative flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Threshold Breaches</h2>
+                <button id="close-threshold-modal-btn" class="text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="overflow-y-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sample Time (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="threshold-table-body" class="bg-white divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- GLOBAL STATE & CONFIG ---
         const fileUpload = document.getElementById('file-upload');
@@ -262,6 +285,9 @@
         const maximizedChartCanvas = document.getElementById('maximized-chart-canvas');
         const exportPdfBtn = document.getElementById('export-pdf-btn');
         const toggleTipsCheckbox = document.getElementById('toggle-tips');
+        const thresholdModal = document.getElementById('threshold-modal');
+        const closeThresholdModalBtn = document.getElementById('close-threshold-modal-btn');
+        const summaryStatsContainer = document.getElementById('summary-stats');
 
         let allData = [];
         let filteredData = [];
@@ -311,6 +337,10 @@
                 maximizedChart.destroy();
             }
         });
+        
+        closeThresholdModalBtn.addEventListener('click', () => {
+            thresholdModal.classList.add('hidden');
+        });
 
         chartModal.addEventListener('click', (event) => {
             if (event.target === chartModal) {
@@ -320,11 +350,17 @@
                 }
             }
         });
+        
+        thresholdModal.addEventListener('click', (event) => {
+            if (event.target === thresholdModal) {
+                 thresholdModal.classList.add('hidden');
+            }
+        });
 
         exportPdfBtn.addEventListener('click', async () => {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF({
-                orientation: 'p',
+                orientation: 'landscape',
                 unit: 'mm',
                 format: 'a4'
             });
@@ -332,17 +368,10 @@
             pdf.setFontSize(18);
             pdf.text('Performance Analysis Report', 10, 15);
 
-            pdf.setFontSize(12);
-            const summary = calculateSummaryMetrics(filteredData);
-            let summaryText = `
-                Total Requests: ${summary.totalRequests}
-                Total Errors: ${summary.totalErrors}
-                Avg Response Time: ${summary.avgTime.toFixed(2)} ms
-                Max Response Time: ${summary.maxTime} ms
-                Peak Throughput: ${summary.peakThroughput.toFixed(2)} req/s
-                Threshold Breaches: ${summary.thresholdBreaches}
-            `;
-            pdf.text(summaryText, 10, 25);
+            const summaryCanvas = await html2canvas(summaryStatsContainer, { scale: 2 });
+            const summaryImgData = summaryCanvas.toDataURL('image/png', 1.0);
+            pdf.addImage(summaryImgData, 'PNG', 10, 25, 277, 30);
+
 
             const chartElements = document.querySelectorAll('.chart-container canvas');
             let y = 70;
@@ -351,8 +380,8 @@
                 if (canvas.parentElement.parentElement.style.display !== 'none') {
                     const imgData = canvas.toDataURL('image/png', 1.0);
                     const chartHeight = 100;
-                    const chartWidth = 180;
-                    if (y + chartHeight > 280) {
+                    const chartWidth = 277;
+                    if (y + chartHeight > 200) {
                         pdf.addPage();
                         y = 10;
                     }
@@ -560,18 +589,18 @@
         function calculateSummaryMetrics(data) {
             if (data.length === 0) return {};
             const times = data.map(d => d.sampleTime).filter(t => !isNaN(t));
-            if (times.length === 0) return { totalRequests: data.length, totalErrors: data.filter(d => !d.success).length };
+            if (times.length === 0) return { totalRequests: data.length, totalErrors: data.filter(d => !d.success).length, thresholdBreaches: [] };
             
             const threshold = parseInt(document.getElementById('threshold-input').value, 10) || 0;
             const totalDuration = (data[data.length - 1].timestamp - data[0].timestamp) / 1000;
             const throughputPerSecond = {};
-            let thresholdBreaches = 0;
+            let thresholdBreaches = [];
 
             data.forEach(d => {
                 const second = Math.floor(d.timestamp / 1000);
                 throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
                 if (threshold > 0 && d.sampleTime > threshold) {
-                    thresholdBreaches++;
+                    thresholdBreaches.push(d);
                 }
             });
 
@@ -740,13 +769,18 @@
         }
 
         function renderSummary(summary) {
-            document.getElementById('summary-stats').innerHTML = `
+            summaryStatsContainer.innerHTML = `
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Avg / Max Response (ms)</p><p class="text-3xl font-bold text-gray-800">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
                 <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
-                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Threshold Breaches</p><p class="text-3xl font-bold text-yellow-600">${summary.thresholdBreaches || 0}</p></div>
+                <div id="threshold-breaches-card" class="summary-card p-4 rounded-lg shadow border cursor-pointer"><p class="text-sm text-gray-600">Threshold Breaches</p><p class="text-3xl font-bold text-yellow-600">${summary.thresholdBreaches.length || 0}</p></div>
             `;
+            
+            document.getElementById('threshold-breaches-card').addEventListener('click', () => {
+                renderThresholdBreachesTable(summary.thresholdBreaches);
+                thresholdModal.classList.remove('hidden');
+            });
         }
 
         // --- TABLE & PAGINATION ---
@@ -777,6 +811,20 @@
                 tableBody.appendChild(row);
             });
             renderPaginationControls();
+        }
+        
+        function renderThresholdBreachesTable(breaches) {
+            const tableBody = document.getElementById('threshold-table-body');
+            tableBody.innerHTML = '';
+            breaches.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleTimeString('en-US')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.label}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.sampleTime}</td>
+                `;
+                tableBody.appendChild(row);
+            });
         }
 
         function renderPaginationControls() {
