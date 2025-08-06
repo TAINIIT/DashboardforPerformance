@@ -11,7 +11,34 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            /* Fallback background gradient */
+            background: linear-gradient(to right, #000428, #004e92);
+        }
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+            filter: blur(2px) brightness(0.7);
+        }
+        #bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        #company-logo {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 200px;
+            z-index: 50;
         }
         .chart-container {
             position: relative;
@@ -28,10 +55,14 @@
         .summary-card {
             transition: all 0.3s ease-in-out;
             animation: fadeIn 0.5s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.9);
         }
         .summary-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .content-card {
+             background-color: rgba(255, 255, 255, 0.9);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -39,36 +70,45 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-200">
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">In-Depth Performance Analysis Dashboard</h1>
-            <p class="text-md text-gray-600 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
+    <video id="bg-video" autoplay loop muted playsinline>
+        <!-- Using a placeholder video of a container ship -->
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-container-ship-sailing-in-the-ocean-3563-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="bg-overlay"></div>
+
+    <img id="company-logo" src="http://googleusercontent.com/file_content/3" alt="Company Logo">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 relative z-10">
+        <header class="text-center mb-8 pt-16">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white">In-Depth Performance Analysis Dashboard</h1>
+            <p class="text-md text-gray-300 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
         <!-- Main Action Section -->
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
             <!-- File Upload Section -->
-            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Upload Results File</label>
+            <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
+                <label for="file-upload" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File</label>
                 <div class="flex items-center justify-center w-full">
-                    <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                    <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                            <p class="text-xs text-gray-500">Supports .jmx, .csv, .json files</p>
+                            <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p class="mb-2 text-sm text-gray-600"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-600">Supports .jmx, .csv, .json files</p>
                         </div>
                         <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
                     </label>
                 </div>
-                <p id="file-name" class="mt-4 text-center text-sm text-gray-500"></p>
+                <p id="file-name" class="mt-4 text-center text-sm text-gray-700"></p>
             </div>
 
             <!-- Understand Chart Button Section -->
-             <div class="text-center p-6 bg-white rounded-lg shadow-md border border-gray-200 flex flex-col items-center justify-center h-full">
-                <h3 class="text-lg font-semibold text-gray-700 mb-4">Need help reading the charts?</h3>
-                <p class="text-gray-600 mb-6 text-center">Click the button below for a detailed guide on how to interpret the performance data.</p>
+             <div class="content-card text-center p-6 rounded-lg shadow-md border border-gray-700 flex flex-col items-center justify-center h-full">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Need help reading the charts?</h3>
+                <p class="text-gray-700 mb-6 text-center">Click the button below for a detailed guide on how to interpret the performance data.</p>
                 <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
                     Understand The Charts
                 </button>
@@ -77,16 +117,16 @@
 
 
         <!-- Filters Section -->
-        <div id="filters-section" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8 hidden">
-            <h2 class="text-xl font-semibold mb-4">Data Filters</h2>
+        <div id="filters-section" class="max-w-4xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <label for="label-filter" class="block text-sm font-medium text-gray-700">Filter by Label</label>
-                    <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                    <label for="label-filter" class="block text-sm font-medium text-gray-900">Filter by Label</label>
+                    <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
                 </div>
                 <div>
-                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Filter by Status</label>
-                    <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    <label for="status-filter" class="block text-sm font-medium text-gray-900">Filter by Status</label>
+                    <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900">
                         <option value="all">All</option>
                         <option value="true">Success</option>
                         <option value="false">Failure</option>
@@ -104,36 +144,36 @@
             <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8"></div>
 
             <!-- Charts Section -->
-            <div class="grid grid-cols-1 gap-8 mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+            <div class="grid grid-cols-1 gap-8 mb-8 text-gray-800">
+                <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-semibold text-center">Response Time Over Time (by Label)</h2>
                         <button onclick="downloadChart('response-time-over-time-chart', 'response-time-over-time.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
                     <div class="chart-container"><canvas id="response-time-over-time-chart"></canvas></div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-semibold text-center">Throughput (Requests/sec)</h2>
                         <button onclick="downloadChart('throughput-chart', 'throughput.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
                     <div class="chart-container"><canvas id="throughput-chart"></canvas></div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-semibold text-center">90th/95th Percentiles by Label</h2>
                         <button onclick="downloadChart('percentile-chart', 'percentiles.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
                     <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4 w-full">
                         <h2 class="text-xl font-semibold text-center">Error Distribution by Label</h2>
                         <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
-                    <div class="chart-container flex items-center justify-center"><canvas id="error-rate-chart" style="max-width: 40vh; max-height: 40vh;"></canvas></div>
+                    <div class="chart-container"><canvas id="error-rate-chart"></canvas></div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-semibold text-center">Success vs. Failure Trend</h2>
                         <button onclick="downloadChart('success-fail-trend-chart', 'success-fail-trend.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
@@ -143,7 +183,7 @@
             </div>
 
             <!-- Detailed Table Section -->
-            <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+            <div class="content-card rounded-lg shadow-md border border-gray-700 overflow-hidden text-gray-800">
                  <div class="flex justify-between items-center p-6">
                      <h2 class="text-2xl font-semibold">Detailed Data</h2>
                      <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">Download CSV</button>
@@ -165,7 +205,7 @@
                 <div id="pagination-controls" class="px-6 py-3 flex items-center justify-between border-t border-gray-200"></div>
             </div>
         </div>
-        <div id="no-data-message" class="text-center mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200 hidden">
+        <div id="no-data-message" class="text-center mt-10 p-6 content-card rounded-lg shadow-md border border-gray-700 hidden">
             <p class="text-gray-600">No valid data found in the uploaded file.</p>
         </div>
     </div>
@@ -456,27 +496,62 @@
                 };
             },
             getErrorRates: (data) => {
-                const byLabel = groupBy(data, 'label');
-                const labels = [];
-                const errorCounts = [];
-                Object.entries(byLabel).forEach(([label, items]) => {
-                    const errors = items.filter(d => !d.success).length;
-                    if(errors > 0) {
-                        labels.push(label);
-                        errorCounts.push(errors);
-                    }
+                const byLabel = groupBy(data.filter(d => !d.success), 'label');
+                const labels = Object.keys(byLabel);
+                const datasets = labels.map((label, index) => {
+                    const errors = byLabel[label];
+                    const errorCount = errors.length;
+                    const avgTime = errors.reduce((sum, err) => sum + err.sampleTime, 0) / errorCount;
+                    return {
+                        label: label,
+                        data: [{
+                            x: index,
+                            y: avgTime,
+                            r: Math.max(5, errorCount * 2) // Bubble radius based on error count
+                        }],
+                        backgroundColor: getRandomColor(0.7)
+                    };
                 });
+
                 return {
-                    type: 'doughnut',
-                    data: {
-                        labels,
-                        datasets: [{
-                            label: 'Number of Errors',
-                            data: errorCounts,
-                            backgroundColor: labels.map(() => getRandomColor(0.7)),
-                        }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                    type: 'bubble',
+                    data: { datasets },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    callback: function(value, index, values) {
+                                        return labels[index];
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Request Label'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Average Response Time of Errors (ms)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.dataset.label || '';
+                                        const dataPoint = context.raw;
+                                        return `${label}: ${dataPoint.r / 2} errors, Avg Time: ${dataPoint.y.toFixed(2)}ms`;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 };
             },
             getSuccessFailTrend: (data) => {
@@ -517,10 +592,10 @@
 
         function renderSummary(summary) {
             document.getElementById('summary-stats').innerHTML = `
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Avg / Max Response (ms)</p><p class="text-3xl font-bold">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
-                <div class="summary-card p-4 bg-white rounded-lg shadow border"><p class="text-sm text-gray-500">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Avg / Max Response (ms)</p><p class="text-3xl font-bold text-gray-800">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
             `;
         }
 
