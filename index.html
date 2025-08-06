@@ -64,7 +64,6 @@
              background-color: rgba(255, 255, 255, 0.9);
         }
         .assistant-tip {
-            display: none; /* Hidden by default */
             background-color: #e0f2fe; /* light-blue-100 */
             border-left: 4px solid #0ea5e9; /* sky-500 */
             padding: 0.75rem;
@@ -72,9 +71,6 @@
             border-radius: 0.25rem;
             font-size: 0.875rem;
             color: #0c4a6e; /* sky-800 */
-        }
-        .assistant-tip.visible {
-            display: block;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -127,14 +123,14 @@
 
 
         <!-- Filters Section -->
-        <div id="filters-section" class="max-w-4xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
+        <div id="filters-section" class="max-w-5xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
             <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters & Export</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="md:col-span-1">
                     <label for="label-filter" class="block text-sm font-medium text-gray-900">Filter by Label</label>
                     <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
                 </div>
-                <div>
+                <div class="md:col-span-1">
                     <label for="status-filter" class="block text-sm font-medium text-gray-900">Filter by Status</label>
                     <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900">
                         <option value="all">All</option>
@@ -142,20 +138,22 @@
                         <option value="false">Failure</option>
                     </select>
                 </div>
-                <div>
+                <div class="md:col-span-1">
                     <label for="threshold-input" class="block text-sm font-medium text-gray-900">Response Time Threshold (ms)</label>
                     <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
                 </div>
-                <div class="flex items-end">
+                <div class="md:col-span-1 flex items-end">
                     <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
                 </div>
-            </div>
-             <div class="mt-4 flex justify-between items-center">
-                <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Export PDF</button>
-                <div class="flex items-center ml-4">
-                    <label for="toggle-tips" class="mr-2 text-sm font-medium text-gray-900">Show Assistant Tips</label>
-                    <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
+                <div class="md:col-span-1 flex items-end justify-center">
+                     <div class="flex items-center">
+                        <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
+                        <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900">Show Assistant Tips</label>
+                    </div>
                 </div>
+            </div>
+             <div class="mt-4">
+                <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Export PDF</button>
             </div>
         </div>
 
@@ -218,11 +216,15 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time (ms)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thread Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sample Time (ms)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bytes</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sent Bytes</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latency</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Connect Time (ms)</th>
                             </tr>
                         </thead>
                         <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
@@ -363,11 +365,14 @@
 
         toggleTipsCheckbox.addEventListener('change', (event) => {
             const tips = document.querySelectorAll('.assistant-tip');
-            if (event.target.checked) {
-                tips.forEach(tip => tip.classList.add('visible'));
-            } else {
-                tips.forEach(tip => tip.classList.remove('visible'));
-            }
+            const isChecked = event.target.checked;
+            tips.forEach(tip => {
+                if (isChecked && tip.textContent) {
+                    tip.style.display = 'block';
+                } else {
+                    tip.style.display = 'none';
+                }
+            });
         });
 
         function handleFile(file) {
@@ -434,6 +439,11 @@
                         sampleTime: parseInt(attributes['t'], 10),
                         success: attributes['s'] === 'true',
                         timestamp: parseInt(attributes['ts'], 10),
+                        threadName: attributes['tn'],
+                        bytes: parseInt(attributes['by'], 10),
+                        sentBytes: parseInt(attributes['sby'], 10),
+                        latency: parseInt(attributes['lt'], 10),
+                        connectTime: parseInt(attributes['ct'], 10),
                     };
                 });
             }
@@ -447,6 +457,12 @@
                 const timeIdx = header.indexOf('elapsed');
                 const successIdx = header.indexOf('success');
                 const timeStampIdx = header.indexOf('timestamp');
+                const threadNameIdx = header.indexOf('threadname');
+                const bytesIdx = header.indexOf('bytes');
+                const sentBytesIdx = header.indexOf('sentbytes');
+                const latencyIdx = header.indexOf('latency');
+                const connectTimeIdx = header.indexOf('connect');
+
 
                 if (labelIdx === -1 || timeIdx === -1 || successIdx === -1 || timeStampIdx === -1) {
                     throw new Error('Invalid CSV header. Required columns: timeStamp, elapsed, label, success.');
@@ -460,6 +476,11 @@
                         sampleTime: parseInt(values[timeIdx].trim(), 10),
                         label: values[labelIdx].trim().replace(/"/g, ''),
                         success: values[successIdx].trim().toLowerCase() === 'true',
+                        threadName: threadNameIdx > -1 ? values[threadNameIdx].trim() : 'N/A',
+                        bytes: bytesIdx > -1 ? parseInt(values[bytesIdx].trim(), 10) : 0,
+                        sentBytes: sentBytesIdx > -1 ? parseInt(values[sentBytesIdx].trim(), 10) : 0,
+                        latency: latencyIdx > -1 ? parseInt(values[latencyIdx].trim(), 10) : 0,
+                        connectTime: connectTimeIdx > -1 ? parseInt(values[connectTimeIdx].trim(), 10) : 0,
                     });
                 }
                 return data;
@@ -743,11 +764,15 @@
                     row.classList.add('threshold-exceeded-row');
                 }
                 row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${(currentPage - 1) * rowsPerPage + index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleTimeString('en-US')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.threadName}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.label}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.sampleTime}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.sampleTime}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm ${item.success ? 'text-green-600' : 'text-red-600'}">${item.success ? 'Success' : 'Failure'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${new Date(item.timestamp).toLocaleString('en-US')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.bytes}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.sentBytes}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.latency}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.connectTime}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -876,9 +901,10 @@
             }
             
             // Render tips
+            const showTips = toggleTipsCheckbox.checked;
             for (const [id, tip] of Object.entries(tips)) {
                 const el = document.getElementById(id);
-                if (tip) {
+                if (tip && showTips) {
                     el.textContent = tip;
                     el.style.display = 'block';
                 } else {
