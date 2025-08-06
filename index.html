@@ -47,21 +47,34 @@
             <p class="text-md text-gray-600 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
-        <!-- File Upload Section -->
-        <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
-            <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Upload Results File</label>
-            <div class="flex items-center justify-center w-full">
-                <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                        <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                        <p class="text-xs text-gray-500">Supports .jmx, .csv, .json files</p>
-                    </div>
-                    <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
-                </label>
+        <!-- Main Action Section -->
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+            <!-- File Upload Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                <label for="file-upload" class="block text-lg font-semibold text-gray-700 mb-2">Upload Results File</label>
+                <div class="flex items-center justify-center w-full">
+                    <label for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500">Supports .jmx, .csv, .json files</p>
+                        </div>
+                        <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" />
+                    </label>
+                </div>
+                <p id="file-name" class="mt-4 text-center text-sm text-gray-500"></p>
             </div>
-            <p id="file-name" class="mt-4 text-center text-sm text-gray-500"></p>
+
+            <!-- Understand Chart Button Section -->
+             <div class="text-center p-6 bg-white rounded-lg shadow-md border border-gray-200 flex flex-col items-center justify-center h-full">
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">Need help reading the charts?</h3>
+                <p class="text-gray-600 mb-6 text-center">Click the button below for a detailed guide on how to interpret the performance data.</p>
+                <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                    Understand The Charts
+                </button>
+            </div>
         </div>
+
 
         <!-- Filters Section -->
         <div id="filters-section" class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8 hidden">
@@ -91,7 +104,7 @@
             <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8"></div>
 
             <!-- Charts Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="grid grid-cols-1 gap-8 mb-8">
                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-semibold text-center">Response Time Over Time (by Label)</h2>
@@ -113,12 +126,12 @@
                     </div>
                     <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 flex flex-col items-center justify-center">
+                 <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                     <div class="flex justify-between items-center mb-4 w-full">
                         <h2 class="text-xl font-semibold text-center">Error Distribution by Label</h2>
                         <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
                     </div>
-                    <div class="chart-container" style="height: 40vh; width: 40vh;"><canvas id="error-rate-chart"></canvas></div>
+                    <div class="chart-container flex items-center justify-center"><canvas id="error-rate-chart" style="max-width: 40vh; max-height: 40vh;"></canvas></div>
                 </div>
                  <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                     <div class="flex justify-between items-center mb-4">
@@ -166,6 +179,7 @@
         const filtersSection = document.getElementById('filters-section');
         const applyFiltersBtn = document.getElementById('apply-filters-btn');
         const downloadCsvBtn = document.getElementById('download-csv-btn');
+        const understandChartBtn = document.getElementById('understand-chart-btn');
 
         let allData = [];
         let filteredData = [];
@@ -173,7 +187,7 @@
         let currentPage = 1;
         const rowsPerPage = 20;
 
-        // --- FILE HANDLING & PARSING ---
+        // --- EVENT LISTENERS ---
         fileUpload.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -203,6 +217,11 @@
                 });
             };
             reader.readAsText(file);
+        });
+
+        understandChartBtn.addEventListener('click', () => {
+            const docUrl = 'https://docs.google.com/document/d/1qYJSSj4mu_j538lk0DOD3m_M28AFUUZQgnyX25FQwz0/edit?usp=sharing';
+            window.open(docUrl, '_blank');
         });
         
         function workerFunction() {
@@ -421,7 +440,19 @@
                             { label: '95th Percentile', data: p95, backgroundColor: 'rgba(59, 130, 246, 0.7)' }
                         ]
                     },
-                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true }}}
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Response Time (ms)'
+                                }
+                            }
+                        }
+                    }
                 };
             },
             getErrorRates: (data) => {
