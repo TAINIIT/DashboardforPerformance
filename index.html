@@ -77,6 +77,18 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -87,24 +99,31 @@
         Your browser does not support the video tag.
     </video>
     <div id="bg-overlay"></div>
+    
+    <div class="fixed top-4 right-4 z-50">
+        <select id="language-selector" class="bg-white text-gray-800 rounded-md shadow-lg p-2">
+            <option value="en">English</option>
+            <option value="vi">Tiếng Việt</option>
+        </select>
+    </div>
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 relative z-10">
         <header class="text-center mb-8 pt-16">
-            <h1 class="text-3xl sm:text-4xl font-bold text-white">Performance Analysis Dashboard Tool</h1>
-            <p class="text-md text-gray-300 mt-2">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-white" data-translate-key="dashboardTitle">Performance Analysis Dashboard Tool</h1>
+            <p class="text-md text-gray-300 mt-2" data-translate-key="dashboardSubtitle">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
         <!-- Main Action Section -->
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
             <!-- File Upload Section -->
             <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
-                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2">Upload Results File(s)</label>
+                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2" data-translate-key="uploadTitle">Upload Results File(s)</label>
                 <div class="flex items-center justify-center w-full">
                     <label id="file-upload-label" for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mb-2 text-sm text-gray-600"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                            <p class="text-xs text-gray-600">Supports .jmx, .csv, .json files</p>
+                            <p class="mb-2 text-sm text-gray-600"><span class="font-semibold" data-translate-key="clickToUpload">Click to upload</span> <span data-translate-key="orDragAndDrop">or drag and drop</span></p>
+                            <p class="text-xs text-gray-600" data-translate-key="supportedFiles">Supports .jmx, .csv, .json files</p>
                         </div>
                         <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" multiple />
                     </label>
@@ -114,9 +133,9 @@
 
             <!-- Understand Chart Button Section -->
              <div class="content-card text-center p-6 rounded-lg shadow-md border border-gray-700 flex flex-col items-center justify-center h-full">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Need help reading the charts?</h3>
-                <p class="text-gray-700 mb-6 text-center">Click the button below for a detailed guide on how to interpret the performance data.</p>
-                <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-translate-key="helpTitle">Need help reading the charts?</h3>
+                <p class="text-gray-700 mb-6 text-center" data-translate-key="helpSubtitle">Click the button below for a detailed guide on how to interpret the performance data.</p>
+                <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" data-translate-key="understandChartsBtn">
                     Understand The Charts
                 </button>
             </div>
@@ -125,36 +144,37 @@
 
         <!-- Filters Section -->
         <div id="filters-section" class="max-w-5xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900">Data Filters & Export</h2>
+            <h2 class="text-xl font-semibold mb-4 text-gray-900" data-translate-key="filtersTitle">Data Filters & Export</h2>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                 <div class="md:col-span-1">
-                    <label for="label-filter" class="block text-sm font-medium text-gray-900">Filter by Label</label>
+                    <label for="label-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByLabel">Filter by Label</label>
                     <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
                 </div>
                 <div class="md:col-span-1">
-                    <label for="status-filter" class="block text-sm font-medium text-gray-900">Filter by Status</label>
+                    <label for="status-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByStatus">Filter by Status</label>
                     <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900">
-                        <option value="all">All</option>
-                        <option value="true">Success</option>
-                        <option value="false">Failure</option>
+                        <option value="all" data-translate-key="statusAll">All</option>
+                        <option value="true" data-translate-key="statusSuccess">Success</option>
+                        <option value="false" data-translate-key="statusFailure">Failure</option>
                     </select>
                 </div>
                 <div class="md:col-span-1">
-                    <label for="threshold-input" class="block text-sm font-medium text-gray-900">Response Time Threshold (ms)</label>
+                    <label for="threshold-input" class="block text-sm font-medium text-gray-900" data-translate-key="responseTimeThreshold">Response Time Threshold (ms)</label>
                     <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
                 </div>
                 <div class="md:col-span-1">
-                    <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
+                    <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-translate-key="applyBtn">Apply</button>
                 </div>
                 <div class="md:col-span-1 flex justify-center">
                      <div class="flex items-center">
                         <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
-                        <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900">Show Assistant Tips</label>
+                        <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900" data-translate-key="showAssistantTips">Show Assistant Tips</label>
                     </div>
                 </div>
             </div>
-             <div class="mt-4">
-                <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Export PDF</button>
+             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" data-translate-key="exportPdfBtn">Export PDF</button>
+                <button id="tsb-analysis-btn" class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" data-translate-key="tsbAnalysisBtn">✨ Analyze with TSB</button>
             </div>
         </div>
 
@@ -167,40 +187,40 @@
             <div class="grid grid-cols-1 gap-8 mb-8 text-gray-800">
                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold text-center">Response Time Over Time (by Label)</h2>
-                        <button onclick="downloadChart('response-time-over-time-chart', 'response-time-over-time.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                        <h2 class="text-xl font-semibold text-center" data-translate-key="responseTimeChartTitle">Response Time Over Time (by Label)</h2>
+                        <button onclick="downloadChart('response-time-over-time-chart', 'response-time-over-time.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm" data-translate-key="savePngBtn">Save PNG</button>
                     </div>
                     <div id="response-time-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="response-time-over-time-chart"></canvas></div>
                 </div>
                 <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold text-center">Throughput (Requests/sec)</h2>
-                        <button onclick="downloadChart('throughput-chart', 'throughput.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                        <h2 class="text-xl font-semibold text-center" data-translate-key="throughputChartTitle">Throughput (Requests/sec)</h2>
+                        <button onclick="downloadChart('throughput-chart', 'throughput.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm" data-translate-key="savePngBtn">Save PNG</button>
                     </div>
                      <div id="throughput-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="throughput-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold text-center">90th/95th Percentiles by Label</h2>
-                        <button onclick="downloadChart('percentile-chart', 'percentiles.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                        <h2 class="text-xl font-semibold text-center" data-translate-key="percentilesChartTitle">90th/95th Percentiles by Label</h2>
+                        <button onclick="downloadChart('percentile-chart', 'percentiles.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm" data-translate-key="savePngBtn">Save PNG</button>
                     </div>
                      <div id="percentile-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="percentile-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4 w-full">
-                        <h2 class="text-xl font-semibold text-center">Error Distribution by Label</h2>
-                        <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                        <h2 class="text-xl font-semibold text-center" data-translate-key="errorDistributionChartTitle">Error Distribution by Label</h2>
+                        <button onclick="downloadChart('error-rate-chart', 'error-distribution.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm" data-translate-key="savePngBtn">Save PNG</button>
                     </div>
                     <div id="error-rate-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="error-rate-chart"></canvas></div>
                 </div>
                  <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold text-center">Success vs. Failure Trend</h2>
-                        <button onclick="downloadChart('success-fail-trend-chart', 'success-fail-trend.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm">Save PNG</button>
+                        <h2 class="text-xl font-semibold text-center" data-translate-key="successFailTrendChartTitle">Success vs. Failure Trend</h2>
+                        <button onclick="downloadChart('success-fail-trend-chart', 'success-fail-trend.png')" class="bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 text-sm" data-translate-key="savePngBtn">Save PNG</button>
                     </div>
                     <div id="success-fail-trend-tip" class="assistant-tip"></div>
                     <div class="chart-container"><canvas id="success-fail-trend-chart"></canvas></div>
@@ -210,22 +230,22 @@
             <!-- Detailed Table Section -->
             <div class="content-card rounded-lg shadow-md border border-gray-700 overflow-hidden text-gray-800">
                  <div class="flex justify-between items-center p-6">
-                     <h2 class="text-2xl font-semibold">Detailed Data</h2>
-                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">Download CSV</button>
+                     <h2 class="text-2xl font-semibold" data-translate-key="detailedDataTitle">Detailed Data</h2>
+                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm" data-translate-key="downloadCsvBtn">Download CSV</button>
                  </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thread Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sample Time (ms)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bytes</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sent Bytes</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latency</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Connect Time (ms)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStartTime">Start Time</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableThreadName">Thread Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLabel">Label</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSampleTime">Sample Time (ms)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStatus">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableBytes">Bytes</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSentBytes">Sent Bytes</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLatency">Latency</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableConnectTime">Connect Time (ms)</th>
                             </tr>
                         </thead>
                         <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
@@ -235,7 +255,7 @@
             </div>
         </div>
         <div id="no-data-message" class="text-center mt-10 p-6 content-card rounded-lg shadow-md border border-gray-700 hidden">
-            <p class="text-gray-600">No valid data found in the uploaded file.</p>
+            <p class="text-gray-600" data-translate-key="noDataMessage">No valid data found in the uploaded file.</p>
         </div>
     </div>
 
@@ -251,20 +271,36 @@
     <div id="threshold-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] relative flex flex-col">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold text-gray-800">Threshold Breaches</h2>
+                <h2 class="text-xl font-semibold text-gray-800" data-translate-key="thresholdBreachesTitle">Threshold Breaches</h2>
                 <button id="close-threshold-modal-btn" class="text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
             </div>
             <div class="overflow-y-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Label</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sample Time (ms)</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStartTime">Start Time</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLabel">Label</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSampleTime">Sample Time (ms)</th>
                         </tr>
                     </thead>
                     <tbody id="threshold-table-body" class="bg-white divide-y divide-gray-200"></tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for TSB Insights -->
+    <div id="tsb-insights-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] relative flex flex-col text-gray-800">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold" data-translate-key="tsbAnalysisTitle">✨ Analyze with TSB</h2>
+                <button id="close-tsb-modal-btn" class="text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+            </div>
+            <div id="tsb-insights-content" class="overflow-y-auto">
+                <!-- TSB insights will be loaded here -->
+            </div>
+             <div id="tsb-loader" class="flex justify-center items-center h-full">
+                <div class="loader"></div>
             </div>
         </div>
     </div>
@@ -288,6 +324,12 @@
         const thresholdModal = document.getElementById('threshold-modal');
         const closeThresholdModalBtn = document.getElementById('close-threshold-modal-btn');
         const summaryStatsContainer = document.getElementById('summary-stats');
+        const tsbAnalysisBtn = document.getElementById('tsb-analysis-btn');
+        const tsbInsightsModal = document.getElementById('tsb-insights-modal');
+        const closeTsbModalBtn = document.getElementById('close-tsb-modal-btn');
+        const tsbInsightsContent = document.getElementById('tsb-insights-content');
+        const tsbLoader = document.getElementById('tsb-loader');
+        const languageSelector = document.getElementById('language-selector');
 
         let allData = [];
         let filteredData = [];
@@ -295,6 +337,7 @@
         let maximizedChart;
         let currentPage = 1;
         const rowsPerPage = 20;
+        let currentLang = 'en';
 
         // --- EVENT LISTENERS ---
         fileUpload.addEventListener('change', (event) => {
@@ -402,6 +445,13 @@
                     tip.style.display = 'none';
                 }
             });
+        });
+
+        tsbAnalysisBtn.addEventListener('click', getTsbInsights);
+        closeTsbModalBtn.addEventListener('click', () => tsbInsightsModal.classList.add('hidden'));
+        
+        languageSelector.addEventListener('change', (event) => {
+            updateLanguage(event.target.value);
         });
 
         function handleFile(file) {
@@ -770,11 +820,11 @@
 
         function renderSummary(summary) {
             summaryStatsContainer.innerHTML = `
-                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
-                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
-                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Avg / Max Response (ms)</p><p class="text-3xl font-bold text-gray-800">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
-                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
-                <div id="threshold-breaches-card" class="summary-card p-4 rounded-lg shadow border cursor-pointer"><p class="text-sm text-gray-600">Threshold Breaches</p><p class="text-3xl font-bold text-yellow-600">${summary.thresholdBreaches.length || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600" data-translate-key="totalRequests">Total Requests</p><p class="text-3xl font-bold text-blue-600">${summary.totalRequests || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600" data-translate-key="totalErrors">Total Errors</p><p class="text-3xl font-bold text-red-600">${summary.totalErrors || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600" data-translate-key="avgMaxResponse">Avg / Max Response (ms)</p><p class="text-3xl font-bold text-gray-800">${(summary.avgTime || 0).toFixed(0)} / ${summary.maxTime || 0}</p></div>
+                <div class="summary-card p-4 rounded-lg shadow border"><p class="text-sm text-gray-600" data-translate-key="peakThroughput">Peak Throughput (req/s)</p><p class="text-3xl font-bold text-green-600">${summary.peakThroughput || 0}</p></div>
+                <div id="threshold-breaches-card" class="summary-card p-4 rounded-lg shadow border cursor-pointer"><p class="text-sm text-gray-600" data-translate-key="thresholdBreaches">Threshold Breaches</p><p class="text-3xl font-bold text-yellow-600">${summary.thresholdBreaches.length || 0}</p></div>
             `;
             
             document.getElementById('threshold-breaches-card').addEventListener('click', () => {
@@ -855,13 +905,14 @@
         // --- UTILITIES ---
         function populateFilters(data) {
             const labelFilter = document.getElementById('label-filter');
-            labelFilter.innerHTML = '<option value="all">All Labels</option>';
+            labelFilter.innerHTML = '<option value="all" data-translate-key="allLabels">All Labels</option>';
             [...new Set(data.map(item => item.label))].forEach(label => {
                 const option = document.createElement('option');
                 option.value = label;
                 option.textContent = label;
                 labelFilter.appendChild(option);
             });
+            updateLanguage(currentLang);
         }
         
         const { getResponseTimeSeries, getThroughput, getPercentiles, getErrorRates, getSuccessFailTrend } = CHART_CONFIGS;
@@ -919,7 +970,6 @@
                 'error-rate-tip': '',
             };
 
-            // Response Time Spike
             const avgTime = processedData.summary.avgTime;
             const maxTime = processedData.summary.maxTime;
             if (maxTime > avgTime * 3 && maxTime > 1000) {
@@ -927,7 +977,6 @@
                 tips['response-time-tip'] = `⚠️ Response time spiked to ${maxTime}ms for "${spike.label}" at ${new Date(spike.timestamp).toLocaleTimeString()}. This is significantly higher than the average of ${avgTime.toFixed(0)}ms.`;
             }
 
-            // High Error Rate
             const errorRate = (processedData.summary.totalErrors / processedData.summary.totalRequests) * 100;
             if (errorRate > 10) {
                 const errorData = processedData.errorRates.data.datasets[0].data;
@@ -937,18 +986,16 @@
                 tips['error-rate-tip'] = `🔴 The overall error rate is ${errorRate.toFixed(1)}%, which is high. The most errors occurred in the "${maxErrorLabel}" request.`;
             }
 
-            // Flatline Throughput
             const throughputData = processedData.throughput.data.datasets[0].data;
             if (throughputData.length > 5) {
                 const lastFivePoints = throughputData.slice(-5).map(p => p.y);
                 const avgLastFive = lastFivePoints.reduce((a, b) => a + b, 0) / 5;
                 const deviation = Math.sqrt(lastFivePoints.map(y => Math.pow(y - avgLastFive, 2)).reduce((a, b) => a + b, 0) / 5);
-                if (deviation < avgLastFive * 0.1) { // If standard deviation is less than 10% of the average
+                if (deviation < avgLastFive * 0.1) { 
                     tips['throughput-tip'] = `⚠️ Throughput appears to have capped at around ${avgLastFive.toFixed(0)} req/sec, suggesting a potential system bottleneck.`;
                 }
             }
             
-            // Render tips
             const showTips = toggleTipsCheckbox.checked;
             for (const [id, tip] of Object.entries(tips)) {
                 const el = document.getElementById(id);
@@ -960,6 +1007,187 @@
                 }
             }
         }
+
+        async function getTsbInsights() {
+            if (filteredData.length === 0) {
+                alert("Please upload and filter data first.");
+                return;
+            }
+
+            tsbInsightsModal.classList.remove('hidden');
+            tsbLoader.style.display = 'flex';
+            tsbInsightsContent.style.display = 'none';
+            tsbInsightsContent.innerHTML = '';
+
+            const summary = calculateSummaryMetrics(filteredData);
+            const dataSummaryForPrompt = `
+                - Total Requests: ${summary.totalRequests}
+                - Total Errors: ${summary.totalErrors}
+                - Average Response Time: ${summary.avgTime.toFixed(2)} ms
+                - Maximum Response Time: ${summary.maxTime} ms
+                - Peak Throughput: ${summary.peakThroughput.toFixed(2)} requests/second
+                - Number of requests over threshold: ${summary.thresholdBreaches.length}
+            `;
+
+            const language = currentLang === 'vi' ? 'Vietnamese' : 'English';
+            const prompt = `Act as a top-tier management consultant from a firm like McKinsey. Analyze the following summary of a load test and provide a professional, structured report in ${language}. The report should contain three sections: 1. Executive Summary, 2. Key Findings (with data points), and 3. Actionable Recommendations. The summary is as follows: \n${dataSummaryForPrompt}`;
+            
+            try {
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                let response;
+                let retries = 3;
+                while (retries > 0) {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) break;
+                    retries--;
+                    await new Promise(res => setTimeout(res, 1000)); // Wait 1 second before retrying
+                }
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
+                }
+
+                const result = await response.json();
+                
+                let text = 'No insights generated.';
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    text = result.candidates[0].content.parts[0].text;
+                }
+                
+                tsbInsightsContent.innerHTML = text.replace(/\n/g, '<br>');
+
+            } catch (error) {
+                console.error("Error calling TSB API:", error);
+                tsbInsightsContent.innerHTML = `<p class="text-red-500">Sorry, an error occurred while generating insights. Please try again. Details: ${error.message}</p>`;
+            } finally {
+                tsbLoader.style.display = 'none';
+                tsbInsightsContent.style.display = 'block';
+            }
+        }
+
+        // --- LANGUAGE & TRANSLATION ---
+        const translations = {
+            en: {
+                dashboardTitle: "Performance Analysis Dashboard Tool",
+                dashboardSubtitle: "Upload a results file (.jmx, .csv, .json) to explore performance data.",
+                uploadTitle: "Upload Results File(s)",
+                clickToUpload: "Click to upload",
+                orDragAndDrop: "or drag and drop",
+                supportedFiles: "Supports .jmx, .csv, .json files",
+                helpTitle: "Need help reading the charts?",
+                helpSubtitle: "Click the button below for a detailed guide on how to interpret the performance data.",
+                understandChartsBtn: "Understand The Charts",
+                filtersTitle: "Data Filters & Export",
+                filterByLabel: "Filter by Label",
+                filterByStatus: "Filter by Status",
+                allLabels: "All Labels",
+                statusAll: "All",
+                statusSuccess: "Success",
+                statusFailure: "Failure",
+                responseTimeThreshold: "Response Time Threshold (ms)",
+                applyBtn: "Apply",
+                showAssistantTips: "Show Assistant Tips",
+                exportPdfBtn: "Export PDF",
+                tsbAnalysisBtn: "✨ Analyze with TSB",
+                totalRequests: "Total Requests",
+                totalErrors: "Total Errors",
+                avgMaxResponse: "Avg / Max Response (ms)",
+                peakThroughput: "Peak Throughput (req/s)",
+                thresholdBreaches: "Threshold Breaches",
+                responseTimeChartTitle: "Response Time Over Time (by Label)",
+                throughputChartTitle: "Throughput (Requests/sec)",
+                percentilesChartTitle: "90th/95th Percentiles by Label",
+                errorDistributionChartTitle: "Error Distribution by Label",
+                successFailTrendChartTitle: "Success vs. Failure Trend",
+                savePngBtn: "Save PNG",
+                detailedDataTitle: "Detailed Data",
+                downloadCsvBtn: "Download CSV",
+                tableStartTime: "Start Time",
+                tableThreadName: "Thread Name",
+                tableLabel: "Label",
+                tableSampleTime: "Sample Time (ms)",
+                tableStatus: "Status",
+                tableBytes: "Bytes",
+                tableSentBytes: "Sent Bytes",
+                tableLatency: "Latency",
+                tableConnectTime: "Connect Time (ms)",
+                noDataMessage: "No valid data found in the uploaded file.",
+                thresholdBreachesTitle: "Threshold Breaches",
+                tsbAnalysisTitle: "✨ Analyze with TSB"
+            },
+            vi: {
+                dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất",
+                dashboardSubtitle: "Tải lên tệp kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.",
+                uploadTitle: "Tải lên tệp kết quả",
+                clickToUpload: "Nhấn để tải lên",
+                orDragAndDrop: "hoặc kéo và thả",
+                supportedFiles: "Hỗ trợ các tệp .jmx, .csv, .json",
+                helpTitle: "Cần trợ giúp đọc biểu đồ?",
+                helpSubtitle: "Nhấp vào nút bên dưới để có hướng dẫn chi tiết về cách diễn giải dữ liệu hiệu suất.",
+                understandChartsBtn: "Hiểu các biểu đồ",
+                filtersTitle: "Bộ lọc dữ liệu & Xuất",
+                filterByLabel: "Lọc theo nhãn",
+                filterByStatus: "Lọc theo trạng thái",
+                allLabels: "Tất cả các nhãn",
+                statusAll: "Tất cả",
+                statusSuccess: "Thành công",
+                statusFailure: "Thất bại",
+                responseTimeThreshold: "Ngưỡng thời gian phản hồi (ms)",
+                applyBtn: "Áp dụng",
+                showAssistantTips: "Hiển thị Mẹo trợ lý",
+                exportPdfBtn: "Xuất PDF",
+                tsbAnalysisBtn: "✨ Phân tích với TSB",
+                totalRequests: "Tổng số yêu cầu",
+                totalErrors: "Tổng số lỗi",
+                avgMaxResponse: "Phản hồi TB / Tối đa (ms)",
+                peakThroughput: "Thông lượng đỉnh (req/s)",
+                thresholdBreaches: "Vi phạm ngưỡng",
+                responseTimeChartTitle: "Thời gian phản hồi theo thời gian (theo nhãn)",
+                throughputChartTitle: "Thông lượng (Yêu cầu/giây)",
+                percentilesChartTitle: "Phân vị 90/95 theo nhãn",
+                errorDistributionChartTitle: "Phân phối lỗi theo nhãn",
+                successFailTrendChartTitle: "Xu hướng thành công và thất bại",
+                savePngBtn: "Lưu PNG",
+                detailedDataTitle: "Dữ liệu chi tiết",
+                downloadCsvBtn: "Tải xuống CSV",
+                tableStartTime: "Thời gian bắt đầu",
+                tableThreadName: "Tên luồng",
+                tableLabel: "Nhãn",
+                tableSampleTime: "Thời gian mẫu (ms)",
+                tableStatus: "Trạng thái",
+                tableBytes: "Bytes",
+                tableSentBytes: "Bytes đã gửi",
+                tableLatency: "Độ trễ",
+                tableConnectTime: "Thời gian kết nối (ms)",
+                noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.",
+                thresholdBreachesTitle: "Vi phạm ngưỡng",
+                tsbAnalysisTitle: "✨ Phân tích từ TSB"
+            }
+        };
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.dataset.translateKey;
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Initial load
+        updateLanguage(currentLang);
 
     </script>
 
