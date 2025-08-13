@@ -9,11 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Fallback background gradient */
-            background: linear-gradient(to right, #000428, #004e92);
+            transition: background 1s ease-in-out;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -38,6 +38,7 @@
             width: 100vw;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.4);
+            transition: background-color 1s ease-in-out;
             z-index: -1;
         }
         .chart-container {
@@ -95,12 +96,42 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* Timeline Slider Styles */
+        #timeline-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            border-radius: 5px;
+        }
+        #timeline-slider:hover {
+            opacity: 1;
+        }
+        #timeline-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #0ea5e9; /* sky-500 */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        #timeline-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #0ea5e9; /* sky-500 */
+            cursor: pointer;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body class="text-gray-200">
 
     <video id="bg-video" autoplay loop muted playsinline>
-        <!-- Using a placeholder video of a container ship -->
         <source src="https://assets.mixkit.co/videos/preview/mixkit-container-ship-sailing-in-the-ocean-3563-large.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -184,6 +215,15 @@
                     <button id="tsb-analysis-btn" class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" data-translate-key="tsbAnalysisBtn">✨ Analyze with TSB</button>
                 </div>
             </div>
+        </div>
+        
+        <!-- Replay Timeline Section -->
+        <div id="timeline-container" class="max-w-5xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
+             <div class="flex justify-between items-center mb-2">
+                <label for="timeline-slider" class="text-lg font-semibold text-gray-900" data-translate-key="replayTimelineTitle">Replay Timeline</label>
+                <span id="timeline-label" class="text-sm font-mono text-gray-700"></span>
+            </div>
+            <input type="range" id="timeline-slider" min="0" max="100" value="100">
         </div>
 
         <!-- Data Display Section -->
@@ -310,8 +350,9 @@
             <div id="tsb-loader" class="flex justify-center items-center h-full">
                 <div class="loader"></div>
             </div>
-            <div id="tsb-modal-footer" class="mt-4 pt-4 border-t border-gray-200 text-right hidden">
-                 <p class="text-sm text-gray-600 text-left mb-2" data-translate-key="copyInstructions">Click the button to copy the report and open a new Google Doc for pasting.</p>
+            <div id="tsb-modal-footer" class="mt-4 pt-4 border-t border-gray-200 flex justify-end items-center hidden">
+                 <p class="text-sm text-gray-600 text-left mr-auto" data-translate-key="copyInstructions">Click the button to copy the report and open a new Google Doc for pasting.</p>
+                 <button id="listen-tsb-report-btn" class="bg-sky-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-sky-600 transition mr-4 hidden" data-translate-key="listenBtn">🔊 Listen</button>
                  <button id="export-doc-btn" class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition" data-translate-key="exportDocBtn">
                     Copy for Google Docs
                 </button>
@@ -352,7 +393,11 @@
         const languageSelector = document.getElementById('language-selector');
         const exportDocBtn = document.getElementById('export-doc-btn');
         const tsbModalFooter = document.getElementById('tsb-modal-footer');
-
+        const bgOverlay = document.getElementById('bg-overlay');
+        const timelineContainer = document.getElementById('timeline-container');
+        const timelineSlider = document.getElementById('timeline-slider');
+        const timelineLabel = document.getElementById('timeline-label');
+        const listenTsbReportBtn = document.getElementById('listen-tsb-report-btn');
 
         let allData = [];
         let filteredData = [];
@@ -413,8 +458,8 @@
             if (event.target === chartModal) {
                  chartModal.classList.add('hidden');
                  if (maximizedChart) {
-                     maximizedChart.destroy();
-                }
+                      maximizedChart.destroy();
+                 }
             }
         });
         
@@ -472,24 +517,27 @@
         });
 
         tsbAnalysisBtn.addEventListener('click', getTsbInsights);
-        closeTsbModalBtn.addEventListener('click', () => tsbInsightsModal.classList.add('hidden'));
+        closeTsbModalBtn.addEventListener('click', () => {
+            tsbInsightsModal.classList.add('hidden');
+            window.speechSynthesis.cancel(); // Stop speech when closing modal
+        });
         
         languageSelector.addEventListener('change', (event) => {
             updateLanguage(event.target.value);
+            if (allData.length > 0) {
+                updateDashboard();
+            }
         });
         
         exportDocBtn.addEventListener('click', () => {
-            // Get the plain text content for clean pasting
             const reportText = tsbInsightsContent.innerText;
             const footerQuoteText = document.getElementById('footer-quote').innerText;
             const footerCopyrightText = document.getElementById('footer-copyright').innerText;
             const fullTextToCopy = `${reportText}\n\n---\n${footerQuoteText}\n${footerCopyrightText}`;
             
-            // Fallback method for copying text that works in iFrames
             const textArea = document.createElement("textarea");
             textArea.value = fullTextToCopy;
             
-            // Avoid scrolling to bottom
             textArea.style.top = "0";
             textArea.style.left = "0";
             textArea.style.position = "fixed";
@@ -508,28 +556,28 @@
             document.body.removeChild(textArea);
 
             if (success) {
-                 // Provide user feedback
                 const originalText = exportDocBtn.textContent;
                 const copiedTextKey = currentLang === 'vi' ? 'copiedToClipboard' : 'copiedToClipboard';
                 exportDocBtn.textContent = translations[currentLang][copiedTextKey] || 'Copied!';
                 exportDocBtn.disabled = true;
                 
-                // Open a new Google Doc for the user
                 window.open('https://docs.new', '_blank');
                 
-                // Revert button text after a delay
                 setTimeout(() => {
                     exportDocBtn.textContent = originalText;
                     exportDocBtn.disabled = false;
                 }, 3000);
             } else {
-                 alert('Failed to copy. Please manually copy the text.');
+                alert('Failed to copy. Please manually copy the text.');
             }
         });
 
+        listenTsbReportBtn.addEventListener('click', playTsbReport);
+        timelineSlider.addEventListener('input', handleTimelineChange);
+
 
         function handleFile(file) {
-            fileNameDisplay.textContent = `Processing: ${file.name}... (Note: Multi-file comparison coming soon!)`;
+            fileNameDisplay.textContent = `Processing: ${file.name}...`;
             const reader = new FileReader();
             
             reader.onload = (e) => {
@@ -652,6 +700,7 @@
             fileNameDisplay.textContent = `Error: ${error.message}`;
             dashboardContent.classList.add('hidden');
             filtersSection.classList.add('hidden');
+            timelineContainer.classList.add('hidden');
             noDataMessage.classList.remove('hidden');
         }
 
@@ -659,8 +708,10 @@
         function initializeDashboard() {
             dashboardContent.classList.remove('hidden');
             filtersSection.classList.remove('hidden');
+            timelineContainer.classList.remove('hidden');
             noDataMessage.classList.add('hidden');
             populateFilters(allData);
+            setupTimeline();
             applyFilters();
         }
         
@@ -674,11 +725,12 @@
                 (statusFilterValue === 'all' || String(item.success) === statusFilterValue)
             );
             currentPage = 1;
-            updateDashboard();
+            timelineSlider.value = timelineSlider.max;
+            handleTimelineChange();
         }
 
-        function updateDashboard() {
-            if (filteredData.length === 0) {
+        function updateDashboard(dataToRender = filteredData) {
+            if (dataToRender.length === 0) {
                 noDataMessage.classList.remove('hidden');
                 dashboardContent.classList.add('hidden');
                 return;
@@ -686,37 +738,32 @@
             noDataMessage.classList.add('hidden');
             dashboardContent.classList.remove('hidden');
             
-            const processed = processDataForCharts(filteredData);
+            const processed = processDataForCharts(dataToRender);
             
             renderSummary(processed.summary);
-            renderChart('response-time-over-time-chart', processed.responseTimeSeries);
-            renderChart('throughput-chart', processed.throughput);
-            renderChart('percentile-chart', processed.percentiles);
-            renderChart('error-rate-chart', processed.errorRates);
-            renderChart('success-fail-trend-chart', processed.successFailTrend);
-            renderTable();
-            generateInsights(filteredData, processed);
+            renderChart('response-time-over-time-chart', getResponseTimeSeries(dataToRender));
+            renderChart('throughput-chart', getThroughput(dataToRender));
+            renderChart('percentile-chart', getPercentiles(dataToRender));
+            renderChart('error-rate-chart', getErrorRates(dataToRender));
+            renderChart('success-fail-trend-chart', getSuccessFailTrend(dataToRender));
+            renderTable(dataToRender);
+            generateInsights(dataToRender, processed);
+            updateDynamicTheme(processed.summary);
         }
 
         // --- DATA PROCESSING ---
         function processDataForCharts(data) {
             const summary = calculateSummaryMetrics(data);
-            const responseTimeSeries = getResponseTimeSeries(data);
-            const throughput = getThroughput(data);
-            const percentiles = getPercentiles(data);
-            const errorRates = getErrorRates(data);
-            const successFailTrend = getSuccessFailTrend(data);
-            return { summary, responseTimeSeries, throughput, percentiles, errorRates, successFailTrend };
+            return { summary };
         }
 
         // --- METRIC CALCULATIONS ---
         function calculateSummaryMetrics(data) {
-            if (data.length === 0) return {};
+            if (data.length === 0) return { totalRequests: 0, totalErrors: 0, avgTime: 0, maxTime: 0, peakThroughput: 0, thresholdBreaches: [] };
             const times = data.map(d => d.sampleTime).filter(t => !isNaN(t));
             if (times.length === 0) return { totalRequests: data.length, totalErrors: data.filter(d => !d.success).length, thresholdBreaches: [] };
             
             const threshold = parseInt(document.getElementById('threshold-input').value, 10) || 0;
-            const totalDuration = (data[data.length - 1].timestamp - data[0].timestamp) / 1000;
             const throughputPerSecond = {};
             let thresholdBreaches = [];
 
@@ -738,157 +785,158 @@
             };
         }
 
-        const CHART_CONFIGS = {
-            getResponseTimeSeries: (data) => {
-                const datasets = {};
-                data.forEach(d => {
-                    if (!datasets[d.label]) {
-                        datasets[d.label] = {
-                            label: d.label,
-                            data: [],
-                            borderColor: getRandomColor(),
-                            tension: 0.1,
-                            pointRadius: 1,
-                        };
-                    }
-                    datasets[d.label].data.push({ x: d.timestamp, y: d.sampleTime });
-                });
-                return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Response Time (ms)') };
-            },
-            getThroughput: (data) => {
-                const throughputPerSecond = {};
-                data.forEach(d => {
-                    const second = Math.floor(d.timestamp / 1000) * 1000;
-                    throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
-                });
-                const chartData = Object.entries(throughputPerSecond).map(([ts, count]) => ({ x: parseInt(ts), y: count }));
-                return {
-                    type: 'line',
-                    data: {
-                        datasets: [{
-                            label: 'Requests/sec',
-                            data: chartData,
-                            borderColor: '#34d399',
-                            fill: true,
-                            backgroundColor: 'rgba(52, 211, 153, 0.2)'
-                        }]
-                    },
-                    options: getCommonTimeOptions('Number of Requests')
-                };
-            },
-            getPercentiles: (data) => {
-                const byLabel = groupBy(data, 'label');
-                const labels = Object.keys(byLabel);
-                const p90 = [];
-                const p95 = [];
-                labels.forEach(label => {
-                    const times = byLabel[label].map(d => d.sampleTime).sort((a,b) => a-b);
-                    p90.push(times[Math.floor(times.length * 0.9)]);
-                    p95.push(times[Math.floor(times.length * 0.95)]);
-                });
-                return {
-                    type: 'bar',
-                    data: {
-                        labels,
-                        datasets: [
-                            { label: '90th Percentile', data: p90, backgroundColor: 'rgba(96, 165, 250, 0.7)' },
-                            { label: '95th Percentile', data: p95, backgroundColor: 'rgba(59, 130, 246, 0.7)' }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Response Time (ms)'
-                                }
-                            }
-                        }
-                    }
-                };
-            },
-            getErrorRates: (data) => {
-                const byLabel = groupBy(data.filter(d => !d.success), 'label');
-                const labels = Object.keys(byLabel);
-                const errorCounts = labels.map(label => byLabel[label].length);
-
-                return {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Number of Errors',
-                            data: errorCounts,
-                            backgroundColor: getRandomColor(0.7),
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y', // This makes the bar chart horizontal
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Number of Errors'
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        }
-                    }
-                };
-            },
-            getSuccessFailTrend: (data) => {
-                const trend = {};
-                 data.forEach(d => {
-                    const second = Math.floor(d.timestamp / 1000) * 1000;
-                    if (!trend[second]) trend[second] = { success: 0, fail: 0 };
-                    d.success ? trend[second].success++ : trend[second].fail++;
-                });
-                const successData = [], failData = [];
-                Object.entries(trend).sort((a,b) => a[0] - b[0]).forEach(([ts, counts]) => {
-                    successData.push({ x: parseInt(ts), y: counts.success });
-                    failData.push({ x: parseInt(ts), y: counts.fail });
-                });
-                return {
-                    type: 'line',
-                    data: {
-                        datasets: [
-                            { label: 'Success', data: successData, borderColor: 'rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true, tension: 0.1 },
-                            { label: 'Failure', data: failData, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: true, tension: 0.1 }
-                        ]
-                    },
-                    options: getCommonTimeOptions('Number of Requests')
+        // --- CHART CONFIGS & RENDERING ---
+        function getResponseTimeSeries(data) {
+            const datasets = {};
+            data.forEach(d => {
+                if (!datasets[d.label]) {
+                    datasets[d.label] = {
+                        label: d.label,
+                        data: [],
+                        borderColor: getRandomColor(),
+                        tension: 0.1,
+                        pointRadius: 1,
+                    };
                 }
-            }
-        };
+                datasets[d.label].data.push({ x: d.timestamp, y: d.sampleTime });
+            });
+            return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Response Time (ms)') };
+        }
+        
+        function getThroughput(data) {
+            const throughputPerSecond = {};
+            data.forEach(d => {
+                const second = Math.floor(d.timestamp / 1000) * 1000;
+                throughputPerSecond[second] = (throughputPerSecond[second] || 0) + 1;
+            });
+            const chartData = Object.entries(throughputPerSecond).map(([ts, count]) => ({ x: parseInt(ts), y: count }));
+            return {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Requests/sec',
+                        data: chartData,
+                        borderColor: '#34d399',
+                        fill: true,
+                        backgroundColor: 'rgba(52, 211, 153, 0.2)'
+                    }]
+                },
+                options: getCommonTimeOptions('Number of Requests')
+            };
+        }
+        
+        function getPercentiles(data) {
+            const byLabel = groupBy(data, 'label');
+            const labels = Object.keys(byLabel);
+            const p90 = [];
+            const p95 = [];
+            labels.forEach(label => {
+                const times = byLabel[label].map(d => d.sampleTime).sort((a,b) => a-b);
+                p90.push(times.length > 0 ? times[Math.floor(times.length * 0.9)] : 0);
+                p95.push(times.length > 0 ? times[Math.floor(times.length * 0.95)] : 0);
+            });
+            return {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [
+                        { label: '90th Percentile', data: p90, backgroundColor: 'rgba(96, 165, 250, 0.7)' },
+                        { label: '95th Percentile', data: p95, backgroundColor: 'rgba(59, 130, 246, 0.7)' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Response Time (ms)'
+                            }
+                        }
+                    }
+                }
+            };
+        }
+        
+        function getErrorRates(data) {
+            const byLabel = groupBy(data.filter(d => !d.success), 'label');
+            const labels = Object.keys(byLabel);
+            const errorCounts = labels.map(label => byLabel[label].length);
 
-        // --- CHART RENDERING ---
+            return {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Errors',
+                        data: errorCounts,
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Errors'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            };
+        }
+        
+        function getSuccessFailTrend(data) {
+            const trend = {};
+             data.forEach(d => {
+                const second = Math.floor(d.timestamp / 1000) * 1000;
+                if (!trend[second]) trend[second] = { success: 0, fail: 0 };
+                d.success ? trend[second].success++ : trend[second].fail++;
+            });
+            const successData = [], failData = [];
+            Object.entries(trend).sort((a,b) => a[0] - b[0]).forEach(([ts, counts]) => {
+                successData.push({ x: parseInt(ts), y: counts.success });
+                failData.push({ x: parseInt(ts), y: counts.fail });
+            });
+            return {
+                type: 'line',
+                data: {
+                    datasets: [
+                        { label: 'Success', data: successData, borderColor: 'rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true, tension: 0.1 },
+                        { label: 'Failure', data: failData, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', fill: true, tension: 0.1 }
+                    ]
+                },
+                options: getCommonTimeOptions('Number of Requests')
+            }
+        }
+
         function renderChart(canvasId, config) {
             if (charts[canvasId]) charts[canvasId].destroy();
+            const chartWrapper = document.getElementById(canvasId).parentElement.parentElement;
             if (config && config.data && config.data.datasets.some(ds => ds.data && ds.data.length > 0)) {
-                 const chartWrapper = document.getElementById(canvasId).parentElement.parentElement;
-                 chartWrapper.style.display = 'block';
-                 charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
+                chartWrapper.style.display = 'block';
+                charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
                 
-                 // Add double-click listener for maximizing
-                 chartWrapper.ondblclick = () => {
-                     if (maximizedChart) {
-                         maximizedChart.destroy();
-                     }
-                     chartModal.classList.remove('hidden');
-                     maximizedChart = new Chart(maximizedChartCanvas, config);
-                 };
+                chartWrapper.ondblclick = () => {
+                    if (maximizedChart) {
+                        maximizedChart.destroy();
+                    }
+                    chartModal.classList.remove('hidden');
+                    maximizedChart = new Chart(maximizedChartCanvas, config);
+                };
             } else {
-                 document.getElementById(canvasId).parentElement.parentElement.style.display = 'none';
+                chartWrapper.style.display = 'none';
             }
         }
 
@@ -905,15 +953,16 @@
                 renderThresholdBreachesTable(summary.thresholdBreaches);
                 thresholdModal.classList.remove('hidden');
             });
+            updateLanguage(currentLang);
         }
 
         // --- TABLE & PAGINATION ---
-        function renderTable() {
+        function renderTable(dataToRender) {
             const tableBody = document.getElementById('resultsTableBody');
             tableBody.innerHTML = '';
             const threshold = parseInt(document.getElementById('threshold-input').value, 10);
 
-            const paginatedData = filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+            const paginatedData = dataToRender.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
             paginatedData.forEach((item, index) => {
                 const row = document.createElement('tr');
                 if (!item.success) {
@@ -934,7 +983,7 @@
                 `;
                 tableBody.appendChild(row);
             });
-            renderPaginationControls();
+            renderPaginationControls(dataToRender.length);
         }
         
         function renderThresholdBreachesTable(breaches) {
@@ -951,21 +1000,21 @@
             });
         }
 
-        function renderPaginationControls() {
+        function renderPaginationControls(totalRows) {
             const container = document.getElementById('pagination-controls');
-            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
             container.innerHTML = '';
             if (totalPages <= 1) return;
             const prevButton = document.createElement('button');
             prevButton.textContent = 'Previous';
             prevButton.disabled = currentPage === 1;
             prevButton.className = 'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
-            prevButton.onclick = () => { currentPage--; renderTable(); };
+            prevButton.onclick = () => { currentPage--; renderTable(filteredData); };
             const nextButton = document.createElement('button');
             nextButton.textContent = 'Next';
             nextButton.disabled = currentPage === totalPages;
             nextButton.className = 'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50';
-            nextButton.onclick = () => { currentPage++; renderTable(); };
+            nextButton.onclick = () => { currentPage++; renderTable(filteredData); };
             const pageInfo = document.createElement('span');
             pageInfo.className = 'text-sm text-gray-700';
             pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
@@ -989,8 +1038,6 @@
             updateLanguage(currentLang);
         }
         
-        const { getResponseTimeSeries, getThroughput, getPercentiles, getErrorRates, getSuccessFailTrend } = CHART_CONFIGS;
-
         function getCommonTimeOptions(yAxisTitle) {
             return {
                 responsive: true, maintainAspectRatio: false,
@@ -1010,16 +1057,16 @@
         }
 
         function getRandomColor(alpha = 1) {
-            const r = Math.floor(Math.random() * 255);
-            const g = Math.floor(Math.random() * 255);
-            const b = Math.floor(Math.random() * 255);
+            const r = Math.floor(Math.random() * 200);
+            const g = Math.floor(Math.random() * 200);
+            const b = Math.floor(Math.random() * 200);
             return `rgba(${r}, ${g}, ${b}, ${alpha})`;
         }
         
         downloadCsvBtn.addEventListener('click', () => {
              if (filteredData.length === 0) { alert('No data to download.'); return; }
-            const headers = "Timestamp,Label,SampleTime,Success\n";
-            const csvContent = filteredData.map(d => `${new Date(d.timestamp).toISOString()},"${d.label}",${d.sampleTime},${d.success}`).join('\n');
+            const headers = Object.keys(filteredData[0]).join(',') + '\n';
+            const csvContent = filteredData.map(d => Object.values(d).join(',')).join('\n');
             const blob = new Blob([headers + csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
             link.setAttribute("href", URL.createObjectURL(blob));
@@ -1036,48 +1083,70 @@
             link.href = canvas.toDataURL('image/png');
             link.click();
         }
-
+        
         function generateInsights(data, processedData) {
             const tips = {
-                'response-time-tip': '',
-                'throughput-tip': '',
-                'error-rate-tip': '',
+                'response-time-tip': '', 'throughput-tip': '', 'error-rate-tip': '', 'percentile-tip': '', 'success-fail-trend-tip': ''
             };
+            const summary = processedData.summary;
+            const langTips = translations[currentLang].tips;
 
-            const avgTime = processedData.summary.avgTime;
-            const maxTime = processedData.summary.maxTime;
-            if (maxTime > avgTime * 3 && maxTime > 1000) {
-                const spike = data.find(d => d.sampleTime === maxTime);
-                tips['response-time-tip'] = `⚠️ Response time spiked to ${maxTime}ms for "${spike.label}" at ${new Date(spike.timestamp).toLocaleTimeString()}. This is significantly higher than the average of ${avgTime.toFixed(0)}ms.`;
+            if (summary.maxTime > summary.avgTime * 3 && summary.maxTime > 1000) {
+                const spike = data.find(d => d.sampleTime === summary.maxTime);
+                if (spike) {
+                    tips['response-time-tip'] = langTips.responseTimeSpike
+                        .replace('{maxTime}', summary.maxTime)
+                        .replace('{label}', spike.label)
+                        .replace('{time}', new Date(spike.timestamp).toLocaleTimeString())
+                        .replace('{avgTime}', summary.avgTime.toFixed(0));
+                }
             }
 
-            const errorRate = (processedData.summary.totalErrors / processedData.summary.totalRequests) * 100;
+            const errorRate = summary.totalRequests > 0 ? (summary.totalErrors / summary.totalRequests) * 100 : 0;
             if (errorRate > 10) {
-                const errorData = processedData.errorRates.data.datasets[0].data;
-                const labels = processedData.errorRates.data.labels;
-                const maxErrors = Math.max(...errorData);
-                const maxErrorLabel = labels[errorData.indexOf(maxErrors)];
-                tips['error-rate-tip'] = `🔴 The overall error rate is ${errorRate.toFixed(1)}%, which is high. The most errors occurred in the "${maxErrorLabel}" request.`;
+                tips['error-rate-tip'] = langTips.highErrorRate.replace('{errorRate}', errorRate.toFixed(1));
             }
 
-            const throughputData = processedData.throughput.data.datasets[0].data;
+            const throughputData = getThroughput(data).data.datasets[0].data;
             if (throughputData.length > 5) {
-                const lastFivePoints = throughputData.slice(-5).map(p => p.y);
-                const avgLastFive = lastFivePoints.reduce((a, b) => a + b, 0) / 5;
-                const deviation = Math.sqrt(lastFivePoints.map(y => Math.pow(y - avgLastFive, 2)).reduce((a, b) => a + b, 0) / 5);
-                if (deviation < avgLastFive * 0.1) { 
-                    tips['throughput-tip'] = `⚠️ Throughput appears to have capped at around ${avgLastFive.toFixed(0)} req/sec, suggesting a potential system bottleneck.`;
+                const lastPoints = throughputData.slice(-5).map(p => p.y);
+                const avgLast = lastPoints.reduce((a, b) => a + b, 0) / lastPoints.length;
+                const deviation = Math.sqrt(lastPoints.map(y => Math.pow(y - avgLast, 2)).reduce((a, b) => a + b, 0) / lastPoints.length);
+                if (deviation < avgLast * 0.1 && avgLast > 0) {
+                    tips['throughput-tip'] = langTips.throughputCapped.replace('{avgThroughput}', avgLast.toFixed(0));
                 }
             }
             
+            const percentileData = getPercentiles(data);
+            if(percentileData.data.labels.length > 0) {
+                const p95s = percentileData.data.datasets[1].data;
+                const maxP95 = Math.max(...p95s);
+                if (maxP95 > 2000) {
+                    const maxIndex = p95s.indexOf(maxP95);
+                    const label = percentileData.data.labels[maxIndex];
+                    tips['percentile-tip'] = langTips.percentileHigh.replace('{label}', label).replace('{p95}', maxP95);
+                }
+            }
+
+            const trendData = getSuccessFailTrend(data).data.datasets[1].data;
+            if (trendData.length > 2) {
+                 const lastFailure = trendData[trendData.length - 1].y;
+                 const prevFailure = trendData[trendData.length - 2].y;
+                 if (lastFailure > prevFailure * 2 && lastFailure > 5) {
+                     tips['success-fail-trend-tip'] = langTips.successFailFluctuation;
+                 }
+            }
+
             const showTips = toggleTipsCheckbox.checked;
             for (const [id, tip] of Object.entries(tips)) {
                 const el = document.getElementById(id);
-                if (tip && showTips) {
-                    el.textContent = tip;
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
+                if (el) {
+                    if (tip && showTips) {
+                        el.textContent = tip;
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'none';
+                    }
                 }
             }
         }
@@ -1092,6 +1161,7 @@
             tsbLoader.style.display = 'flex';
             tsbInsightsContent.style.display = 'none';
             tsbModalFooter.classList.add('hidden');
+            listenTsbReportBtn.classList.add('hidden');
             tsbInsightsContent.innerHTML = '';
 
             const summary = calculateSummaryMetrics(filteredData);
@@ -1108,37 +1178,7 @@
             const prompt = `Act as a top-tier management consultant from a firm like McKinsey. Analyze the following summary of a load test and provide a professional, structured report in ${language}. Start the report with the title "## Performance Assessment Report: Load Test Analysis". Do not add any other introductory phrases or headers before this title. The report should contain three sections: 1. Executive Summary, 2. Key Findings (with data points), and 3. Actionable Recommendations. The summary is as follows: \n${dataSummaryForPrompt}`;
             
             try {
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                let response;
-                let retries = 3;
-                while (retries > 0) {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (response.ok) break;
-                    retries--;
-                    await new Promise(res => setTimeout(res, 1000)); // Wait 1 second before retrying
-                }
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
-                }
-
-                const result = await response.json();
-                
-                let text = 'No insights generated.';
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    text = result.candidates[0].content.parts[0].text;
-                }
+                const text = await callGeminiAPI(prompt);
                 
                 const logDate = filteredData.length > 0 ? new Date(filteredData[0].timestamp) : new Date();
                 const analyzeDate = new Date();
@@ -1153,7 +1193,6 @@
                     <hr style="margin: 1rem 0;">
                 `;
                 
-                // Find the title and move it before the header
                 const titleRegex = /(<br>)*(##? Performance Assessment Report: Load Test Analysis)/i;
                 const match = text.match(titleRegex);
                 let reportBody = text;
@@ -1161,9 +1200,8 @@
 
                 if (match) {
                     reportTitle = `<h2>${match[2].replace(/##? /,'')}</h2>`;
-                    reportBody = text.replace(titleRegex, ''); // Remove the title from the body
+                    reportBody = text.replace(titleRegex, '');
                 }
-
 
                 tsbInsightsContent.innerHTML = reportTitle + reportHeader + reportBody.replace(/\n/g, '<br>').replace(/\*\*/g, '<strong>').replace(/\*/g, '<em>');
 
@@ -1174,126 +1212,87 @@
                 tsbLoader.style.display = 'none';
                 tsbInsightsContent.style.display = 'block';
                 tsbModalFooter.classList.remove('hidden');
+                listenTsbReportBtn.classList.remove('hidden');
             }
         }
+        
+        async function callGeminiAPI(prompt) {
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // Will be replaced by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
+            }
+
+            const result = await response.json();
+            
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                return result.candidates[0].content.parts[0].text;
+            }
+            return 'No insights generated.';
+        }
+
 
         // --- LANGUAGE & TRANSLATION ---
         const translations = {
             en: {
-                dashboardTitle: "Performance Analysis Dashboard Tool",
-                dashboardSubtitle: "Upload a results file (.jmx, .csv, .json) to explore performance data.",
-                uploadTitle: "Upload Results File(s)",
-                clickToUpload: "Click to upload",
-                orDragAndDrop: "or drag and drop",
-                supportedFiles: "Supports .jmx, .csv, .json files",
-                helpTitle: "Need help reading the charts?",
-                helpSubtitle: "Click the button below for a detailed guide on how to interpret the performance data.",
-                understandChartsBtn: "Understand The Charts",
-                filtersTitle: "Data Filters & Export",
-                filterByLabel: "Filter by Label",
-                filterByStatus: "Filter by Status",
-                allLabels: "All Labels",
-                statusAll: "All",
-                statusSuccess: "Success",
-                statusFailure: "Failure",
-                responseTimeThreshold: "Threshold (ms)",
-                applyBtn: "Apply",
-                showAssistantTips: "Show Assistant Tips",
-                exportPdfBtn: "Export PDF",
-                tsbAnalysisBtn: "✨ Analyze with TSB",
-                totalRequests: "Total Requests",
-                totalErrors: "Total Errors",
-                avgMaxResponse: "Avg / Max Response (ms)",
-                peakThroughput: "Peak Throughput (req/s)",
-                thresholdBreaches: "Threshold Breaches",
-                responseTimeChartTitle: "Response Time Over Time (by Label)",
-                throughputChartTitle: "Throughput (Requests/sec)",
-                percentilesChartTitle: "90th/95th Percentiles by Label",
-                errorDistributionChartTitle: "Error Distribution by Label",
-                successFailTrendChartTitle: "Success vs. Failure Trend",
-                savePngBtn: "Save PNG",
-                detailedDataTitle: "Detailed Data",
-                downloadCsvBtn: "Download CSV",
-                tableStartTime: "Start Time",
-                tableThreadName: "Thread Name",
-                tableLabel: "Label",
-                tableSampleTime: "Sample Time (ms)",
-                tableStatus: "Status",
-                tableBytes: "Bytes",
-                tableSentBytes: "Sent Bytes",
-                tableLatency: "Latency",
-                tableConnectTime: "Connect Time (ms)",
-                noDataMessage: "No valid data found in the uploaded file.",
-                thresholdBreachesTitle: "Threshold Breaches",
-                tsbAnalysisTitle: "✨ Analyze with TSB",
-                exportDocBtn: "Copy for Google Docs",
-                copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.",
-                copiedToClipboard: "Copied!",
+                dashboardTitle: "Performance Analysis Dashboard Tool", dashboardSubtitle: "Upload a results file (.jmx, .csv, .json) to explore performance data.",
+                uploadTitle: "Upload Results File(s)", clickToUpload: "Click to upload", orDragAndDrop: "or drag and drop", supportedFiles: "Supports .jmx, .csv, .json files",
+                helpTitle: "Need help reading the charts?", helpSubtitle: "Click the button below for a detailed guide on how to interpret the performance data.", understandChartsBtn: "Understand The Charts",
+                filtersTitle: "Data Filters & Export", filterByLabel: "Filter by Label", filterByStatus: "Filter by Status", allLabels: "All Labels", statusAll: "All", statusSuccess: "Success", statusFailure: "Failure",
+                responseTimeThreshold: "Threshold (ms)", applyBtn: "Apply", showAssistantTips: "Show Assistant Tips",
+                exportPdfBtn: "Export PDF", tsbAnalysisBtn: "✨ Analyze with TSB",
+                totalRequests: "Total Requests", totalErrors: "Total Errors", avgMaxResponse: "Avg / Max Response (ms)", peakThroughput: "Peak Throughput (req/s)", thresholdBreaches: "Threshold Breaches",
+                responseTimeChartTitle: "Response Time Over Time (by Label)", throughputChartTitle: "Throughput (Requests/sec)", percentilesChartTitle: "90th/95th Percentiles by Label", errorDistributionChartTitle: "Error Distribution by Label", successFailTrendChartTitle: "Success vs. Failure Trend",
+                savePngBtn: "Save PNG", detailedDataTitle: "Detailed Data", downloadCsvBtn: "Download CSV",
+                tableStartTime: "Start Time", tableThreadName: "Thread Name", tableLabel: "Label", tableSampleTime: "Sample Time (ms)", tableStatus: "Status", tableBytes: "Bytes", tableSentBytes: "Sent Bytes", tableLatency: "Latency", tableConnectTime: "Connect Time (ms)",
+                noDataMessage: "No valid data found in the uploaded file.", thresholdBreachesTitle: "Threshold Breaches", tsbAnalysisTitle: "✨ Analyze with TSB",
+                exportDocBtn: "Copy for Google Docs", copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.", copiedToClipboard: "Copied!",
+                replayTimelineTitle: "Replay Timeline", listenBtn: "🔊 Listen",
                 footer_copyright: "&copy; 2025 Performance Analysis Dashboard by TSB. All Rights Reserved.",
-                quotes: [
-                    "Every number tells a story – uncover it.",
-                    "Performance speaks louder than promises.",
-                    "Good data, great decisions.",
-                    "Metrics don’t lie. They whisper insights."
-                ]
+                quotes: ["Every number tells a story – uncover it.", "Performance speaks louder than promises.", "Good data, great decisions.", "Metrics don’t lie. They whisper insights."],
+                tips: {
+                    responseTimeSpike: '⚠️ Response time spiked to {maxTime}ms for "{label}" at {time}. This is significantly higher than the average of {avgTime}ms.',
+                    highErrorRate: '🔴 The overall error rate is {errorRate}%, which is high. Check the error distribution chart for problematic requests.',
+                    throughputCapped: '⚠️ Throughput appears to have capped at around {avgThroughput} req/sec, suggesting a potential system bottleneck.',
+                    percentileHigh: '📈 The 95th percentile for "{label}" is {p95}ms, indicating that 5% of requests are slower than this value.',
+                    successFailFluctuation: '📉 Note the fluctuations between successful and failed requests. A sudden increase in failures could indicate a problem.'
+                }
             },
             vi: {
-                dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất",
-                dashboardSubtitle: "Tải lên tệp kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.",
-                uploadTitle: "Tải lên tệp kết quả",
-                clickToUpload: "Nhấn để tải lên",
-                orDragAndDrop: "hoặc kéo và thả",
-                supportedFiles: "Hỗ trợ các tệp .jmx, .csv, .json",
-                helpTitle: "Cần trợ giúp đọc biểu đồ?",
-                helpSubtitle: "Nhấp vào nút bên dưới để có hướng dẫn chi tiết về cách diễn giải dữ liệu hiệu suất.",
-                understandChartsBtn: "Hiểu các biểu đồ",
-                filtersTitle: "Bộ lọc dữ liệu & Xuất",
-                filterByLabel: "Lọc theo nhãn",
-                filterByStatus: "Lọc theo trạng thái",
-                allLabels: "Tất cả các nhãn",
-                statusAll: "Tất cả",
-                statusSuccess: "Thành công",
-                statusFailure: "Thất bại",
-                responseTimeThreshold: "Ngưỡng (ms)",
-                applyBtn: "Áp dụng",
-                showAssistantTips: "Hiển thị Mẹo trợ lý",
-                exportPdfBtn: "Xuất PDF",
-                tsbAnalysisBtn: "✨ Phân tích với TSB",
-                totalRequests: "Tổng số yêu cầu",
-                totalErrors: "Tổng số lỗi",
-                avgMaxResponse: "Phản hồi TB / Tối đa (ms)",
-                peakThroughput: "Thông lượng đỉnh (req/s)",
-                thresholdBreaches: "Vi phạm ngưỡng",
-                responseTimeChartTitle: "Thời gian phản hồi theo thời gian (theo nhãn)",
-                throughputChartTitle: "Thông lượng (Yêu cầu/giây)",
-                percentilesChartTitle: "Phân vị 90/95 theo nhãn",
-                errorDistributionChartTitle: "Phân phối lỗi theo nhãn",
-                successFailTrendChartTitle: "Xu hướng thành công và thất bại",
-                savePngBtn: "Lưu PNG",
-                detailedDataTitle: "Dữ liệu chi tiết",
-                downloadCsvBtn: "Tải xuống CSV",
-                tableStartTime: "Thời gian bắt đầu",
-                tableThreadName: "Tên luồng",
-                tableLabel: "Nhãn",
-                tableSampleTime: "Thời gian mẫu (ms)",
-                tableStatus: "Trạng thái",
-                tableBytes: "Bytes",
-                tableSentBytes: "Bytes đã gửi",
-                tableLatency: "Độ trễ",
-                tableConnectTime: "Thời gian kết nối (ms)",
-                noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.",
-                thresholdBreachesTitle: "Vi phạm ngưỡng",
-                tsbAnalysisTitle: "✨ Phân tích từ TSB",
-                exportDocBtn: "Sao chép cho Google Docs",
-                copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.",
-                copiedToClipboard: "Đã sao chép!",
+                dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất", dashboardSubtitle: "Tải lên tệp kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.",
+                uploadTitle: "Tải lên tệp kết quả", clickToUpload: "Nhấn để tải lên", orDragAndDrop: "hoặc kéo và thả", supportedFiles: "Hỗ trợ các tệp .jmx, .csv, .json",
+                helpTitle: "Cần trợ giúp đọc biểu đồ?", helpSubtitle: "Nhấp vào nút bên dưới để có hướng dẫn chi tiết về cách diễn giải dữ liệu hiệu suất.", understandChartsBtn: "Hiểu các biểu đồ",
+                filtersTitle: "Bộ lọc dữ liệu & Xuất", filterByLabel: "Lọc theo nhãn", filterByStatus: "Lọc theo trạng thái", allLabels: "Tất cả các nhãn", statusAll: "Tất cả", statusSuccess: "Thành công", statusFailure: "Thất bại",
+                responseTimeThreshold: "Ngưỡng (ms)", applyBtn: "Áp dụng", showAssistantTips: "Hiển thị Mẹo trợ lý",
+                exportPdfBtn: "Xuất PDF", tsbAnalysisBtn: "✨ Phân tích với TSB",
+                totalRequests: "Tổng số yêu cầu", totalErrors: "Tổng số lỗi", avgMaxResponse: "Phản hồi TB / Tối đa (ms)", peakThroughput: "Thông lượng đỉnh (req/s)", thresholdBreaches: "Vi phạm ngưỡng",
+                responseTimeChartTitle: "Thời gian phản hồi theo thời gian (theo nhãn)", throughputChartTitle: "Thông lượng (Yêu cầu/giây)", percentilesChartTitle: "Phân vị 90/95 theo nhãn", errorDistributionChartTitle: "Phân phối lỗi theo nhãn", successFailTrendChartTitle: "Xu hướng thành công và thất bại",
+                savePngBtn: "Lưu PNG", detailedDataTitle: "Dữ liệu chi tiết", downloadCsvBtn: "Tải xuống CSV",
+                tableStartTime: "Thời gian bắt đầu", tableThreadName: "Tên luồng", tableLabel: "Nhãn", tableSampleTime: "Thời gian mẫu (ms)", tableStatus: "Trạng thái", tableBytes: "Bytes", tableSentBytes: "Bytes đã gửi", tableLatency: "Độ trễ", tableConnectTime: "Thời gian kết nối (ms)",
+                noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.", thresholdBreachesTitle: "Vi phạm ngưỡng", tsbAnalysisTitle: "✨ Phân tích từ TSB",
+                exportDocBtn: "Sao chép cho Google Docs", copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.", copiedToClipboard: "Đã sao chép!",
+                replayTimelineTitle: "Dòng thời gian phát lại", listenBtn: "🔊 Nghe",
                 footer_copyright: "&copy; 2025 Bảng điều khiển Phân tích Hiệu suất bởi TSB. Bảo lưu mọi quyền.",
-                quotes: [
-                    "Mỗi con số kể một câu chuyện – hãy khám phá nó.",
-                    "Hiệu suất nói lên nhiều điều hơn lời hứa.",
-                    "Dữ liệu tốt, quyết định tuyệt vời.",
-                    "Số liệu không nói dối. Chúng thì thầm những hiểu biết."
-                ]
+                quotes: ["Mỗi con số kể một câu chuyện – hãy khám phá nó.", "Hiệu suất nói lên nhiều điều hơn lời hứa.", "Dữ liệu tốt, quyết định tuyệt vời.", "Số liệu không nói dối. Chúng thì thầm những hiểu biết."],
+                tips: {
+                    responseTimeSpike: '⚠️ Thời gian phản hồi tăng vọt lên {maxTime}ms cho "{label}" vào lúc {time}. Con số này cao hơn đáng kể so với mức trung bình là {avgTime}ms.',
+                    highErrorRate: '🔴 Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
+                    throughputCapped: '⚠️ Thông lượng dường như đã đạt đỉnh ở khoảng {avgThroughput} req/giây, cho thấy có thể có điểm nghẽn hệ thống.',
+                    percentileHigh: '📈 Phân vị thứ 95 cho "{label}" là {p95}ms, cho thấy 5% yêu cầu chậm hơn giá trị này.',
+                    successFailFluctuation: '📉 Lưu ý sự biến động giữa các yêu cầu thành công và thất bại. Sự gia tăng đột ngột của các lỗi có thể chỉ ra một vấn đề.'
+                }
             }
         };
 
@@ -1306,10 +1305,8 @@
                 }
             });
 
-            // Clear any existing quote rotation interval
             if (quoteInterval) clearInterval(quoteInterval);
 
-            // Update footer
             const footerCopyright = document.getElementById('footer-copyright');
             const footerQuote = document.getElementById('footer-quote');
             if (translations[lang] && translations[lang].footer_copyright) {
@@ -1317,27 +1314,72 @@
             }
             if (translations[lang] && translations[lang].quotes) {
                 const quotes = translations[lang].quotes;
-                
-                // Function to set a new random quote
                 const setRandomQuote = () => {
                     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
                     footerQuote.textContent = `"${randomQuote}"`;
                 };
-
-                // Set the initial quote
                 setRandomQuote();
-                
-                // Start a new interval to change the quote every 5 seconds (5000 milliseconds)
                 quoteInterval = setInterval(setRandomQuote, 5000);
             }
         }
 
-        // Initial load
+        // --- NEW/MODIFIED FEATURE IMPLEMENTATIONS ---
+
+        function playTsbReport() {
+            if (typeof SpeechSynthesisUtterance === 'undefined' || typeof window.speechSynthesis === 'undefined') {
+                alert('Sorry, your browser does not support text-to-speech.');
+                return;
+            }
+            window.speechSynthesis.cancel();
+
+            const textToSpeak = tsbInsightsContent.innerText;
+            if (!textToSpeak.trim()) {
+                alert("No report content to read.");
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = currentLang === 'vi' ? 'vi-VN' : 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function setupTimeline() {
+            if (allData.length === 0) return;
+            const firstTs = allData[0].timestamp;
+            const lastTs = allData[allData.length - 1].timestamp;
+            timelineSlider.min = firstTs;
+            timelineSlider.max = lastTs;
+            timelineSlider.value = lastTs;
+            timelineLabel.textContent = new Date(parseInt(timelineSlider.value)).toLocaleString();
+        }
+
+        function handleTimelineChange() {
+            const timestamp = parseInt(timelineSlider.value);
+            timelineLabel.textContent = new Date(timestamp).toLocaleString();
+            const dataSubset = filteredData.filter(d => d.timestamp <= timestamp);
+            updateDashboard(dataSubset);
+        }
+
+        function updateDynamicTheme(summary) {
+            if (!summary || summary.totalRequests === 0) {
+                bgOverlay.style.backgroundColor = 'rgba(0, 20, 80, 0.5)';
+                return;
+            }
+            const errorRate = (summary.totalErrors / summary.totalRequests);
+            if (errorRate >= 0.05) {
+                bgOverlay.style.backgroundColor = 'rgba(127, 29, 29, 0.6)';
+            } else if (errorRate >= 0.01) {
+                bgOverlay.style.backgroundColor = 'rgba(180, 83, 9, 0.6)';
+            } else {
+                bgOverlay.style.backgroundColor = 'rgba(0, 20, 80, 0.5)';
+            }
+        }
+
+
+        // --- INITIAL LOAD ---
         updateLanguage(currentLang);
         
         // --- SOURCE CODE PROTECTION ---
-        // This is a deterrent, not a foolproof method.
-        // A determined user can still access the source code.
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.key === 'F12' || 
