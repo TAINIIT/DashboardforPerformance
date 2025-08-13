@@ -787,20 +787,91 @@
 
         // --- CHART CONFIGS & RENDERING ---
         function getResponseTimeSeries(data) {
-            const datasets = {};
-            data.forEach(d => {
-                if (!datasets[d.label]) {
-                    datasets[d.label] = {
-                        label: d.label,
-                        data: [],
-                        borderColor: getRandomColor(),
-                        tension: 0.1,
-                        pointRadius: 1,
-                    };
+            const byLabel = groupBy(data, 'label');
+            const finalDatasets = [];
+
+            for (const label in byLabel) {
+                const seriesData = byLabel[label];
+                if (seriesData.length === 0) continue;
+
+                const times = seriesData.map(d => d.sampleTime);
+                const avgTime = times.reduce((a, b) => a + b, 0) / times.length;
+                
+                // A spike is defined as being 2.5 times the average AND over 1.5 seconds.
+                const spikeMultiplier = 2.5;
+                const absoluteThreshold = 1500;
+                const spikeThreshold = avgTime * spikeMultiplier;
+
+                const regularPoints = [];
+                const spikePoints = [];
+
+                seriesData.forEach(d => {
+                    const point = { x: d.timestamp, y: d.sampleTime };
+                    // The point for the line chart is always added.
+                    regularPoints.push(point);
+                    // Check if it's a spike and add to the separate spike dataset.
+                    if (d.sampleTime > spikeThreshold && d.sampleTime > absoluteThreshold) {
+                        spikePoints.push(point);
+                    }
+                });
+
+                // Add the main line dataset for this label
+                finalDatasets.push({
+                    type: 'line',
+                    label: label,
+                    data: regularPoints,
+                    borderColor: getRandomColor(),
+                    tension: 0.1,
+                    pointRadius: 1,
+                    order: 1 // Draw lines behind spikes
+                });
+
+                // Add the spike marker dataset for this label if spikes exist
+                if (spikePoints.length > 0) {
+                    finalDatasets.push({
+                        type: 'scatter',
+                        label: 'Spike', // Generic label for tooltip detection
+                        data: spikePoints,
+                        backgroundColor: 'rgba(239, 68, 68, 1)', // red-600
+                        pointStyle: 'triangle',
+                        radius: 7,
+                        hoverRadius: 10,
+                        order: 0 // Draw spikes on top of lines
+                    });
                 }
-                datasets[d.label].data.push({ x: d.timestamp, y: d.sampleTime });
-            });
-            return { type: 'line', data: { datasets: Object.values(datasets) }, options: getCommonTimeOptions('Response Time (ms)') };
+            }
+
+            // Custom options with special tooltip handling
+            const options = getCommonTimeOptions('Response Time (ms)');
+            options.plugins.tooltip = {
+                callbacks: {
+                    label: function(context) {
+                        const value = context.parsed.y;
+                        const time = new Date(context.parsed.x).toLocaleTimeString();
+                        
+                        // Custom tooltip for spike markers
+                        if (context.dataset.label === 'Spike') {
+                            const langTip = translations[currentLang].tips.spikeTooltip || 'Spike: {value}ms at {time}';
+                            return langTip.replace('{value}', value).replace('{time}', time);
+                        }
+
+                        // Default tooltip for regular line points
+                        let label = context.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += `${context.parsed.y} ms`;
+                        }
+                        return label;
+                    }
+                }
+            };
+
+            return {
+                data: { datasets: finalDatasets },
+                options: options
+            };
         }
         
         function getThroughput(data) {
@@ -1267,7 +1338,8 @@
                     highErrorRate: '🔴 The overall error rate is {errorRate}%, which is high. Check the error distribution chart for problematic requests.',
                     throughputCapped: '⚠️ Throughput appears to have capped at around {avgThroughput} req/sec, suggesting a potential system bottleneck.',
                     percentileHigh: '📈 The 95th percentile for "{label}" is {p95}ms, indicating that 5% of requests are slower than this value.',
-                    successFailFluctuation: '📉 Note the fluctuations between successful and failed requests. A sudden increase in failures could indicate a problem.'
+                    successFailFluctuation: '📉 Note the fluctuations between successful and failed requests. A sudden increase in failures could indicate a problem.',
+                    spikeTooltip: 'Spike Detected: {value}ms at {time}'
                 }
             },
             vi: {
@@ -1291,7 +1363,8 @@
                     highErrorRate: '🔴 Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
                     throughputCapped: '⚠️ Thông lượng dường như đã đạt đỉnh ở khoảng {avgThroughput} req/giây, cho thấy có thể có điểm nghẽn hệ thống.',
                     percentileHigh: '📈 Phân vị thứ 95 cho "{label}" là {p95}ms, cho thấy 5% yêu cầu chậm hơn giá trị này.',
-                    successFailFluctuation: '📉 Lưu ý sự biến động giữa các yêu cầu thành công và thất bại. Sự gia tăng đột ngột của các lỗi có thể chỉ ra một vấn đề.'
+                    successFailFluctuation: '📉 Lưu ý sự biến động giữa các yêu cầu thành công và thất bại. Sự gia tăng đột ngột của các lỗi có thể chỉ ra một vấn đề.',
+                    spikeTooltip: 'Phát hiện đột biến: {value}ms lúc {time}'
                 }
             }
         };
