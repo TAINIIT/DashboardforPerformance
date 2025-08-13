@@ -481,10 +481,34 @@
         exportDocBtn.addEventListener('click', () => {
             // Get the plain text content for clean pasting
             const reportText = tsbInsightsContent.innerText;
+            const footerQuoteText = document.getElementById('footer-quote').innerText;
+            const footerCopyrightText = document.getElementById('footer-copyright').innerText;
+            const fullTextToCopy = `${reportText}\n\n---\n${footerQuoteText}\n${footerCopyrightText}`;
             
-            // Use the Clipboard API to copy the text
-            navigator.clipboard.writeText(reportText).then(() => {
-                // Provide user feedback
+            // Fallback method for copying text that works in iFrames
+            const textArea = document.createElement("textarea");
+            textArea.value = fullTextToCopy;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            let success = false;
+            try {
+                success = document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
+
+            if (success) {
+                 // Provide user feedback
                 const originalText = exportDocBtn.textContent;
                 const copiedTextKey = currentLang === 'vi' ? 'copiedToClipboard' : 'copiedToClipboard';
                 exportDocBtn.textContent = translations[currentLang][copiedTextKey] || 'Copied!';
@@ -498,12 +522,9 @@
                     exportDocBtn.textContent = originalText;
                     exportDocBtn.disabled = false;
                 }, 3000);
-
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                // Fallback for older browsers or if permissions fail
-                alert('Failed to copy. Please manually copy the text.');
-            });
+            } else {
+                 alert('Failed to copy. Please manually copy the text.');
+            }
         });
 
 
@@ -1084,7 +1105,7 @@
             `;
 
             const language = currentLang === 'vi' ? 'Vietnamese' : 'English';
-            const prompt = `Act as a top-tier management consultant from a firm like McKinsey. Analyze the following summary of a load test and provide a professional, structured report in ${language}. The report should contain three sections: 1. Executive Summary, 2. Key Findings (with data points), and 3. Actionable Recommendations. The summary is as follows: \n${dataSummaryForPrompt}`;
+            const prompt = `Act as a top-tier management consultant from a firm like McKinsey. Analyze the following summary of a load test and provide a professional, structured report in ${language}. Start the report with the title "## Performance Assessment Report: Load Test Analysis". Do not add any other introductory phrases or headers before this title. The report should contain three sections: 1. Executive Summary, 2. Key Findings (with data points), and 3. Actionable Recommendations. The summary is as follows: \n${dataSummaryForPrompt}`;
             
             try {
                 let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
@@ -1119,7 +1140,32 @@
                     text = result.candidates[0].content.parts[0].text;
                 }
                 
-                tsbInsightsContent.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*/g, '<strong>').replace(/\*/g, '<em>');
+                const logDate = filteredData.length > 0 ? new Date(filteredData[0].timestamp) : new Date();
+                const analyzeDate = new Date();
+                const formattedLogDate = logDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                const formattedAnalyzeDate = analyzeDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                const reportHeader = `
+                    <p><strong>Prepared For:</strong> [Client Name/Team]</p>
+                    <p><strong>Log Date:</strong> ${formattedLogDate}</p>
+                    <p><strong>Analyze Date:</strong> ${formattedAnalyzeDate}</p>
+                    <p><strong>Prepared By:</strong> TSB</p>
+                    <hr style="margin: 1rem 0;">
+                `;
+                
+                // Find the title and move it before the header
+                const titleRegex = /(<br>)*(##? Performance Assessment Report: Load Test Analysis)/i;
+                const match = text.match(titleRegex);
+                let reportBody = text;
+                let reportTitle = '';
+
+                if (match) {
+                    reportTitle = `<h2>${match[2].replace(/##? /,'')}</h2>`;
+                    reportBody = text.replace(titleRegex, ''); // Remove the title from the body
+                }
+
+
+                tsbInsightsContent.innerHTML = reportTitle + reportHeader + reportBody.replace(/\n/g, '<br>').replace(/\*\*/g, '<strong>').replace(/\*/g, '<em>');
 
             } catch (error) {
                 console.error("Error calling TSB API:", error);
