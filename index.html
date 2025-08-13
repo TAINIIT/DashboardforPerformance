@@ -789,6 +789,7 @@
         function getResponseTimeSeries(data) {
             const byLabel = groupBy(data, 'label');
             const finalDatasets = [];
+            const allSpikePoints = []; // Collect all spikes here
 
             for (const label in byLabel) {
                 const seriesData = byLabel[label];
@@ -797,25 +798,20 @@
                 const times = seriesData.map(d => d.sampleTime);
                 const avgTime = times.reduce((a, b) => a + b, 0) / times.length;
                 
-                // A spike is defined as being 2.5 times the average AND over 1.5 seconds.
                 const spikeMultiplier = 2.5;
                 const absoluteThreshold = 1500;
                 const spikeThreshold = avgTime * spikeMultiplier;
 
                 const regularPoints = [];
-                const spikePoints = [];
 
                 seriesData.forEach(d => {
                     const point = { x: d.timestamp, y: d.sampleTime };
-                    // The point for the line chart is always added.
                     regularPoints.push(point);
-                    // Check if it's a spike and add to the separate spike dataset.
                     if (d.sampleTime > spikeThreshold && d.sampleTime > absoluteThreshold) {
-                        spikePoints.push(point);
+                        allSpikePoints.push(point); // Add to the single spike collection
                     }
                 });
 
-                // Add the main line dataset for this label
                 finalDatasets.push({
                     type: 'line',
                     label: label,
@@ -823,25 +819,24 @@
                     borderColor: getRandomColor(),
                     tension: 0.1,
                     pointRadius: 1,
-                    order: 1 // Draw lines behind spikes
+                    order: 1
                 });
-
-                // Add the spike marker dataset for this label if spikes exist
-                if (spikePoints.length > 0) {
-                    finalDatasets.push({
-                        type: 'scatter',
-                        label: 'Spike', // Generic label for tooltip detection
-                        data: spikePoints,
-                        backgroundColor: 'rgba(239, 68, 68, 1)', // red-600
-                        pointStyle: 'triangle',
-                        radius: 7,
-                        hoverRadius: 10,
-                        order: 0 // Draw spikes on top of lines
-                    });
-                }
             }
 
-            // Custom options with special tooltip handling
+            // After checking all labels, add a single dataset for all collected spikes
+            if (allSpikePoints.length > 0) {
+                finalDatasets.push({
+                    type: 'scatter',
+                    label: 'Spike', // This will now be a single legend item
+                    data: allSpikePoints,
+                    backgroundColor: 'rgba(239, 68, 68, 1)',
+                    pointStyle: 'triangle',
+                    radius: 7,
+                    hoverRadius: 10,
+                    order: 0
+                });
+            }
+
             const options = getCommonTimeOptions('Response Time (ms)');
             options.plugins.tooltip = {
                 callbacks: {
@@ -849,13 +844,11 @@
                         const value = context.parsed.y;
                         const time = new Date(context.parsed.x).toLocaleTimeString();
                         
-                        // Custom tooltip for spike markers
                         if (context.dataset.label === 'Spike') {
                             const langTip = translations[currentLang].tips.spikeTooltip || 'Spike: {value}ms at {time}';
                             return langTip.replace('{value}', value).replace('{time}', time);
                         }
 
-                        // Default tooltip for regular line points
                         let label = context.dataset.label || '';
                         if (label) {
                             label += ': ';
@@ -867,6 +860,21 @@
                     }
                 }
             };
+            
+            // Filter out the 'Spike' legend item if the user un-checks it
+            options.plugins.legend.onClick = (e, legendItem, legend) => {
+                const index = legendItem.datasetIndex;
+                const ci = legend.chart;
+                if (ci.isDatasetVisible(index)) {
+                    ci.hide(index);
+                    legendItem.hidden = true;
+                } else {
+                    ci.show(index);
+                    legendItem.hidden = false;
+                }
+                // If the main spike legend is toggled, it applies to all.
+            };
+
 
             return {
                 data: { datasets: finalDatasets },
