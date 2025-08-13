@@ -14,6 +14,12 @@
             font-family: 'Inter', sans-serif;
             /* Fallback background gradient */
             background: linear-gradient(to right, #000428, #004e92);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex-grow: 1;
         }
         #bg-video {
             position: fixed;
@@ -313,6 +319,12 @@
         </div>
     </div>
 
+    <footer class="text-center p-4 mt-auto relative z-10 text-white">
+        <p id="footer-quote" class="italic text-sm mb-2"></p>
+        <p id="footer-copyright" class="text-xs"></p>
+    </footer>
+
+
     <script>
         // --- GLOBAL STATE & CONFIG ---
         const fileUpload = document.getElementById('file-upload');
@@ -349,6 +361,7 @@
         let currentPage = 1;
         const rowsPerPage = 20;
         let currentLang = 'en';
+        let quoteInterval;
 
         // --- EVENT LISTENERS ---
         fileUpload.addEventListener('change', (event) => {
@@ -1169,7 +1182,14 @@
                 tsbAnalysisTitle: "✨ Analyze with TSB",
                 exportDocBtn: "Copy for Google Docs",
                 copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.",
-                copiedToClipboard: "Copied!"
+                copiedToClipboard: "Copied!",
+                footer_copyright: "&copy; 2025 Performance Analysis Dashboard by TSB. All Rights Reserved.",
+                quotes: [
+                    "Every number tells a story – uncover it.",
+                    "Performance speaks louder than promises.",
+                    "Good data, great decisions.",
+                    "Metrics don’t lie. They whisper insights."
+                ]
             },
             vi: {
                 dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất",
@@ -1220,7 +1240,14 @@
                 tsbAnalysisTitle: "✨ Phân tích từ TSB",
                 exportDocBtn: "Sao chép cho Google Docs",
                 copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.",
-                copiedToClipboard: "Đã sao chép!"
+                copiedToClipboard: "Đã sao chép!",
+                footer_copyright: "&copy; 2025 Bảng điều khiển Phân tích Hiệu suất bởi TSB. Bảo lưu mọi quyền.",
+                quotes: [
+                    "Mỗi con số kể một câu chuyện – hãy khám phá nó.",
+                    "Hiệu suất nói lên nhiều điều hơn lời hứa.",
+                    "Dữ liệu tốt, quyết định tuyệt vời.",
+                    "Số liệu không nói dối. Chúng thì thầm những hiểu biết."
+                ]
             }
         };
 
@@ -1232,6 +1259,31 @@
                     element.textContent = translations[lang][key];
                 }
             });
+
+            // Clear any existing quote rotation interval
+            if (quoteInterval) clearInterval(quoteInterval);
+
+            // Update footer
+            const footerCopyright = document.getElementById('footer-copyright');
+            const footerQuote = document.getElementById('footer-quote');
+            if (translations[lang] && translations[lang].footer_copyright) {
+                footerCopyright.innerHTML = translations[lang].footer_copyright;
+            }
+            if (translations[lang] && translations[lang].quotes) {
+                const quotes = translations[lang].quotes;
+                
+                // Function to set a new random quote
+                const setRandomQuote = () => {
+                    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+                    footerQuote.textContent = `"${randomQuote}"`;
+                };
+
+                // Set the initial quote
+                setRandomQuote();
+                
+                // Start a new interval to change the quote every 5 seconds (5000 milliseconds)
+                quoteInterval = setInterval(setRandomQuote, 5000);
+            }
         }
 
         // Initial load
