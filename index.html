@@ -305,8 +305,9 @@
                 <div class="loader"></div>
             </div>
             <div id="tsb-modal-footer" class="mt-4 pt-4 border-t border-gray-200 text-right hidden">
+                 <p class="text-sm text-gray-600 text-left mb-2" data-translate-key="copyInstructions">Click the button to copy the report and open a new Google Doc for pasting.</p>
                  <button id="export-doc-btn" class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition" data-translate-key="exportDocBtn">
-                    Export to Doc
+                    Copy for Google Docs
                 </button>
             </div>
         </div>
@@ -465,26 +466,31 @@
         });
         
         exportDocBtn.addEventListener('click', () => {
-            const reportContent = tsbInsightsContent.innerHTML;
-            const reportTitle = "Performance Analysis Report";
-            const newWindow = window.open('', '_blank');
-            newWindow.document.write(`
-                <html>
-                    <head>
-                        <title>${reportTitle}</title>
-                        <style>
-                            body { font-family: 'Times New Roman', serif; line-height: 1.6; margin: 40px; }
-                            h1, h2, h3 { font-family: 'Arial', sans-serif; }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>${reportTitle}</h1>
-                        <hr>
-                        ${reportContent}
-                    </body>
-                </html>
-            `);
-            newWindow.document.close();
+            // Get the plain text content for clean pasting
+            const reportText = tsbInsightsContent.innerText;
+            
+            // Use the Clipboard API to copy the text
+            navigator.clipboard.writeText(reportText).then(() => {
+                // Provide user feedback
+                const originalText = exportDocBtn.textContent;
+                const copiedTextKey = currentLang === 'vi' ? 'copiedToClipboard' : 'copiedToClipboard';
+                exportDocBtn.textContent = translations[currentLang][copiedTextKey] || 'Copied!';
+                exportDocBtn.disabled = true;
+                
+                // Open a new Google Doc for the user
+                window.open('https://docs.new', '_blank');
+                
+                // Revert button text after a delay
+                setTimeout(() => {
+                    exportDocBtn.textContent = originalText;
+                    exportDocBtn.disabled = false;
+                }, 3000);
+
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback for older browsers or if permissions fail
+                alert('Failed to copy. Please manually copy the text.');
+            });
         });
 
 
@@ -1070,7 +1076,7 @@
             try {
                 let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                 const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs"; // API key will be proxied by the environment.
+                const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 let response;
@@ -1161,7 +1167,9 @@
                 noDataMessage: "No valid data found in the uploaded file.",
                 thresholdBreachesTitle: "Threshold Breaches",
                 tsbAnalysisTitle: "✨ Analyze with TSB",
-                exportDocBtn: "Export to Doc"
+                exportDocBtn: "Copy for Google Docs",
+                copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.",
+                copiedToClipboard: "Copied!"
             },
             vi: {
                 dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất",
@@ -1210,7 +1218,9 @@
                 noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.",
                 thresholdBreachesTitle: "Vi phạm ngưỡng",
                 tsbAnalysisTitle: "✨ Phân tích từ TSB",
-                exportDocBtn: "Xuất ra Doc"
+                exportDocBtn: "Sao chép cho Google Docs",
+                copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.",
+                copiedToClipboard: "Đã sao chép!"
             }
         };
 
