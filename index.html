@@ -232,9 +232,9 @@
             <!-- Detailed Table Section -->
             <div class="content-card rounded-lg shadow-md border border-gray-700 overflow-hidden text-gray-800">
                  <div class="flex justify-between items-center p-6">
-                     <h2 class="text-2xl font-semibold" data-translate-key="detailedDataTitle">Detailed Data</h2>
-                     <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm" data-translate-key="downloadCsvBtn">Download CSV</button>
-                 </div>
+                    <h2 class="text-2xl font-semibold" data-translate-key="detailedDataTitle">Detailed Data</h2>
+                    <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm" data-translate-key="downloadCsvBtn">Download CSV</button>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
@@ -298,11 +298,16 @@
                 <h2 class="text-xl font-semibold" data-translate-key="tsbAnalysisTitle">✨ Analyze with TSB</h2>
                 <button id="close-tsb-modal-btn" class="text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
             </div>
-            <div id="tsb-insights-content" class="overflow-y-auto">
+            <div id="tsb-insights-content" class="overflow-y-auto flex-grow">
                 <!-- TSB insights will be loaded here -->
             </div>
-             <div id="tsb-loader" class="flex justify-center items-center h-full">
+            <div id="tsb-loader" class="flex justify-center items-center h-full">
                 <div class="loader"></div>
+            </div>
+            <div id="tsb-modal-footer" class="mt-4 pt-4 border-t border-gray-200 text-right hidden">
+                 <button id="export-doc-btn" class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition" data-translate-key="exportDocBtn">
+                    Export to Doc
+                </button>
             </div>
         </div>
     </div>
@@ -332,6 +337,9 @@
         const tsbInsightsContent = document.getElementById('tsb-insights-content');
         const tsbLoader = document.getElementById('tsb-loader');
         const languageSelector = document.getElementById('language-selector');
+        const exportDocBtn = document.getElementById('export-doc-btn');
+        const tsbModalFooter = document.getElementById('tsb-modal-footer');
+
 
         let allData = [];
         let filteredData = [];
@@ -391,7 +399,7 @@
             if (event.target === chartModal) {
                  chartModal.classList.add('hidden');
                  if (maximizedChart) {
-                    maximizedChart.destroy();
+                     maximizedChart.destroy();
                 }
             }
         });
@@ -455,6 +463,30 @@
         languageSelector.addEventListener('change', (event) => {
             updateLanguage(event.target.value);
         });
+        
+        exportDocBtn.addEventListener('click', () => {
+            const reportContent = tsbInsightsContent.innerHTML;
+            const reportTitle = "Performance Analysis Report";
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(`
+                <html>
+                    <head>
+                        <title>${reportTitle}</title>
+                        <style>
+                            body { font-family: 'Times New Roman', serif; line-height: 1.6; margin: 40px; }
+                            h1, h2, h3 { font-family: 'Arial', sans-serif; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>${reportTitle}</h1>
+                        <hr>
+                        ${reportContent}
+                    </body>
+                </html>
+            `);
+            newWindow.document.close();
+        });
+
 
         function handleFile(file) {
             fileNameDisplay.textContent = `Processing: ${file.name}... (Note: Multi-file comparison coming soon!)`;
@@ -806,7 +838,7 @@
                  const chartWrapper = document.getElementById(canvasId).parentElement.parentElement;
                  chartWrapper.style.display = 'block';
                  charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
-                 
+                
                  // Add double-click listener for maximizing
                  chartWrapper.ondblclick = () => {
                      if (maximizedChart) {
@@ -1019,6 +1051,7 @@
             tsbInsightsModal.classList.remove('hidden');
             tsbLoader.style.display = 'flex';
             tsbInsightsContent.style.display = 'none';
+            tsbModalFooter.classList.add('hidden');
             tsbInsightsContent.innerHTML = '';
 
             const summary = calculateSummaryMetrics(filteredData);
@@ -1032,12 +1065,114 @@
             `;
 
             const language = currentLang === 'vi' ? 'Vietnamese' : 'English';
-            const prompt = `Act as a top-tier management consultant from a firm like McKinsey. Analyze the following summary of a load test and provide a professional, structured report in ${language}. The report should contain three sections: 1. Executive Summary, 2. Key Findings (with data points), and 3. Actionable Recommendations. The summary is as follows: \n${dataSummaryForPrompt}`;
+            const prompt = `### PERSONA
+Bạn là một Chuyên gia tư vấn quản lý cấp cao tại một công ty
+hàng đầu như McKinsey, BCG hoặc Bain. Lối tư duy của bạn phải tuân thủ nghiêm
+ngặt các nguyên tắc sau:
+- **Tư duy MECE (Mutually Exclusive, Collectively
+Exhaustive):** Phân tích các vấn đề một cách có cấu trúc, không trùng lặp và
+không bỏ sót.
+- **Data-Driven:** Mọi kết luận và đề xuất phải dựa trên dữ
+liệu cụ thể từ bản tóm tắt được cung cấp.
+- **Answer-First (Pyramid Principle):** Bắt đầu bằng câu trả
+lời/kết luận chính, sau đó cung cấp các luận điểm và dữ liệu hỗ trợ.
+- **Tập trung vào Tác động Kinh doanh:** Luôn liên kết các
+phát hiện kỹ thuật với ý nghĩa và rủi ro đối với hoạt động kinh doanh.
+
+### CONTEXT
+Nhiệm vụ này nhằm phân tích kết quả kiểm thử tải (load test)
+cho hệ thống [Mô tả ngắn gọn về hệ thống, ví dụ: "nền tảng e-commerce
+ABC"] để chuẩn bị cho [Mô tả sự kiện kinh doanh, ví dụ: "chiến dịch
+khuyến mãi Black Friday sắp tới"]. Mục tiêu là xác định các điểm nghẽn hiệu
+năng, đánh giá khả năng mở rộng và đảm bảo sự ổn định của hệ thống dưới tải trọng
+cao, nhằm giảm thiểu rủi ro mất doanh thu và ảnh hưởng xấu đến trải nghiệm người
+dùng.
+
+### TASK
+Dựa vào vai trò (Persona) và bối cảnh (Context), hãy thực hiện
+một chuỗi phân tích và tạo một báo cáo chuyên nghiệp bằng ngôn ngữ
+\`${language}\`.
+
+**Bước 1: Phân tích nội bộ (Internal Analysis - Chain of
+Thought)**
+Trước khi viết báo cáo, hãy thực hiện các bước phân tích sau
+một cách âm thầm:
+1.  **Hiểu các chỉ số
+chính:** Xác định và hiểu rõ ý nghĩa của các chỉ số trong tóm tắt dữ liệu (ví dụ:
+VUs, throughput (requests/sec), p95/p99 latency, error rate).
+2.  **Xác định tương
+quan và điểm bất thường:**
+    * Khi số lượng người
+dùng đồng thời (VUs) tăng lên, độ trễ (latency) và tỷ lệ lỗi (error rate) thay
+đổi như thế nào?
+    * Có điểm nào mà
+hiệu suất bắt đầu suy giảm đột ngột không (điểm bão hòa/gãy)?
+    * So sánh độ trễ
+p95 và p99 để đánh giá mức độ ảnh hưởng đến những người dùng có trải nghiệm tệ
+nhất.
+3.  **Suy luận về các
+điểm nghẽn (Bottlenecks):** Dựa trên các điểm bất thường, đâu có thể là nguyên
+nhân gốc rễ? (Ví dụ: Database quá tải? Giới hạn của API gateway? Vấn đề về
+connection pooling?).
+4.  **Lượng hóa tác động
+kinh doanh:** Ước tính rủi ro. Ví dụ: "Với tỷ lệ lỗi 3% ở mức 5000 VUs,
+công ty có thể mất khoảng X đơn hàng mỗi phút trong giờ cao điểm."
+
+**Bước 2: Tạo báo cáo chuyên nghiệp (Generate Professional
+Report)**
+Soạn thảo báo cáo có cấu trúc chặt chẽ gồm 3 phần sau:
+
+**1. Tóm tắt cho Ban lãnh đạo (Executive Summary):**
+   - Trình bày kết luận
+quan trọng nhất ngay từ đầu theo nguyên tắc "Answer-First".
+   - Nêu rõ tình trạng
+hiện tại của hệ thống (sẵn sàng hay không sẵn sàng cho sự kiện).
+   - Tóm tắt 2-3 rủi
+ro kinh doanh chính nếu không hành động.
+
+**2. Các phát hiện chính (Key Findings):**
+   - Trình bày theo từng
+luận điểm rõ ràng, mỗi luận điểm phải có số liệu cụ thể để chứng minh.
+   - **Ví dụ về cấu
+trúc luận điểm:**
+     * **Hiệu năng cơ
+bản và Ngưỡng chịu tải:** "Hệ thống hoạt động ổn định dưới X VUs với độ trễ
+p95 là Y ms. Tuy nhiên, hiệu năng suy giảm đáng kể khi vượt qua ngưỡng Z
+VUs."
+     * **Xác định điểm
+nghẽn cổ chai:** "Độ trễ của API \`POST /api/checkout\` tăng vọt 300% khi tải
+đạt 80% công suất, cho thấy vấn đề tiềm tàng ở dịch vụ thanh toán."
+     * **Phân tích tỷ
+lệ lỗi:** "Tỷ lệ lỗi tăng từ 0.1% lên 4.5% khi tải tăng từ 4000 lên 5000
+VUs, chủ yếu là lỗi \`503 Service Unavailable\`."
+
+**3. Đề xuất hành động (Actionable Recommendations):**
+   - Cung cấp các đề
+xuất cụ thể, khả thi và có thể đo lường được.
+   - Phân loại các đề
+xuất theo mức độ ưu tiên dựa trên ma trận **Tác động (Impact) vs. Nỗ lực
+(Effort)**.
+     * **Ưu tiên cao
+(High Impact, Low/Medium Effort):** Các hành động cần làm ngay. Ví dụ: "Tối
+ưu hóa câu lệnh SQL trong API checkout."
+     * **Ưu tiên trung
+bình (High Impact, High Effort):** Các kế hoạch dài hạn. Ví dụ: "Nâng cấp
+cụm database và triển khai read replicas."
+     * **Ưu tiên thấp
+(Low Impact):** Các cải tiến nhỏ. Ví dụ: "Tăng thời gian timeout cho các kết
+nối nội bộ."
+   - Mỗi đề xuất cần
+nêu rõ: Hành động là gì? Tại sao cần thực hiện (dựa trên Key Findings)? Kết quả
+mong đợi là gì?
+
+### INPUT DATA
+**Tóm tắt dữ liệu kiểm thử tải (Load Test Data Summary):**
+${dataSummaryForPrompt}`;
             
             try {
                 let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                 const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs";
+                const apiKey = ""; // API key will be proxied by the environment.
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 let response;
@@ -1067,7 +1202,7 @@
                     text = result.candidates[0].content.parts[0].text;
                 }
                 
-                tsbInsightsContent.innerHTML = text.replace(/\n/g, '<br>');
+                tsbInsightsContent.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*/g, '<strong>').replace(/\*/g, '<em>');
 
             } catch (error) {
                 console.error("Error calling TSB API:", error);
@@ -1075,6 +1210,7 @@
             } finally {
                 tsbLoader.style.display = 'none';
                 tsbInsightsContent.style.display = 'block';
+                tsbModalFooter.classList.remove('hidden');
             }
         }
 
@@ -1126,7 +1262,8 @@
                 tableConnectTime: "Connect Time (ms)",
                 noDataMessage: "No valid data found in the uploaded file.",
                 thresholdBreachesTitle: "Threshold Breaches",
-                tsbAnalysisTitle: "✨ Analyze with TSB"
+                tsbAnalysisTitle: "✨ Analyze with TSB",
+                exportDocBtn: "Export to Doc"
             },
             vi: {
                 dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất",
@@ -1174,7 +1311,8 @@
                 tableConnectTime: "Thời gian kết nối (ms)",
                 noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.",
                 thresholdBreachesTitle: "Vi phạm ngưỡng",
-                tsbAnalysisTitle: "✨ Phân tích từ TSB"
+                tsbAnalysisTitle: "✨ Phân tích từ TSB",
+                exportDocBtn: "Xuất ra Doc"
             }
         };
 
@@ -1190,6 +1328,18 @@
 
         // Initial load
         updateLanguage(currentLang);
+        
+        // --- SOURCE CODE PROTECTION ---
+        // This is a deterrent, not a foolproof method.
+        // A determined user can still access the source code.
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || 
+               (event.ctrlKey && event.shiftKey && ['I', 'J', 'C'].includes(event.key.toUpperCase())) ||
+               (event.ctrlKey && event.key.toUpperCase() === 'U')) {
+                event.preventDefault();
+            }
+        });
 
     </script>
 
