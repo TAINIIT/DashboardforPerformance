@@ -127,6 +127,9 @@
             cursor: pointer;
             border-radius: 50%;
         }
+        #main-controls-arrow.rotate-180 {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -150,69 +153,75 @@
             <p class="text-md text-gray-300 mt-2" data-translate-key="dashboardSubtitle">Upload a results file (.jmx, .csv, .json) to explore performance data.</p>
         </header>
 
-        <!-- Main Action Section -->
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
-            <!-- File Upload Section -->
-            <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
-                <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2" data-translate-key="uploadTitle">Upload Results File(s)</label>
-                <div class="flex items-center justify-center w-full">
-                    <label id="file-upload-label" for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
-                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mb-2 text-sm text-gray-600"><span class="font-semibold" data-translate-key="clickToUpload">Click to upload</span> <span data-translate-key="orDragAndDrop">or drag and drop</span></p>
-                            <p class="text-xs text-gray-600" data-translate-key="supportedFiles">Supports .jmx, .csv, .json files</p>
-                        </div>
-                        <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" multiple />
-                    </label>
-                </div>
-                <p id="file-name" class="mt-4 text-center text-sm text-gray-700"></p>
+        <!-- Collapsible Setup & Filters Section -->
+        <div id="main-controls-container" class="max-w-5xl mx-auto mb-8">
+            <div id="main-controls-header" class="flex justify-between items-center p-4 bg-gray-800 bg-opacity-50 rounded-lg cursor-pointer">
+                <h2 class="text-xl font-semibold text-white" data-translate-key="setupAndFiltersTitle">Setup, Filters & Export</h2>
+                <svg id="main-controls-arrow" class="w-6 h-6 text-white transition-transform transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </div>
-
-            <!-- Understand Chart Button Section -->
-             <div class="content-card text-center p-6 rounded-lg shadow-md border border-gray-700 flex flex-col items-center justify-center h-full">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-translate-key="helpTitle">Need help reading the charts?</h3>
-                <p class="text-gray-700 mb-6 text-center" data-translate-key="helpSubtitle">Click the button below for a detailed guide on how to interpret the performance data.</p>
-                <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" data-translate-key="understandChartsBtn">
-                    Understand The Charts
-                </button>
-            </div>
-        </div>
-
-
-        <!-- Filters Section -->
-        <div id="filters-section" class="max-w-5xl mx-auto content-card rounded-lg shadow-md p-6 border border-gray-700 mb-8 hidden">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900" data-translate-key="filtersTitle">Data Filters & Export</h2>
-            <div class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
-                    <div>
-                        <label for="label-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByLabel">Filter by Label</label>
-                        <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
-                    </div>
-                    <div>
-                        <label for="status-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByStatus">Filter by Status</label>
-                        <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900">
-                            <option value="all" data-translate-key="statusAll">All</option>
-                            <option value="true" data-translate-key="statusSuccess">Success</option>
-                            <option value="false" data-translate-key="statusFailure">Failure</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="threshold-input" class="block text-sm font-medium text-gray-900" data-translate-key="responseTimeThreshold">Threshold (ms)</label>
-                        <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
-                    </div>
-                    <div>
-                        <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-semibold" data-translate-key="applyBtn">Apply</button>
-                    </div>
-                    <div class="flex justify-center pb-2">
-                         <div class="flex items-center">
-                            <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
-                            <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900" data-translate-key="showAssistantTips">Show Assistant Tips</label>
+            <div id="main-controls-content" class="pt-4">
+                <!-- Main Action Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+                    <!-- File Upload Section -->
+                    <div class="content-card rounded-lg shadow-md p-6 border border-gray-700">
+                        <label for="file-upload-label" class="block text-lg font-semibold text-gray-800 mb-2" data-translate-key="uploadTitle">Upload Results File(s)</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label id="file-upload-label" for="file-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 transition">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                    <p class="mb-2 text-sm text-gray-600"><span class="font-semibold" data-translate-key="clickToUpload">Click to upload</span> <span data-translate-key="orDragAndDrop">or drag and drop</span></p>
+                                    <p class="text-xs text-gray-600" data-translate-key="supportedFiles">Supports .jmx, .csv, .json files</p>
+                                </div>
+                                <input id="file-upload" type="file" class="hidden" accept=".jmx,.csv,.json" multiple />
+                            </label>
                         </div>
+                        <p id="file-name" class="mt-4 text-center text-sm text-gray-700"></p>
+                    </div>
+                    <!-- Understand Chart Button Section -->
+                    <div class="content-card text-center p-6 rounded-lg shadow-md border border-gray-700 flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4" data-translate-key="helpTitle">Need help reading the charts?</h3>
+                        <p class="text-gray-700 mb-6 text-center" data-translate-key="helpSubtitle">Click the button below for a detailed guide on how to interpret the performance data.</p>
+                        <button id="understand-chart-btn" class="bg-teal-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" data-translate-key="understandChartsBtn">
+                            Understand The Charts
+                        </button>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" data-translate-key="exportPdfBtn">Export PDF</button>
-                    <button id="tsb-analysis-btn" class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" data-translate-key="tsbAnalysisBtn">✨ Analyze with TSB</button>
+                <!-- Filters Section -->
+                <div id="filters-section" class="content-card rounded-lg shadow-md p-6 border border-gray-700 hidden">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-900" data-translate-key="filtersTitle">Data Filters & Export</h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
+                            <div>
+                                <label for="label-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByLabel">Filter by Label</label>
+                                <select id="label-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"></select>
+                            </div>
+                            <div>
+                                <label for="status-filter" class="block text-sm font-medium text-gray-900" data-translate-key="filterByStatus">Filter by Status</label>
+                                <select id="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900">
+                                    <option value="all" data-translate-key="statusAll">All</option>
+                                    <option value="true" data-translate-key="statusSuccess">Success</option>
+                                    <option value="false" data-translate-key="statusFailure">Failure</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="threshold-input" class="block text-sm font-medium text-gray-900" data-translate-key="responseTimeThreshold">Threshold (ms)</label>
+                                <input type="number" id="threshold-input" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900" placeholder="e.g., 2000">
+                            </div>
+                            <div>
+                                <button id="apply-filters-btn" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-semibold" data-translate-key="applyBtn">Apply</button>
+                            </div>
+                            <div class="flex justify-center pb-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="toggle-tips" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
+                                    <label for="toggle-tips" class="ml-2 text-sm font-medium text-gray-900" data-translate-key="showAssistantTips">Show Assistant Tips</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button id="export-pdf-btn" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" data-translate-key="exportPdfBtn">Export PDF</button>
+                            <button id="tsb-analysis-btn" class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" data-translate-key="tsbAnalysisBtn">✨ Analyze with TSB</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,6 +382,10 @@
         const fileNameDisplay = document.getElementById('file-name');
         const dashboardContent = document.getElementById('dashboard-content');
         const noDataMessage = document.getElementById('no-data-message');
+        const mainControlsContainer = document.getElementById('main-controls-container');
+        const mainControlsHeader = document.getElementById('main-controls-header');
+        const mainControlsContent = document.getElementById('main-controls-content');
+        const mainControlsArrow = document.getElementById('main-controls-arrow');
         const filtersSection = document.getElementById('filters-section');
         const applyFiltersBtn = document.getElementById('apply-filters-btn');
         const downloadCsvBtn = document.getElementById('download-csv-btn');
@@ -589,6 +602,18 @@
         listenTsbReportBtn.addEventListener('click', playTsbReport);
         timelineSlider.addEventListener('input', handleTimelineChange);
 
+        mainControlsHeader.addEventListener('click', toggleMainControls);
+        document.addEventListener('keydown', (event) => {
+            if (event.target.tagName.toLowerCase() === 'input') return; // Ignore keydown in input fields
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                hideMainControls();
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                showMainControls();
+            }
+        });
+
 
         function handleFile(file) {
             fileNameDisplay.textContent = `Processing: ${file.name}...`;
@@ -713,15 +738,16 @@
             console.error("File processing error:", error);
             fileNameDisplay.textContent = `Error: ${error.message}`;
             dashboardContent.classList.add('hidden');
-            filtersSection.classList.add('hidden');
+            mainControlsContainer.classList.remove('hidden');
             timelineContainer.classList.add('hidden');
             noDataMessage.classList.remove('hidden');
         }
 
         // --- DASHBOARD INITIALIZATION & UPDATES ---
         function initializeDashboard() {
-            dashboardContent.classList.remove('hidden');
+            hideMainControls(); // Collapse controls after file upload
             filtersSection.classList.remove('hidden');
+            dashboardContent.classList.remove('hidden');
             timelineContainer.classList.remove('hidden');
             noDataMessage.classList.add('hidden');
             populateFilters(allData);
@@ -1341,7 +1367,7 @@
                 dashboardTitle: "Performance Analysis Dashboard Tool", dashboardSubtitle: "Upload a results file (.jmx, .csv, .json) to explore performance data.",
                 uploadTitle: "Upload Results File(s)", clickToUpload: "Click to upload", orDragAndDrop: "or drag and drop", supportedFiles: "Supports .jmx, .csv, .json files",
                 helpTitle: "Need help reading the charts?", helpSubtitle: "Click the button below for a detailed guide on how to interpret the performance data.", understandChartsBtn: "Understand The Charts",
-                filtersTitle: "Data Filters & Export", filterByLabel: "Filter by Label", filterByStatus: "Filter by Status", allLabels: "All Labels", statusAll: "All", statusSuccess: "Success", statusFailure: "Failure",
+                setupAndFiltersTitle: "Setup, Filters & Export", filtersTitle: "Data Filters & Export", filterByLabel: "Filter by Label", filterByStatus: "Filter by Status", allLabels: "All Labels", statusAll: "All", statusSuccess: "Success", statusFailure: "Failure",
                 responseTimeThreshold: "Threshold (ms)", applyBtn: "Apply", showAssistantTips: "Show Assistant Tips",
                 exportPdfBtn: "Export PDF", tsbAnalysisBtn: "✨ Analyze with TSB",
                 totalRequests: "Total Requests", totalErrors: "Total Errors", avgMaxResponse: "Avg / Max Response (ms)", peakThroughput: "Peak Throughput (req/s)", thresholdBreaches: "Threshold Breaches",
@@ -1366,7 +1392,7 @@
                 dashboardTitle: "Bảng điều khiển Phân tích Hiệu suất", dashboardSubtitle: "Tải lên tệp kết quả (.jmx, .csv, .json) để khám phá dữ liệu hiệu suất.",
                 uploadTitle: "Tải lên tệp kết quả", clickToUpload: "Nhấn để tải lên", orDragAndDrop: "hoặc kéo và thả", supportedFiles: "Hỗ trợ các tệp .jmx, .csv, .json",
                 helpTitle: "Cần trợ giúp đọc biểu đồ?", helpSubtitle: "Nhấp vào nút bên dưới để có hướng dẫn chi tiết về cách diễn giải dữ liệu hiệu suất.", understandChartsBtn: "Hiểu các biểu đồ",
-                filtersTitle: "Bộ lọc dữ liệu & Xuất", filterByLabel: "Lọc theo nhãn", filterByStatus: "Lọc theo trạng thái", allLabels: "Tất cả các nhãn", statusAll: "Tất cả", statusSuccess: "Thành công", statusFailure: "Thất bại",
+                setupAndFiltersTitle: "Cài đặt, Bộ lọc & Xuất", filtersTitle: "Bộ lọc dữ liệu & Xuất", filterByLabel: "Lọc theo nhãn", filterByStatus: "Lọc theo trạng thái", allLabels: "Tất cả các nhãn", statusAll: "Tất cả", statusSuccess: "Thành công", statusFailure: "Thất bại",
                 responseTimeThreshold: "Ngưỡng (ms)", applyBtn: "Áp dụng", showAssistantTips: "Hiển thị Mẹo trợ lý",
                 exportPdfBtn: "Xuất PDF", tsbAnalysisBtn: "✨ Phân tích với TSB",
                 totalRequests: "Tổng số yêu cầu", totalErrors: "Tổng số lỗi", avgMaxResponse: "Phản hồi TB / Tối đa (ms)", peakThroughput: "Thông lượng đỉnh (req/s)", thresholdBreaches: "Vi phạm ngưỡng",
@@ -1481,6 +1507,21 @@
 
             // Update Background Overlay
             bgOverlay.style.backgroundColor = bgColor;
+        }
+
+        function toggleMainControls() {
+            mainControlsContent.classList.toggle('hidden');
+            mainControlsArrow.classList.toggle('rotate-180');
+        }
+
+        function showMainControls() {
+            mainControlsContent.classList.remove('hidden');
+            mainControlsArrow.classList.add('rotate-180');
+        }
+
+        function hideMainControls() {
+            mainControlsContent.classList.add('hidden');
+            mainControlsArrow.classList.remove('rotate-180');
         }
 
 
