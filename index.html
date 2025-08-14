@@ -480,13 +480,27 @@
             pdf.setFontSize(18);
             pdf.text('Performance Analysis Report', 10, 15);
 
-            const summaryCanvas = await html2canvas(summaryStatsContainer, { scale: 2 });
-            const summaryImgData = summaryCanvas.toDataURL('image/png', 1.0);
-            pdf.addImage(summaryImgData, 'PNG', 10, 25, 277, 30);
+            // --- Render Summary Stats as Text for Sharpness ---
+            const summaryCards = summaryStatsContainer.querySelectorAll('.summary-card');
+            let xPos = 10;
+            const yPos = 30;
+            const cardWidth = 55;
+            pdf.setFontSize(10);
 
+            summaryCards.forEach((card, index) => {
+                const title = card.querySelector('p:first-child').textContent;
+                const value = card.querySelector('p:last-child').textContent;
+                
+                pdf.text(title, xPos, yPos);
+                pdf.setFontSize(16);
+                pdf.text(value, xPos, yPos + 8);
+                pdf.setFontSize(10);
+                
+                xPos += cardWidth;
+            });
 
             const chartElements = document.querySelectorAll('.chart-container canvas');
-            let y = 70;
+            let y = 60; // Adjusted starting Y position
 
             for (const canvas of chartElements) {
                 if (canvas.parentElement.parentElement.style.display !== 'none') {
@@ -748,8 +762,7 @@
             renderChart('success-fail-trend-chart', getSuccessFailTrend(dataToRender));
             renderTable(dataToRender);
             generateInsights(dataToRender, processed);
-            updateDynamicTheme(processed.summary);
-            updateTimelineStyle(dataToRender);
+            updateDynamicThemeAndTimeline(dataToRender);
         }
 
         // --- DATA PROCESSING ---
@@ -1260,7 +1273,7 @@
                 
                 const logDate = filteredData.length > 0 ? new Date(filteredData[0].timestamp) : new Date();
                 const analyzeDate = new Date();
-                const formattedLogDate = logDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                const formattedLogDate = analyzeDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                 const formattedAnalyzeDate = analyzeDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
                 const reportHeader = `
@@ -1297,7 +1310,7 @@
         async function callGeminiAPI(prompt) {
             let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
             const payload = { contents: chatHistory };
-            const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs"; // Will be replaced by the environment
+            const apiKey = "AIzaSyDVqQazlPiOALxXFF3eukRL_Bx2C5Qwtjs";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             const response = await fetch(apiUrl, {
@@ -1440,36 +1453,34 @@
             updateDashboard(dataSubset);
         }
 
-        function updateTimelineStyle(dataSubset) {
-            if (!dataSubset || dataSubset.length === 0) return;
+        function updateDynamicThemeAndTimeline(dataSubset) {
+            if (!dataSubset || dataSubset.length === 0) {
+                timelineSlider.style.background = '#ddd';
+                bgOverlay.style.backgroundColor = 'rgba(0, 20, 80, 0.5)';
+                return;
+            }
             
             const summary = calculateSummaryMetrics(dataSubset);
             const errorRate = summary.totalRequests > 0 ? (summary.totalErrors / summary.totalRequests) : 0;
             
-            let color = '#16a34a'; // Green
+            let color, bgColor;
             if (errorRate >= 0.05) {
                 color = '#ef4444'; // Red
+                bgColor = 'rgba(255, 0, 0, 0.6)';
             } else if (errorRate >= 0.01) {
                 color = '#f59e0b'; // Yellow
+                bgColor = 'rgba(255, 255, 0, 0.5)';
+            } else {
+                color = '#16a34a'; // Green
+                bgColor = 'rgba(0, 255, 0, 0.4)';
             }
 
+            // Update Timeline Slider
             const progress = ((timelineSlider.value - timelineSlider.min) / (timelineSlider.max - timelineSlider.min)) * 100;
             timelineSlider.style.background = `linear-gradient(to right, ${color} ${progress}%, #ddd ${progress}%)`;
-        }
 
-        function updateDynamicTheme(summary) {
-            if (!summary || summary.totalRequests === 0) {
-                bgOverlay.style.backgroundColor = 'rgba(0, 20, 80, 0.5)';
-                return;
-            }
-            const errorRate = (summary.totalErrors / summary.totalRequests);
-            if (errorRate >= 0.05) {
-                bgOverlay.style.backgroundColor = 'rgba(127, 29, 29, 0.6)';
-            } else if (errorRate >= 0.01) {
-                bgOverlay.style.backgroundColor = 'rgba(180, 83, 9, 0.6)';
-            } else {
-                bgOverlay.style.backgroundColor = 'rgba(0, 20, 80, 0.5)';
-            }
+            // Update Background Overlay
+            bgOverlay.style.backgroundColor = bgColor;
         }
 
 
@@ -1489,4 +1500,4 @@
     </script>
 
 </body>
-</ht
+</html>
