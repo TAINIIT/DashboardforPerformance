@@ -11,6 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
             transition: background 1s ease-in-out;
@@ -328,6 +331,13 @@
         </div>
     </div>
 
+    <!-- Go to Top Button -->
+    <button id="go-to-top-btn" class="fixed bottom-8 right-8 bg-sky-500 text-white p-3 rounded-full shadow-lg hover:bg-sky-600 transition hidden" data-translate-key="goToTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
     <!-- Modal for Maximized Chart -->
     <div id="chart-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-white p-6 rounded-lg shadow-xl w-full h-full max-w-6xl max-h-[90vh] relative">
@@ -428,6 +438,7 @@
         const detailedDataArrow = document.getElementById('detailed-data-arrow');
         const startOverContainer = document.getElementById('start-over-container');
         const startOverBtn = document.getElementById('start-over-btn');
+        const goToTopBtn = document.getElementById('go-to-top-btn');
 
         let allData = [];
         let filteredData = [];
@@ -623,6 +634,14 @@
             detailedDataArrow.classList.toggle('rotate-180');
         });
         startOverBtn.addEventListener('click', () => window.location.reload());
+        goToTopBtn.addEventListener('click', () => window.scrollTo(0, 0));
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                goToTopBtn.classList.remove('hidden');
+            } else {
+                goToTopBtn.classList.add('hidden');
+            }
+        });
 
         mainControlsHeader.addEventListener('click', toggleMainControls);
         document.addEventListener('keydown', (event) => {
@@ -1424,6 +1443,7 @@
                 noDataMessage: "No valid data found in the uploaded file.", thresholdBreachesTitle: "Threshold Breaches", tsbAnalysisTitle: "✨ Analyze with TSB",
                 exportDocBtn: "Copy for Google Docs", copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.", copiedToClipboard: "Copied!",
                 replayTimelineTitle: "Replay Timeline", listenBtn: "🔊 Listen", startOverBtn: "Start Over",
+                goToTopBtn: "Go to Top",
                 footer_copyright: "&copy; 2025 Performance Analysis Dashboard by TSB. All Rights Reserved.",
                 quotes: ["Every number tells a story – uncover it.", "Performance speaks louder than promises.", "Good data, great decisions.", "Metrics don’t lie. They whisper insights."],
                 tips: {
@@ -1449,11 +1469,12 @@
                 noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.", thresholdBreachesTitle: "Vi phạm ngưỡng", tsbAnalysisTitle: "✨ Phân tích từ TSB",
                 exportDocBtn: "Sao chép cho Google Docs", copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.", copiedToClipboard: "Đã sao chép!",
                 replayTimelineTitle: "Dòng thời gian phát lại", listenBtn: "🔊 Nghe", startOverBtn: "Bắt đầu lại",
+                goToTopBtn: "Lên trên cùng",
                 footer_copyright: "&copy; 2025 Bảng điều khiển Phân tích Hiệu suất bởi TSB. Bảo lưu mọi quyền.",
                 quotes: ["Mỗi con số kể một câu chuyện – hãy khám phá nó.", "Hiệu suất nói lên nhiều điều hơn lời hứa.", "Dữ liệu tốt, quyết định tuyệt vời.", "Số liệu không nói dối. Chúng thì thầm những hiểu biết."],
                 tips: {
                     responseTimeSpike: '⚠️ Thời gian phản hồi tăng vọt lên {maxTime}ms cho "{label}" vào lúc {time}. Con số này cao hơn đáng kể so với mức trung bình là {avgTime}ms.',
-                    highErrorRate: '� Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
+                    highErrorRate: '🔴 Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
                     throughputCapped: '⚠️ Thông lượng dường như đã đạt đỉnh ở khoảng {avgThroughput} req/giây, cho thấy có thể có điểm nghẽn hệ thống.',
                     percentileHigh: '📈 Phân vị thứ 95 cho "{label}" là {p95}ms, cho thấy 5% yêu cầu chậm hơn giá trị này.',
                     successFailFluctuation: '📉 Lưu ý sự biến động giữa các yêu cầu thành công và thất bại. Sự gia tăng đột ngột của các lỗi có thể chỉ ra một vấn đề.',
@@ -1467,7 +1488,11 @@
             document.querySelectorAll('[data-translate-key]').forEach(element => {
                 const key = element.dataset.translateKey;
                 if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    if (element.tagName === 'BUTTON') {
+                        element.title = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
                 }
             });
 
@@ -1589,4 +1614,3 @@
 
 </body>
 </html>
-�
