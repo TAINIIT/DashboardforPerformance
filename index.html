@@ -852,7 +852,7 @@
         function getResponseTimeSeries(data) {
             const byLabel = groupBy(data, 'label');
             const finalDatasets = [];
-            const allSpikePoints = []; // Collect all spikes here
+            const allSpikePoints = []; 
 
             for (const label in byLabel) {
                 const seriesData = byLabel[label];
@@ -871,7 +871,7 @@
                     const point = { x: d.timestamp, y: d.sampleTime };
                     regularPoints.push(point);
                     if (d.sampleTime > spikeThreshold && d.sampleTime > absoluteThreshold) {
-                        allSpikePoints.push(point); // Add to the single spike collection
+                        allSpikePoints.push({ x: d.timestamp, y: d.sampleTime, label: label }); 
                     }
                 });
 
@@ -886,11 +886,10 @@
                 });
             }
 
-            // After checking all labels, add a single dataset for all collected spikes
             if (allSpikePoints.length > 0) {
                 finalDatasets.push({
                     type: 'scatter',
-                    label: 'Spike', // This will now be a single legend item
+                    label: 'Spike',
                     data: allSpikePoints,
                     backgroundColor: 'rgba(239, 68, 68, 1)',
                     pointStyle: 'triangle',
@@ -925,17 +924,33 @@
             };
             
             options.plugins.legend.onClick = (e, legendItem, legend) => {
-                const index = legendItem.datasetIndex;
-                const ci = legend.chart;
-                if (ci.isDatasetVisible(index)) {
-                    ci.hide(index);
-                    legendItem.hidden = true;
-                } else {
-                    ci.show(index);
-                    legendItem.hidden = false;
-                }
-            };
+                const chart = legend.chart;
+                Chart.defaults.plugins.legend.onClick.call(this, e, legendItem, legend);
 
+                const spikeDatasetIndex = chart.data.datasets.findIndex(ds => ds.label === 'Spike');
+                if (spikeDatasetIndex === -1 || !chart.originalSpikes) {
+                    chart.update();
+                    return;
+                }
+
+                const visibleLabels = new Set();
+                legend.legendItems.forEach((item) => {
+                    if (!item.hidden && item.text !== 'Spike') {
+                        visibleLabels.add(item.text);
+                    }
+                });
+
+                const isSpikeLegendVisible = !legend.legendItems.find(item => item.text === 'Spike')?.hidden;
+
+                if (isSpikeLegendVisible) {
+                    const filteredSpikes = chart.originalSpikes.filter(spike => visibleLabels.has(spike.label));
+                    chart.data.datasets[spikeDatasetIndex].data = filteredSpikes;
+                } else {
+                    chart.data.datasets[spikeDatasetIndex].data = [];
+                }
+                
+                chart.update();
+            };
 
             return {
                 data: { datasets: finalDatasets },
@@ -1066,7 +1081,13 @@
             const chartWrapper = document.getElementById(canvasId).parentElement.parentElement;
             if (config && config.data && config.data.datasets.some(ds => ds.data && ds.data.length > 0)) {
                 chartWrapper.style.display = 'block';
-                charts[canvasId] = new Chart(document.getElementById(canvasId).getContext('2d'), config);
+                const chartInstance = new Chart(document.getElementById(canvasId).getContext('2d'), config);
+                charts[canvasId] = chartInstance;
+
+                if (canvasId === 'response-time-over-time-chart') {
+                    const spikeDataset = config.data.datasets.find(ds => ds.label === 'Spike');
+                    chartInstance.originalSpikes = spikeDataset ? [...spikeDataset.data] : [];
+                }
                 
                 chartWrapper.ondblclick = () => {
                     if (maximizedChart) {
@@ -1074,6 +1095,9 @@
                     }
                     chartModal.classList.remove('hidden');
                     maximizedChart = new Chart(maximizedChartCanvas, config);
+                     if (canvasId === 'response-time-over-time-chart') {
+                        maximizedChart.originalSpikes = chartInstance.originalSpikes;
+                    }
                 };
             } else {
                 chartWrapper.style.display = 'none';
@@ -1429,7 +1453,7 @@
                 quotes: ["Mỗi con số kể một câu chuyện – hãy khám phá nó.", "Hiệu suất nói lên nhiều điều hơn lời hứa.", "Dữ liệu tốt, quyết định tuyệt vời.", "Số liệu không nói dối. Chúng thì thầm những hiểu biết."],
                 tips: {
                     responseTimeSpike: '⚠️ Thời gian phản hồi tăng vọt lên {maxTime}ms cho "{label}" vào lúc {time}. Con số này cao hơn đáng kể so với mức trung bình là {avgTime}ms.',
-                    highErrorRate: '🔴 Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
+                    highErrorRate: '� Tỷ lệ lỗi tổng thể là {errorRate}%, mức này là cao. Kiểm tra biểu đồ phân phối lỗi để tìm các yêu cầu có vấn đề.',
                     throughputCapped: '⚠️ Thông lượng dường như đã đạt đỉnh ở khoảng {avgThroughput} req/giây, cho thấy có thể có điểm nghẽn hệ thống.',
                     percentileHigh: '📈 Phân vị thứ 95 cho "{label}" là {p95}ms, cho thấy 5% yêu cầu chậm hơn giá trị này.',
                     successFailFluctuation: '📉 Lưu ý sự biến động giữa các yêu cầu thành công và thất bại. Sự gia tăng đột ngột của các lỗi có thể chỉ ra một vấn đề.',
@@ -1565,3 +1589,4 @@
 
 </body>
 </html>
+�
