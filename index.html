@@ -392,6 +392,7 @@
     </div>
 
     <footer class="text-center p-4 mt-auto relative z-10 text-white">
+        <img src="https://i.postimg.cc/zDwJHp1G/TSB-VIETNAM-80px.png" alt="Logo" class="mx-auto mb-4 w-[35rem]">
         <p id="footer-quote" class="italic text-sm mb-2"></p>
         <p id="footer-copyright" class="text-xs"></p>
     </footer>
@@ -1488,7 +1489,7 @@
             document.querySelectorAll('[data-translate-key]').forEach(element => {
                 const key = element.dataset.translateKey;
                 if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'BUTTON') {
+                    if (element.tagName === 'BUTTON' && element.id === 'go-to-top-btn') {
                         element.title = translations[lang][key];
                     } else {
                         element.textContent = translations[lang][key];
