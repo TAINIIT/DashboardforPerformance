@@ -127,7 +127,7 @@
             cursor: pointer;
             border-radius: 50%;
         }
-        #main-controls-arrow.rotate-180 {
+        .rotate-180 {
             transform: rotate(180deg);
         }
     </style>
@@ -284,35 +284,47 @@
                 </div>
             </div>
 
-            <!-- Detailed Table Section -->
+            <!-- Collapsible Detailed Table Section -->
             <div class="content-card rounded-lg shadow-md border border-gray-700 overflow-hidden text-gray-800">
-                 <div class="flex justify-between items-center p-6">
+                 <div id="detailed-data-header" class="flex justify-between items-center p-6 cursor-pointer">
                     <h2 class="text-2xl font-semibold" data-translate-key="detailedDataTitle">Detailed Data</h2>
-                    <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm" data-translate-key="downloadCsvBtn">Download CSV</button>
+                    <div class="flex items-center">
+                        <button id="download-csv-btn" class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm mr-4" data-translate-key="downloadCsvBtn">Download CSV</button>
+                        <svg id="detailed-data-arrow" class="w-6 h-6 text-gray-800 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStartTime">Start Time</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableThreadName">Thread Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLabel">Label</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSampleTime">Sample Time (ms)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStatus">Status</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableBytes">Bytes</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSentBytes">Sent Bytes</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLatency">Latency</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableConnectTime">Connect Time (ms)</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
-                    </table>
+                <div id="detailed-data-content" class="hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStartTime">Start Time</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableThreadName">Thread Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLabel">Label</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSampleTime">Sample Time (ms)</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableStatus">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableBytes">Bytes</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableSentBytes">Sent Bytes</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableLatency">Latency</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-translate-key="tableConnectTime">Connect Time (ms)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody" class="bg-white divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+                    <div id="pagination-controls" class="px-6 py-3 flex items-center justify-between border-t border-gray-200"></div>
                 </div>
-                <div id="pagination-controls" class="px-6 py-3 flex items-center justify-between border-t border-gray-200"></div>
             </div>
         </div>
         <div id="no-data-message" class="text-center mt-10 p-6 content-card rounded-lg shadow-md border border-gray-700 hidden">
             <p class="text-gray-600" data-translate-key="noDataMessage">No valid data found in the uploaded file.</p>
+        </div>
+
+        <!-- Start Over Button -->
+        <div id="start-over-container" class="text-center mt-10 hidden">
+            <button id="start-over-btn" class="bg-gray-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-translate-key="startOverBtn">
+                Start Over
+            </button>
         </div>
     </div>
 
@@ -411,6 +423,11 @@
         const timelineSlider = document.getElementById('timeline-slider');
         const timelineLabel = document.getElementById('timeline-label');
         const listenTsbReportBtn = document.getElementById('listen-tsb-report-btn');
+        const detailedDataHeader = document.getElementById('detailed-data-header');
+        const detailedDataContent = document.getElementById('detailed-data-content');
+        const detailedDataArrow = document.getElementById('detailed-data-arrow');
+        const startOverContainer = document.getElementById('start-over-container');
+        const startOverBtn = document.getElementById('start-over-btn');
 
         let allData = [];
         let filteredData = [];
@@ -601,6 +618,11 @@
 
         listenTsbReportBtn.addEventListener('click', playTsbReport);
         timelineSlider.addEventListener('input', handleTimelineChange);
+        detailedDataHeader.addEventListener('click', () => {
+            detailedDataContent.classList.toggle('hidden');
+            detailedDataArrow.classList.toggle('rotate-180');
+        });
+        startOverBtn.addEventListener('click', () => window.location.reload());
 
         mainControlsHeader.addEventListener('click', toggleMainControls);
         document.addEventListener('keydown', (event) => {
@@ -749,6 +771,7 @@
             filtersSection.classList.remove('hidden');
             dashboardContent.classList.remove('hidden');
             timelineContainer.classList.remove('hidden');
+            startOverContainer.classList.remove('hidden');
             noDataMessage.classList.add('hidden');
             populateFilters(allData);
             setupTimeline();
@@ -1376,7 +1399,7 @@
                 tableStartTime: "Start Time", tableThreadName: "Thread Name", tableLabel: "Label", tableSampleTime: "Sample Time (ms)", tableStatus: "Status", tableBytes: "Bytes", tableSentBytes: "Sent Bytes", tableLatency: "Latency", tableConnectTime: "Connect Time (ms)",
                 noDataMessage: "No valid data found in the uploaded file.", thresholdBreachesTitle: "Threshold Breaches", tsbAnalysisTitle: "✨ Analyze with TSB",
                 exportDocBtn: "Copy for Google Docs", copyInstructions: "Click the button to copy the report and open a new Google Doc for pasting.", copiedToClipboard: "Copied!",
-                replayTimelineTitle: "Replay Timeline", listenBtn: "🔊 Listen",
+                replayTimelineTitle: "Replay Timeline", listenBtn: "🔊 Listen", startOverBtn: "Start Over",
                 footer_copyright: "&copy; 2025 Performance Analysis Dashboard by TSB. All Rights Reserved.",
                 quotes: ["Every number tells a story – uncover it.", "Performance speaks louder than promises.", "Good data, great decisions.", "Metrics don’t lie. They whisper insights."],
                 tips: {
@@ -1401,7 +1424,7 @@
                 tableStartTime: "Thời gian bắt đầu", tableThreadName: "Tên luồng", tableLabel: "Nhãn", tableSampleTime: "Thời gian mẫu (ms)", tableStatus: "Trạng thái", tableBytes: "Bytes", tableSentBytes: "Bytes đã gửi", tableLatency: "Độ trễ", tableConnectTime: "Thời gian kết nối (ms)",
                 noDataMessage: "Không tìm thấy dữ liệu hợp lệ trong tệp đã tải lên.", thresholdBreachesTitle: "Vi phạm ngưỡng", tsbAnalysisTitle: "✨ Phân tích từ TSB",
                 exportDocBtn: "Sao chép cho Google Docs", copyInstructions: "Nhấp vào nút để sao chép báo cáo và mở một Google Doc mới để dán.", copiedToClipboard: "Đã sao chép!",
-                replayTimelineTitle: "Dòng thời gian phát lại", listenBtn: "🔊 Nghe",
+                replayTimelineTitle: "Dòng thời gian phát lại", listenBtn: "🔊 Nghe", startOverBtn: "Bắt đầu lại",
                 footer_copyright: "&copy; 2025 Bảng điều khiển Phân tích Hiệu suất bởi TSB. Bảo lưu mọi quyền.",
                 quotes: ["Mỗi con số kể một câu chuyện – hãy khám phá nó.", "Hiệu suất nói lên nhiều điều hơn lời hứa.", "Dữ liệu tốt, quyết định tuyệt vời.", "Số liệu không nói dối. Chúng thì thầm những hiểu biết."],
                 tips: {
